@@ -1,4 +1,4 @@
-package com.common.config;
+package com.common.config.web;
 
 import org.jspecify.annotations.NonNull;
 import org.springframework.context.annotation.Configuration;

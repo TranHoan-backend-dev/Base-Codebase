@@ -1,5 +1,6 @@
 package com.common.dto.request;
 
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.domain.Pageable;
 
 /**
@@ -7,7 +8,14 @@ import org.springframework.data.domain.Pageable;
  * Created at 06/04/2026
  *
  * @param pageable
+ * @param filter   Giá trị bộ lọc
+ * @param keyword  Từ khóa tìm kiếm
  * @author txhoan
  */
-public record PagingRequest(Pageable pageable) {
+public record PagingRequest(
+        @NotNull(message = "")
+        Pageable pageable,
+        String filter,
+        String keyword
+) {
 }

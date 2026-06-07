@@ -1,6 +1,11 @@
 spring:
   application:
     name: Common
+  messages:
+    basename: messages
+    encoding: UTF-8
+    fallback-to-system-locale: false
+    use-code-as-default-message: true
   profiles:
     active: dev
   jackson:
@@ -21,13 +26,9 @@ spring:
       connection-timeout: 2000 # Cho ket noi toi da 3s
       max-lifetime: 600000 # Ket noi song toi da 30p
       idle-timeout: 30000 # Dong idle sau 30s neu khong su dung
-  servlet:
-    encoding:
-      charset: UTF-8
-      enabled: true
-      force: true
-      force-request: true
-      force-response: true
+  web:
+    locale-resolver: accept_header
+    locale: en_US
 rabbit-mq-config:
   exchange_name: event_exchange
 management:
@@ -47,6 +48,12 @@ server:
   port: 9003
   servlet:
     context-path: /api/v1
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+      force-request: true
+      force-response: true
 web-frontend-url: ${WEB_FRONTEND_URL}
 cors:
   allowed-origins:

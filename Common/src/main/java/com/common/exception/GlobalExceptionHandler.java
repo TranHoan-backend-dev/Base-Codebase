@@ -2,6 +2,7 @@ package com.common.exception;
 
 import com.common.dto.response.WrapperApiResponse;
 import com.common.utilities.Utils;
+import feign.FeignException;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +47,7 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<WrapperApiResponse> handleBadCredentialsException(@NonNull BadCredentialsException ex) {
-        return Utils.returnUnAuthorizedResponse("Invalid email or password", null);
+        return Utils.returnUnAuthorizedResponse("Invalid email or password", ex.getMessage());
     }
 
     @ExceptionHandler(DisabledException.class)
@@ -72,7 +73,7 @@ class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(NotFoundException.class)
-    public ResponseEntity<WrapperApiResponse> handleNotExistingException(@NonNull NotExistingException ex) {
+    public ResponseEntity<WrapperApiResponse> handleNotExistingException(@NonNull NotFoundException ex) {
         return Utils.returnBadRequestResponse(ex.getMessage(), null);
     }
 

@@ -1,4 +1,4 @@
-package com.common.config;
+package com.common.config.security;
 
 import lombok.AccessLevel;
 import lombok.Getter;

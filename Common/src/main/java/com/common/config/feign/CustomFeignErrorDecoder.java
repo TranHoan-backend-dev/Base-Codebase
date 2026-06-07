@@ -1,5 +1,8 @@
 package com.common.config.feign;
 
+import com.common.dto.response.WrapperApiResponse;
+import com.common.exception.ForbiddenException;
+import com.common.exception.NotFoundException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
@@ -8,7 +11,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
 
 import java.io.IOException;
-import java.io.InputStream;
 
 @Slf4j
 public class CustomFeignErrorDecoder implements ErrorDecoder {
@@ -56,12 +58,12 @@ public class CustomFeignErrorDecoder implements ErrorDecoder {
             return switch (response.status()) {
                 case 400 -> {
                     if (message != null && message.contains("NotExistingException")) {
-                        yield new NotExistingException(extractCleanMessage(message));
+                        yield new NotFoundException(extractCleanMessage(message));
                     }
                     yield new IllegalArgumentException(extractCleanMessage(message));
                 }
                 case 403 -> new ForbiddenException(message != null ? message : "Forbidden");
-                case 404 -> new NotExistingException(message != null ? message : "Not Found");
+                case 404 -> new NotFoundException(message != null ? message : "Not Found");
                 default -> defaultErrorDecoder.decode(methodKey, response);
             };
         } catch (IOException e) {
