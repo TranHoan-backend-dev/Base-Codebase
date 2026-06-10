@@ -16,5 +16,7 @@ public interface IBaseService<TEntity, TId> {
 
     Optional<TEntity> findById(TId id);
 
+    TEntity findByIdOrThrow(TId id);
+
     Page<TEntity> getPaginated(PagingRequest request);
 }

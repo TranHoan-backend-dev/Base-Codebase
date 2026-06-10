@@ -2,6 +2,7 @@ package com.common.utilities;
 
 import com.common.dto.response.WrapperApiResponse;
 import com.common.exception.InternalServerException;
+import com.common.service.MessageService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.jspecify.annotations.NonNull;
@@ -192,10 +193,10 @@ public class Utils {
             return;
         }
         if (containsSqlInjection(value)) {
-            throw new IllegalArgumentException("Trường " + fieldName + " chứa ký tự hoặc từ khóa SQL Injection không hợp lệ.");
+            throw new IllegalArgumentException(MessageService.getMessage("validation.sql_injection", fieldName));
         }
         if (containsXss(value)) {
-            throw new IllegalArgumentException("Trường " + fieldName + " chứa mã script/XSS không hợp lệ.");
+            throw new IllegalArgumentException(MessageService.getMessage("validation.xss", fieldName));
         }
     }
 

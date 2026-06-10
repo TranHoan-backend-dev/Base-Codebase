@@ -1,4 +1,8 @@
 spring:
+  elasticsearch:
+    uris: http://localhost:9200
+    username: elastic
+    password: password
   application:
     name: Common
   messages:
