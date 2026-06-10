@@ -1,6 +1,6 @@
 package com.common.repository;
 
-import com.common.model.BaseModel;
+import com.common.model.sql.BaseModel;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 

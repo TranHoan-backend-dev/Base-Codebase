@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component
+@Component("auditorProvider")
 public class AuditorAwareImpl implements AuditorAware<String> {
     /**
      * Lấy thông tin người chỉnh sửa dữ liệu.<br/>

@@ -1,4 +1,4 @@
-package com.common.model;
+package com.common.model.sql;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;

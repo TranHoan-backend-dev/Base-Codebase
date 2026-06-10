@@ -1,6 +1,6 @@
 package com.common.service.impl;
 
-import com.common.model.BaseModel;
+import com.common.model.sql.BaseModel;
 import com.common.service.contract.IBaseService;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;

@@ -1,5 +1,6 @@
 package com.common.service;
 
+import jakarta.annotation.PostConstruct;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -15,14 +16,31 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
-class MessageService {
+public class MessageService {
     MessageSource messageSource;
+
+    private static MessageService instance;
+
+    @PostConstruct
+    void init() {
+        instance = this;
+    }
 
     /**
      * Lấy ra thông điệp dựa trên key
      */
     public String get(String key, Object... args) {
         var locale = LocaleContextHolder.getLocale();
-        return messageSource.getMessage(key, args, locale);
+        return messageSource.getMessage(key, args, key, locale);
+    }
+
+    /**
+     * Lấy ra thông điệp dựa trên key từ static context (cho các lớp không thể inject trực tiếp như Interface Repository)
+     */
+    public static String getMessage(String key, Object... args) {
+        if (instance == null) {
+            return key;
+        }
+        return instance.get(key, args);
     }
 }
