@@ -7,15 +7,18 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import feign.Response;
 import feign.codec.ErrorDecoder;
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.jspecify.annotations.NonNull;
 
 import java.io.IOException;
 
 @Slf4j
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class CustomFeignErrorDecoder implements ErrorDecoder {
-    private final ErrorDecoder defaultErrorDecoder = new Default();
-    private final ObjectMapper objectMapper = new ObjectMapper()
+    ErrorDecoder defaultErrorDecoder = new Default();
+    ObjectMapper objectMapper = new ObjectMapper()
             .findAndRegisterModules()
             .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
@@ -37,8 +40,8 @@ public class CustomFeignErrorDecoder implements ErrorDecoder {
             // ignore metadata extraction issues
         }
 
-        int status = response.status();
-        String reason = response.reason();
+        var status = response.status();
+        var reason = response.reason();
         log.error("Feign error -> [{}] {} | status={}{} | methodKey={}",
                 httpMethod,
                 url,
@@ -52,8 +55,8 @@ public class CustomFeignErrorDecoder implements ErrorDecoder {
         }
 
         try (var bodyIs = response.body().asInputStream()) {
-            WrapperApiResponse apiResponse = objectMapper.readValue(bodyIs, WrapperApiResponse.class);
-            String message = apiResponse != null ? apiResponse.message() : null;
+            var apiResponse = objectMapper.readValue(bodyIs, WrapperApiResponse.class);
+            var message = apiResponse != null ? apiResponse.message() : null;
 
             return switch (response.status()) {
                 case 400 -> {

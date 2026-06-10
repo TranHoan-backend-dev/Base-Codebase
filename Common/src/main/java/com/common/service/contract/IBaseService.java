@@ -2,7 +2,7 @@ package com.common.service.contract;
 
 import com.common.dto.request.PagingRequest;
 import org.springframework.data.domain.Page;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Service;import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
@@ -16,7 +16,7 @@ public interface IBaseService<TEntity, TId> {
 
     Optional<TEntity> findById(TId id);
 
-    TEntity findByIdOrThrow(TId id);
+    @Transactional(readOnly = true) TEntity findByIdOrThrow(TId id);
 
     Page<TEntity> getPaginated(PagingRequest request);
 }
