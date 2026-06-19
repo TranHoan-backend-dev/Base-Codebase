@@ -20,6 +20,7 @@ import java.time.LocalDateTime;
  * Lớp model chung cho tất cả các NoSQL (MongoDB) entities.<br/>
  * Created at 10/06/2026
  *
+ * @see <a href="../../../../../resources/docs/spring_structure/datasource-guide.md">Datasource and Auditing Guide</a>
  * @author txhoan
  */
 @Getter

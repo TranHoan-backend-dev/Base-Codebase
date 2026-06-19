@@ -30,11 +30,11 @@ public class ClientApplication {
 
 Mặc định, thư viện `Common` đã tự động cấu hình sẵn các giá trị kết nối mặc định của Spring Boot Elasticsearch trong file cấu hình nội bộ:
 
-* `spring.elasticsearch.uris`: `http://localhost:9200`
-* `spring.elasticsearch.username`: `elastic`
-* `spring.elasticsearch.password`: `password`
+*   `spring.elasticsearch.uris`: `http://localhost:9200`
+*   `spring.elasticsearch.username`: `elastic`
+*   `spring.elasticsearch.password`: `password`
 
-Dự án Client **không cần phải cấu hình gì thêm** nếu sử dụng môi trường mặc định này. Nếu muốn ghi đè các cấu hình kết nối (ví dụ khi kết nối đến cụm server Production), Client chỉ cần khai báo lại các thuộc tính chuẩn của Spring Boot trong file `application.yaml` như sau:
+Dự án Client **không cần phải cấu hình gì thêm** nếu sử dụng môi trường mặc định này. Nếu muốn ghi đè các cấu hình kết nối, Client chỉ cần khai báo lại các thuộc tính chuẩn của Spring Boot trong file `application.yaml` như sau:
 
 ```yaml
 spring:
@@ -44,14 +44,11 @@ spring:
     password: my_secure_password
 ```
 
-> [!NOTE]
-> Thư viện tích hợp sẵn Auditing cho Elasticsearch thông qua `@EnableElasticsearchAuditing`. Các trường `@CreatedDate`, `@LastModifiedDate` trên Document sẽ tự động được điền giá trị giống như JPA và MongoDB.
-
 ---
 
 ## 2. Tạo Search Document cho Elasticsearch
 
-Tạo một class Java đại diện cho Index trong Elasticsearch. Các trường dữ liệu phục vụ tìm kiếm nên được cấu hình kiểu dữ liệu (`FieldType`) phù hợp (ví dụ: `Text` kèm analyzer cho tìm kiếm toàn văn, `Keyword` cho tìm kiếm chính xác/filter).
+Tạo một class Java đại diện cho Index trong Elasticsearch. Các trường dữ liệu phục vụ tìm kiếm nên được cấu hình kiểu dữ liệu (`FieldType`) phù hợp.
 
 ```java
 package com.client.document;
@@ -91,9 +88,7 @@ public class ProductSearchDocument {
 
 ## 3. Tạo Mapper MapStruct chuyển đổi Dữ liệu
 
-Để đẩy dữ liệu từ Entity (SQL JPA hoặc MongoDB) sang Elasticsearch Document, chúng ta sử dụng **MapStruct** để tự động sinh code chuyển đổi một cách nhanh nhất và tránh gõ sai tên trường.
-
-### Định nghĩa Mapper Interface
+Chúng ta sử dụng **MapStruct** để tự động sinh code chuyển đổi một cách nhanh nhất từ Entity sang Elasticsearch Document.
 
 ```java
 package com.client.mapper;
@@ -103,11 +98,9 @@ import com.client.model.Product; // Giả sử là JPA Entity hoặc Mongo Docum
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring") // Đã cấu hình mặc định là spring trong build.gradle.kts
+@Mapper(componentModel = "spring")
 public interface ProductSearchMapper {
 
-    // Ánh xạ tự động các trường trùng tên.
-    // Nếu có trường khác tên, dùng @Mapping(source = "entityField", target = "documentField")
     @Mapping(target = "id", expression = "java(String.valueOf(product.getId()))") // Ép kiểu ID sang String cho ES
     ProductSearchDocument toSearchDocument(Product product);
 }
@@ -131,7 +124,6 @@ import java.util.List;
 @Repository
 public interface ProductSearchRepository extends ElasticsearchRepository<ProductSearchDocument, String> {
     
-    // Spring Data tự động sinh query tìm kiếm toàn văn theo tên
     List<ProductSearchDocument> findByNameContaining(String name);
 }
 ```
@@ -180,6 +172,3 @@ public class ProductService {
     }
 }
 ```
-
-> [!TIP]
-> **Đồng bộ bất đồng bộ:** Trong các dự án thực tế quy mô lớn, để tránh ảnh hưởng đến thời gian phản hồi (latency) của API lưu dữ liệu, bạn nên xử lý đồng bộ sang Elasticsearch bất đồng bộ thông qua Message Queue (như RabbitMQ đã được cấu hình sẵn trong project) hoặc Spring `@Async` / Application Events.

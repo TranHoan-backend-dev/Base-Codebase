@@ -23,6 +23,8 @@ import java.time.format.DateTimeParseException;
 import java.util.UUID;
 import java.util.regex.Pattern;
 
+import static com.common.service.impl.LocalStorageServiceImpl.getString;
+
 /**
  * Lớp tiện ích cung cấp các phương thức validate định dạng dữ liệu,
  * xử lý file và hỗ trợ chuẩn hóa phản hồi API.
@@ -341,17 +343,7 @@ public class Utils {
         // Dùng absolute path thay vì relative để tránh sự khác biệt giữa
         // Windows (working dir = apps/) và Linux (working dir = apps/device/)
         var uploadDir = Paths.get(System.getProperty("user.dir"), "uploads", "images");
-        var fileName = System.currentTimeMillis() + "_" + file.getOriginalFilename();
-        var filePath = uploadDir.resolve(fileName);
-
-        try {
-            Files.createDirectories(uploadDir);
-            Files.write(filePath, file.getBytes());
-        } catch (IOException e) {
-            throw new InternalServerException();
-        }
-
-        return fileName;
+        return getString(file, uploadDir);
     }
 
     /**

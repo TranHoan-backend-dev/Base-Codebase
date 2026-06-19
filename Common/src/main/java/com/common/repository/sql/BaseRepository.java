@@ -14,10 +14,11 @@ import org.springframework.data.repository.NoRepositoryBean;
  *
  * @param <T>  Kiểu dữ liệu Entity kế thừa từ BaseModel
  * @param <ID> Kiểu dữ liệu của khóa chính Entity
+ * @see <a href="../../../../../resources/docs/spring_structure/repository-guide.md">BaseRepository Specification Guide</a>
  * @author txhoan
  */
 @NoRepositoryBean
-public interface BaseRepository<T extends BaseModel, ID> extends JpaRepository<T, ID> {
+public interface BaseRepository<T extends BaseModel, ID> extends JpaRepository<T, ID>, org.springframework.data.jpa.repository.JpaSpecificationExecutor<T> {
 
     /**
      * Tìm kiếm Entity theo ID, nếu không tìm thấy sẽ ném ra exception NotFoundException.<br/>

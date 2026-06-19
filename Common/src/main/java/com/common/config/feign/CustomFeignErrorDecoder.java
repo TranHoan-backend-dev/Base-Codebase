@@ -38,6 +38,7 @@ public class CustomFeignErrorDecoder implements ErrorDecoder {
             }
         } catch (Exception ignored) {
             // ignore metadata extraction issues
+            log.error(methodKey, ignored);
         }
 
         var status = response.status();

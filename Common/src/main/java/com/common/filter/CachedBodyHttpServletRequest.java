@@ -13,6 +13,8 @@ import java.io.InputStream;
  * Tránh lỗi đóng luồng Input Stream khi Spring Controller đọc Body sau khi Filter đã kiểm tra.
  * Created at 10/06/2026
  *
+ * @see <a href="../../../../resources/docs/security_filters/security-filter-guide.md">Security and Web Filter Guide</a>
+ * @see "Common/src/main/resources/docs/security_filters/security-filter-guide.md"
  * @author txhoan
  */
 public class CachedBodyHttpServletRequest extends HttpServletRequestWrapper {

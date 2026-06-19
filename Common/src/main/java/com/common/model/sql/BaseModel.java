@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.FieldDefaults;
 import lombok.experimental.SuperBuilder;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -18,6 +19,7 @@ import java.time.LocalDateTime;
  * Lớp model chung cho tất cả các model khác.<br/>
  * Created at 04/06/2026
  *
+ * @see <a href="../../../../../resources/docs/spring_structure/datasource-guide.md">Datasource and Auditing Guide</a>
  * @author txhoan
  */
 @Getter
@@ -25,6 +27,7 @@ import java.time.LocalDateTime;
 @ToString
 @MappedSuperclass
 @SuperBuilder
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseModel {

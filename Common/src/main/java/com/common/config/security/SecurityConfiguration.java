@@ -20,8 +20,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Lớp cấu hình bảo mật SecurityFilterChain của Spring Security.<br/>
+ * Thiết lập các bộ lọc xác thực JWT, cấu hình CORS, CSRF, Session,
+ * và danh sách public URLs động từ configuration.<br/>
+ * Created at 10/06/2026, Updated at 19/06/2026
+ *
+ * @see <a href="../../../../../resources/docs/security_filters/security-filter-guide.md">Security and Web Filter Guide</a>
+ * @author txhoan
+ */
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -39,19 +49,35 @@ abstract class SecurityConfiguration {
     JwtAuthenticationConverter converter;
     CorsProperties corsProperties;
     JwtDecoder decoder;
-    final String[] PUBLIC_URLS = {
-            "/v3/api-docs/**",
-            "/swagger-ui/**",
-            "/health",
-    };
+    SecurityProperties securityProperties;
 
+    /**
+     * Cấu hình chuỗi bộ lọc bảo mật SecurityFilterChain của Spring Security.<br/>
+     * Khai báo phân quyền truy cập, CSRF, CORS, xử lý ngoại lệ và Keycloak JWT resource server.<br/>
+     * Created at 10/06/2026, Dynamic URLs integrated at 19/06/2026
+     *
+     * @param http Đối tượng cấu hình HttpSecurity
+     * @return Cấu hình SecurityFilterChain hoàn chỉnh
+     * @throws Exception nếu xảy ra lỗi cấu hình
+     */
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        // Khởi tạo danh sách các URL công khai tĩnh (Swagger, Docs, Healthcheck)
+        var allPublicUrls = new ArrayList<>(List.of(
+                "/v3/api-docs/**",
+                "/swagger-ui/**",
+                "/health"
+        ));
+        // Đọc thêm các URL công khai từ file cấu hình động (application.yaml)
+        if (securityProperties.getPublicUrls() != null) {
+            allPublicUrls.addAll(securityProperties.getPublicUrls());
+        }
+
         return http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(PUBLIC_URLS).permitAll()
+                        .requestMatchers(allPublicUrls.toArray(String[]::new)).permitAll()
                         .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint((request, response, authException) -> {

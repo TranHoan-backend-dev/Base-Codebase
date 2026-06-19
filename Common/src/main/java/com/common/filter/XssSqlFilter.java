@@ -25,6 +25,7 @@ import java.time.OffsetDateTime;
  * Chạy ở thứ tự ưu tiên cao nhất, quét toàn bộ Parameters, Query String, và Request Body JSON.
  * Created at 10/06/2026
  *
+ * @see <a href="../../../../resources/docs/security_filters/security-filter-guide.md">Security and Web Filter Guide</a>
  * @author txhoan
  */
 @Slf4j

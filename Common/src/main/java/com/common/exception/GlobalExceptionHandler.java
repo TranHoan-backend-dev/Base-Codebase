@@ -14,10 +14,20 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import java.time.format.DateTimeParseException;
 import java.util.HashMap;
 import java.util.concurrent.ExecutionException;
 
+/**
+ * Bộ xử lý ngoại lệ toàn cục cho ứng dụng (Global Exception Handler).<br/>
+ * Đóng vai trò bắt tất cả các Exception ném ra từ Controller/Service
+ * để chuyển đổi thành cấu hình WrapperApiResponse chuẩn với mã lỗi HTTP chính xác.<br/>
+ * Created at 10/06/2026, Updated at 19/06/2026
+ *
+ * @see <a href="../../../../resources/docs/utilities/utilities-guide.md">Utilities Specification Guide</a>
+ * @author txhoan
+ */
 @Slf4j
 @RestControllerAdvice
 class GlobalExceptionHandler {
@@ -85,6 +95,21 @@ class GlobalExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<WrapperApiResponse> handleIllegalArgumentException(@NonNull IllegalArgumentException ex) {
         return Utils.returnBadRequestResponse(ex.getMessage(), null);
+    }
+
+    /**
+     * Bắt ngoại lệ xung đột phiên bản dữ liệu khi cập nhật đồng thời (Optimistic Locking).<br/>
+     * Trả về phản hồi lỗi HTTP 409 Conflict chuẩn.<br/>
+     * Created at 19/06/2026
+     *
+     * @param ex Ngoại lệ bắt được
+     * @return Phản hồi mã 409 Conflict
+     * @see <a href="../../../../resources/docs/utilities/utilities-guide.md">Utilities Specification Guide (Optimistic Locking Section)</a>
+     */
+    @ExceptionHandler(ObjectOptimisticLockingFailureException.class)
+    public ResponseEntity<WrapperApiResponse> handleOptimisticLockingFailureException(@NonNull ObjectOptimisticLockingFailureException ex) {
+        log.error("Optimistic locking failure: {}", ex.getMessage());
+        return Utils.returnConflictResponse("Dữ liệu đã bị sửa đổi bởi người dùng khác. Vui lòng tải lại trang và thực hiện lại.", null);
     }
 
     @ExceptionHandler({InterruptedException.class, ExecutionException.class})

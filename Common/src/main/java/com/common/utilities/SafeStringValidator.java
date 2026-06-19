@@ -5,7 +5,10 @@ import jakarta.validation.ConstraintValidatorContext;
 
 /**
  * Lớp xử lý logic kiểm tra chuỗi an toàn cho annotation @SafeString.
+ * Created at 19/6/2026
  *
+ * @see <a href="../../../../resources/docs/security_filters/security-filter-guide.md">Security and Web Filter Guide</a>
+ * @see "Common/src/main/resources/docs/security_filters/security-filter-guide.md"
  * @author txhoan
  */
 public class SafeStringValidator implements ConstraintValidator<SafeString, String> {

@@ -14,6 +14,7 @@ import org.springframework.data.repository.NoRepositoryBean;
  *
  * @param <T>  Kiểu dữ liệu Document kế thừa từ BaseModel
  * @param <ID> Kiểu dữ liệu của khóa chính Document (thường là String)
+ * @see <a href="../../../../../resources/docs/spring_structure/repository-guide.md">BaseRepository Specification Guide</a>
  * @author txhoan
  */
 @NoRepositoryBean

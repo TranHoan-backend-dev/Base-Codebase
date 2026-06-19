@@ -62,6 +62,9 @@ web-frontend-url: ${WEB_FRONTEND_URL}
 cors:
   allowed-origins:
     - ${web-frontend-url}
+security:
+  public-urls:
+    - /api/v1/public/**
 springdoc:
   api-docs:
     enabled: true

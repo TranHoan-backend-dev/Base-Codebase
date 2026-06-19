@@ -13,6 +13,8 @@ import java.lang.annotation.Target;
  * Annotation dùng để validate các chuỗi đầu vào (Request body, query parameter, ...)
  * đảm bảo chúng không chứa mã độc hại như SQL Injection hay XSS.
  *
+ * @see <a href="../../../../resources/docs/security_filters/security-filter-guide.md">Security and Web Filter Guide</a>
+ * @see "Common/src/main/resources/docs/security_filters/security-filter-guide.md"
  * @author txhoan
  */
 @Documented
