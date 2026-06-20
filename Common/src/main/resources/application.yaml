@@ -78,3 +78,29 @@ springdoc:
   swagger-ui:
     enabled: true
     path: ${SPRINGDOC_SWAGGER_UI_PATH:/swagger-ui/index.html}
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        waitDurationInOpenState: 5000ms
+        failureRateThreshold: 50
+        slowCallDurationThreshold: 2000ms
+        slowCallRateThreshold: 50
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+    instances:
+      default:
+        baseConfig: default
+  ratelimiter:
+    configs:
+      default:
+        limitForPeriod: 10
+        limitRefreshPeriod: 1s
+        timeoutDuration: 0ms
+    instances:
+      default:
+        baseConfig: default
+
