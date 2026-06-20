@@ -10,7 +10,7 @@ spring:
     username: ${SPRING_ELASTICSEARCH_USERNAME:elastic}
     password: ${SPRING_ELASTICSEARCH_PASSWORD:password}
   application:
-    name: Common
+    name: BaseBackend
   messages:
     basename: messages
     encoding: UTF-8
