@@ -164,7 +164,7 @@ resilience4j:
 
 Để áp dụng khả năng tự phục hồi vào code Java, chúng ta sử dụng các Annotation `@CircuitBreaker` và `@RateLimiter` được cung cấp bởi Resilience4j.
 
-### 4.1. Quy tắc viết hàm Fallback (Bắt buộc)
+### 5.1. Quy tắc viết hàm Fallback (Bắt buộc)
 
 Khi Circuit Breaker ngắt mạch hoặc Rate Limiter chặn cuộc gọi, hoặc khi dịch vụ downstream ném ra lỗi vật lý, Resilience4j sẽ tìm kiếm và thực thi hàm Fallback tương ứng.
 
@@ -177,7 +177,7 @@ Hàm Fallback phải tuân thủ nghiêm ngặt các quy tắc chữ ký hàm (M
     * Phải nhận đầy đủ tất cả các tham số của hàm gốc theo đúng thứ tự.
     * Phải thêm một tham số cuối cùng có kiểu dữ liệu là ngoại lệ `Throwable` (hoặc một Subclass cụ thể của ngoại lệ như `CallNotPermittedException`, `RequestNotPermittedException` để bắt riêng từng loại lỗi).
 
-### 4.2. Ví dụ sử dụng `@CircuitBreaker`
+### 5.2. Ví dụ sử dụng `@CircuitBreaker`
 
 Dưới đây là một Service gọi API lấy thông tin người dùng từ một dịch vụ bên ngoài sử dụng Feign Client hoặc RestTemplate:
 
@@ -231,7 +231,7 @@ public class ExternalUserService {
 }
 ```
 
-### 4.3. Ví dụ sử dụng `@RateLimiter`
+### 5.3. Ví dụ sử dụng `@RateLimiter`
 
 Sử dụng `@RateLimiter` giúp bảo vệ các API quan trọng khỏi bị spam hoặc tấn công DDOS nhẹ, hoặc giới hạn tần suất gọi API bên ngoài nếu nhà cung cấp dịch vụ có chính sách giới hạn số lượt gọi.
 
