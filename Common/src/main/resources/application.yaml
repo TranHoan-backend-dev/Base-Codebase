@@ -22,20 +22,44 @@ spring:
     time-zone: Asia/Ho_Chi_Minh
     locale: vi_VN
   jpa:
-    hibernate:
-      ddl-auto: update
+    # hibernate:
+    # ddl-auto: update
     show-sql: false
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+        # ddl-auto được cấu hình riêng trong từng JpaConfig class
+  # =========================================================================
+  # Dual Datasource Configuration
+  # - business: chứa các entity nghiệp vụ (BaseModel) của từng service
+  # - system:   chứa các entity kỹ thuật (OutboxEvent, SystemSetting, DynamicGridConfig,...)
+  # =========================================================================
   datasource:
-    hikari:
-      maximum-pool-size: 5 # nang core khi co nhieu truy van song song
-      minimum-idle: 3 # So ket noi idle luon co san
-      connection-timeout: 2000 # Cho ket noi toi da 3s
-      max-lifetime: 600000 # Ket noi song toi da 30p
-      idle-timeout: 30000 # Dong idle sau 30s neu khong su dung
+    business:
+      url: ${SPRING_DATASOURCE_BUSINESS_URL:jdbc:postgresql://localhost:5432/db_business}
+      username: ${SPRING_DATASOURCE_BUSINESS_USERNAME:postgres}
+      password: ${SPRING_DATASOURCE_BUSINESS_PASSWORD:postgres}
+      driver-class-name: org.postgresql.Driver
+      hikari:
+        pool-name: BusinessHikariPool
+        maximum-pool-size: 10
+        minimum-idle: 3
+        connection-timeout: 2000
+        max-lifetime: 600000
+        idle-timeout: 30000
+    system:
+      url: ${SPRING_DATASOURCE_SYSTEM_URL:jdbc:postgresql://localhost:5432/db_system}
+      username: ${SPRING_DATASOURCE_SYSTEM_USERNAME:postgres}
+      password: ${SPRING_DATASOURCE_SYSTEM_PASSWORD:postgres}
+      driver-class-name: org.postgresql.Driver
+      hikari:
+        pool-name: SystemHikariPool
+        maximum-pool-size: 5
+        minimum-idle: 2
+        connection-timeout: 2000
+        max-lifetime: 600000
+        idle-timeout: 30000
   web:
     locale-resolver: accept_header
     locale: en_US
@@ -103,4 +127,3 @@ resilience4j:
     instances:
       default:
         baseConfig: default
-
