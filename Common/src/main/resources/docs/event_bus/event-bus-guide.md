@@ -42,7 +42,7 @@ spring:
 
 ### B. Nếu chọn `rabbitmq`
 
-Cần cấu hình kết nối RabbitMQ tiêu chuẩn:
+1. **Cấu hình kết nối RabbitMQ tiêu chuẩn:**
 
 ```yaml
 spring:
@@ -52,6 +52,24 @@ spring:
     username: guest
     password: guest
 ```
+
+1. **Cấu hình khởi tạo cấu trúc hàng đợi động (RabbitMQ Topology):**
+
+Thư viện hỗ trợ tự động định nghĩa Topic Exchange, Queue chính và các hàng đợi theo Entity nghiệp vụ thông qua cấu hình `rabbit-mq-config`:
+
+```yaml
+rabbit-mq-config:
+  exchange_name: event_exchange # Tên Topic Exchange chính (Mặc định: event_exchange nếu không cấu hình)
+  queue: main-service-queue     # Tên Queue chính của Microservice nhận tất cả tin nhắn (Mặc định: không tạo nếu để trống)
+  entities:                     # Động sinh ra các Queue dạng "<entity>-queue" và tự động binding với routing key dạng "<entity>.#"
+    - user
+    - order
+    - payment
+```
+
+* **Topic Exchange**: Tự động khai báo Exchange kiểu Topic bền vững (durable).
+* **Queue chính của Service**: Tự động tạo và liên kết với Exchange thông qua routing key `#` (nhận mọi tin nhắn).
+* **Entity Queues**: Tự động tạo Queue riêng biệt cho từng Entity và liên kết với Exchange qua routing key `<entity>.#` để phục vụ lọc tin nhắn theo đối tượng nghiệp vụ cụ thể.
 
 ---
 

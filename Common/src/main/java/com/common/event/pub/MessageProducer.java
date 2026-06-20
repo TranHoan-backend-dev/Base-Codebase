@@ -6,17 +6,26 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Bộ sản xuất tin nhắn (Message Producer) cũ phục vụ tích hợp với các hệ thống khác (như Nest.js).<br/>
+ * Được nạp có điều kiện khi `common.event-bus.type=rabbitmq`.<br/>
+ *
+ * @see <a href="../../../../../resources/docs/event_bus/event-bus-guide.md">Event Bus Specification Guide</a>
+ * @author txhoan
+ */
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "common.event-bus.type", havingValue = "rabbitmq")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 class MessageProducer {
-    @Value("${rabbit-mq-config.exchange_name}")
+    @Value("${rabbit-mq-config.exchange_name:event_exchange}")
     private String EXCHANGE_NAME;
 
     private final RabbitTemplate template;
