@@ -423,6 +423,17 @@ public class Utils {
     }
 
     /**
+     * Xây dựng ResponseEntity phản hồi không tìm thấy tài nguyên (HttpStatus.NOT_FOUND - 404).
+     *
+     * @param message thông báo lỗi không tìm thấy
+     * @param data    chi tiết bổ sung hoặc null
+     * @return đối tượng ResponseEntity chứa cấu trúc WrapperApiResponse
+     */
+    public static @NonNull ResponseEntity<WrapperApiResponse> returnNotFoundResponse(String message, Object data) {
+        return buildResponse(HttpStatus.NOT_FOUND.value(), message, data);
+    }
+
+    /**
      * Xây dựng ResponseEntity phản hồi không có nội dung trả về (HttpStatus.NO_CONTENT - 204).
      *
      * @param message thông báo kèm theo
@@ -430,6 +441,18 @@ public class Utils {
      */
     public static @NonNull ResponseEntity<WrapperApiResponse> returnNoContentResponse(String message) {
         return buildResponse(HttpStatus.NO_CONTENT.value(), message, null);
+    }
+
+    /**
+     * Xây dựng ResponseEntity phản hồi với HTTP Status tùy chỉnh.
+     *
+     * @param status  HTTP Status mong muốn
+     * @param message thông báo phản hồi
+     * @param data    dữ liệu trả về hoặc null
+     * @return đối tượng ResponseEntity chứa cấu trúc WrapperApiResponse
+     */
+    public static @NonNull ResponseEntity<WrapperApiResponse> returnResponse(@NonNull HttpStatus status, String message, Object data) {
+        return buildResponse(status.value(), message, data);
     }
 
     /**

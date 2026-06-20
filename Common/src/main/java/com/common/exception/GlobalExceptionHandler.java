@@ -13,6 +13,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.http.HttpStatus;
+import jakarta.persistence.EntityNotFoundException;
 
 import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import java.time.format.DateTimeParseException;
@@ -84,7 +87,7 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<WrapperApiResponse> handleNotExistingException(@NonNull NotFoundException ex) {
-        return Utils.returnBadRequestResponse(ex.getMessage(), null);
+        return Utils.returnNotFoundResponse(ex.getMessage(), null);
     }
 
     @ExceptionHandler(FeignException.class)
@@ -115,5 +118,29 @@ class GlobalExceptionHandler {
     @ExceptionHandler({InterruptedException.class, ExecutionException.class})
     public ResponseEntity<WrapperApiResponse> handleInterruptedAndExecutionException(@NonNull Exception ex) {
         return Utils.returnInternalServerErrorResponse(ex.getMessage(), null);
+    }
+
+    @ExceptionHandler(BaseException.class)
+    public ResponseEntity<WrapperApiResponse> handleBaseException(@NonNull BaseException ex) {
+        log.error("Business exception occurred: {}", ex.getMessage());
+        return Utils.returnResponse(ex.getStatus(), ex.getMessage(), null);
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<WrapperApiResponse> handleAccessDeniedException(@NonNull AccessDeniedException ex) {
+        log.error("Access denied: {}", ex.getMessage());
+        return Utils.returnForbiddenResponse("Bạn không có quyền thực hiện hành động này", ex.getMessage());
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<WrapperApiResponse> handleEntityNotFoundException(@NonNull EntityNotFoundException ex) {
+        log.error("Entity not found: {}", ex.getMessage());
+        return Utils.returnNotFoundResponse(ex.getMessage(), null);
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<WrapperApiResponse> handleGenericException(@NonNull Exception ex) {
+        log.error("Unhandled exception occurred: {}", ex.getMessage(), ex);
+        return Utils.returnInternalServerErrorResponse("Đã xảy ra lỗi hệ thống. Vui lòng thử lại sau.", ex.getMessage());
     }
 }
