@@ -158,7 +158,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/WrapperApiResponse'
-
 components:
   schemas:
     PagingRequest:
@@ -195,6 +194,49 @@ components:
             type: string
           description: Danh sách tên cột thuộc tính cần lấy (Dùng riêng cho endpoint projected)
           example: ["id", "username", "email", "createdAt"]
+
+    SystemSettingRequest:
+      type: object
+      required:
+        - settingKey
+        - settingValue
+      properties:
+        settingKey:
+          type: string
+          maxLength: 100
+          description: Từ khóa cấu hình hệ thống chạy động
+          example: "max_payment_limit"
+        settingValue:
+          type: string
+          maxLength: 1000
+          description: Giá trị cấu hình tương ứng
+          example: "50000000"
+        description:
+          type: string
+          maxLength: 255
+          description: Mô tả chi tiết của tham số cấu hình
+          example: "Hạn mức thanh toán tối đa cho phép trong một giao dịch"
+
+    SystemSettingResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          description: ID của cấu hình trong DB
+          example: 1
+        settingKey:
+          type: string
+          description: Từ khóa cấu hình hệ thống chạy động
+          example: "max_payment_limit"
+        settingValue:
+          type: string
+          description: Giá trị cấu hình tương ứng
+          example: "50000000"
+        description:
+          type: string
+          description: Mô tả chi tiết của tham số cấu hình
+          example: "Hạn mức thanh toán tối đa cho phép trong một giao dịch"
 
     WrapperApiResponse:
       type: object
