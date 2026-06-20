@@ -1,8 +1,14 @@
 spring:
+  data:
+    redis:
+      host: ${SPRING_REDIS_HOST:localhost}
+      port: ${SPRING_REDIS_PORT:6379}
+      password: ${SPRING_REDIS_PASSWORD:}
+      timeout: 2000ms
   elasticsearch:
-    uris: http://localhost:9200
-    username: elastic
-    password: password
+    uris: ${SPRING_ELASTICSEARCH_URIS:http://localhost:9200}
+    username: ${SPRING_ELASTICSEARCH_USERNAME:elastic}
+    password: ${SPRING_ELASTICSEARCH_PASSWORD:password}
   application:
     name: Common
   messages:
@@ -49,9 +55,9 @@ management:
           - prometheus
       base-path: /actuator
 server:
-  port: 9003
+  port: ${PORT:9003}
   servlet:
-    context-path: /api/v1
+    context-path: ${SERVER_SERVLET_CONTEXT_PATH:/api/v1}
     encoding:
       charset: UTF-8
       enabled: true
@@ -68,7 +74,7 @@ security:
 springdoc:
   api-docs:
     enabled: true
-    path: /v3/api-docs
+    path: ${SPRINGDOC_API_DOCS_PATH:/v3/api-docs}
   swagger-ui:
     enabled: true
-    path: /swagger-ui/index.html
+    path: ${SPRINGDOC_SWAGGER_UI_PATH:/swagger-ui/index.html}
