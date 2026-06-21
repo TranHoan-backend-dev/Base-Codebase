@@ -1,0 +1,29 @@
+{
+  "theme": "system",
+  "allowedCommands": [
+    "git status",
+    "git diff",
+    "git log",
+    "ls",
+    "pwd",
+    "pnpm install",
+    "pnpm lint",
+    "pnpm typecheck",
+    "pnpm tsc",
+    "pnpm build",
+    "./gradlew classes",
+    "./gradlew test",
+    "./gradlew build -x test"
+  ],
+  "ignorePatterns": [
+    "**/node_modules/**",
+    "**/.next/**",
+    "**/.nuxt/**",
+    "**/.output/**",
+    "**/dist/**",
+    "**/build/**",
+    "**/.gradle/**",
+    "**/*.log"
+  ],
+  "customInstructions": "Dự án này là tập hợp các Base Repository (Spring Boot, Next.js, Nuxt.js). Bắt buộc phải tuân thủ nghiêm ngặt các quy chuẩn Clean Code, Type-Safety và quy tắc kế thừa đã được định nghĩa trong file CLAUDE.md. Tuyệt đối không hardcode và không sinh ra boilerplate code dư thừa."
+}

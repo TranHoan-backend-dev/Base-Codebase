@@ -1,0 +1,54 @@
+{
+    "project_name": "Social Network Expert",
+    "default_model": "gemini-3-flash",
+    "reasoning_model": "claude-4-6-opus-thinking",
+    "ui_model": "claude-4-6-sonnet-thinking",
+    "pnpm": true,
+    "max_context_tokens": 1000000,
+    "max_context_window": 1000000,
+    "token_saving_strategy": "summarize_inactive_files",
+    "permissions": [
+        {
+            "type": "file_read",
+            "allow": true,
+            "description": "Allow AI to scan project structure and internal .claude configs"
+        },
+        {
+            "type": "terminal_execute",
+            "allow": [
+                "chmod +x .claude/hooks/*.sh",
+                "chmod +x .claude/scripts/*.sh",
+                "bash .claude/scripts/init-component.sh *",
+                "bash .claude/scripts/quick-docs.sh *",
+                "bash .claude/scripts/dev-health.sh",
+                "node .claude/skills/heroui-react/scripts/*.mjs",
+                "pnpm lint",
+                "pnpm tsc",
+                "pnpm build"
+            ],
+            "description": "Allow AI to manage hook permissions, generate v3 components, and verify code quality automatically[cite: 5, 7]"
+        }
+    ],
+    "model_routing": {
+        "documentation_queries": "gemini-3-flash",
+        "boilerplate_generation": "gemini-3-flash",
+        "complex_refactoring": "claude-4-6-opus-thinking",
+        "premium_ui_design": "claude-4-6-sonnet-thinking"
+    },
+    "behavior": {
+        "always_propose_before_execute": true,
+        "require_plan_approval": true,
+        "auto_execute_hooks": true,
+        "read_all_configs_on_start": true,
+        "always_run_lint_before_finish": true,
+        "script_shell": "bash",
+        "primary_context_source": ".claude",
+        "lazy_load_external_agents": true,
+        "output_styles_path": "./.claude/output-styles/"
+    },
+    "project_rules": [
+        "./.claude/rules/*.md",
+        "./.claude/agents/*.md",
+        "./.claude/skills/heroui-react/SKILL.md"
+    ]
+}

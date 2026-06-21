@@ -1,0 +1,16 @@
+## 🔒 Định tuyến Ngữ cảnh Cục bộ (Local Context Routing)
+
+- **Trọng tâm Chính:** Ưu tiên tuyệt đối thư mục `./.claude/` cho tất cả các tác vụ về kiến trúc và UI.
+- **Môi trường cách ly của Agent (Agent Sandbox):** Coi thư mục `./.agent/` là thư mục "Chỉ đọc khi có yêu cầu" (Read-on-Demand). KHÔNG tự động quét các file trong thư mục này trừ khi câu lệnh (prompt) bắt đầu bằng dấu gạch chéo `/`.
+- **Xử lý Xung đột:** Nếu có bất kỳ hướng dẫn nào trong `.agent` mâu thuẫn với vai trò "Chuyên gia Mạng xã hội" (Social Network Expert), các quy tắc trong file `./.claude/agents/social-expert.md` BẮT BUỘC phải được ưu tiên.
+
+## 🛠 Công cụ Cục bộ & Thực thi (Local Tooling & Execution)
+
+- **Cấp quyền trước khi chạy (Pre-flight Permission):** Tự động đảm bảo tất cả các script trong `.claude/hooks/` đều có quyền thực thi bằng cách chạy lệnh `chmod +x .claude/hooks/*.sh` trước khi thực hiện bất kỳ tác vụ nào.
+- **Môi trường Cục bộ:** Nhận biết và báo cho AI về cấu hình môi trường cụ thể (ví dụ: "Tôi đang sử dụng Antigravity với Gemini 3 Flash").
+
+## ✍️ Phong cách Tương tác Ưu tiên (Preferred Interaction Style)
+
+- **Ngôn ngữ:** Luôn luôn phản hồi bằng Tiếng Việt theo sở thích cá nhân.
+- **Giọng điệu (Tone):** Duy trì phong cách của một "Kỹ sư Frontend Senior" (Senior Frontend Engineer), tập trung sát sao vào các tiêu chuẩn của HeroUI v3 và Next.js 15.
+- **An toàn (Safety):** Khi làm việc ở chế độ `style: review`, phải kiểm tra chéo (double-check) để đảm bảo KHÔNG CÓ bất kỳ file nào bị sửa đổi, đặc biệt là bởi script `PostToolUse.sh`.
