@@ -1,0 +1,121 @@
+# =============================================================================
+# CI Workflow – nextjs-base (Next.js 16 / React 19 / TypeScript / pnpm)
+#
+# Trigger:
+#   - Push lên branch: main, develop, release/**
+#   - Pull Request nhắm vào: main, develop
+#
+# Jobs:
+#   lint   → ESLint check
+#   build  → next build (TypeScript check ngầm định + bundle)
+# =============================================================================
+
+name: CI – Next.js Base
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "release/**"
+    paths:
+      - "nextjs-base/**"
+      - ".github/workflows/ci-nextjs.yml"
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - "nextjs-base/**"
+      - ".github/workflows/ci-nextjs.yml"
+
+defaults:
+  run:
+    working-directory: nextjs-base
+
+env:
+  NODE_VERSION: "20"
+  PNPM_VERSION: "11.6.0"
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Job: lint – ESLint
+  # ---------------------------------------------------------------------------
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm ${{ env.PNPM_VERSION }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: nextjs-base/pnpm-lock.yaml
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Run ESLint
+        run: pnpm lint
+
+  # ---------------------------------------------------------------------------
+  # Job: build – next build (TypeScript check + bundle)
+  # ---------------------------------------------------------------------------
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: lint
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up pnpm ${{ env.PNPM_VERSION }}
+        uses: pnpm/action-setup@v4
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Set up Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: pnpm
+          cache-dependency-path: nextjs-base/pnpm-lock.yaml
+
+      # Cache Next.js build output (.next/cache) để tăng tốc lần build sau
+      - name: Cache Next.js build
+        uses: actions/cache@v4
+        with:
+          path: nextjs-base/.next/cache
+          key: nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nextjs-base/**/*.ts', 'nextjs-base/**/*.tsx', 'nextjs-base/**/*.mjs') }}
+          restore-keys: |
+            nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+        env:
+          NEXT_TELEMETRY_DISABLED: 1
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+        with:
+          name: nextjs-build-${{ github.ref_name }}-${{ github.sha }}
+          path: |
+            nextjs-base/.next/
+            !nextjs-base/.next/cache
+          retention-days: 7

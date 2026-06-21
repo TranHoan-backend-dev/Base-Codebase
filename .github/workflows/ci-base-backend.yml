@@ -1,0 +1,111 @@
+# =============================================================================
+# CI Workflow – BaseBackend (Spring Boot / Gradle / Java 21)
+#
+# Trigger:
+#   - Push lên branch: main, develop, release/**
+#   - Pull Request nhắm vào: main, develop
+#
+# Jobs:
+#   build  → compile + test + upload artifact JAR
+# =============================================================================
+
+name: CI – BaseBackend
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - "release/**"
+    paths:
+      - "BaseBackend/**"
+      - ".github/workflows/ci-base-backend.yml"
+  pull_request:
+    branches:
+      - main
+      - develop
+    paths:
+      - "BaseBackend/**"
+      - ".github/workflows/ci-base-backend.yml"
+
+defaults:
+  run:
+    working-directory: BaseBackend
+
+env:
+  JAVA_VERSION: "21"
+  GRADLE_OPTS: "-Dorg.gradle.daemon=false -Dorg.gradle.parallel=true"
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Job: build – Compile, Test, Package
+  # ---------------------------------------------------------------------------
+  build:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      # 1. Checkout source code
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # 2. Setup Java 21 (Temurin distribution – OpenJDK)
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: temurin
+          cache: gradle
+
+      # 3. Cache Gradle wrapper & dependencies (.gradle home)
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: gradle-${{ runner.os }}-${{ hashFiles('BaseBackend/**/*.gradle*', 'BaseBackend/**/gradle-wrapper.properties') }}
+          restore-keys: |
+            gradle-${{ runner.os }}-
+
+      # 4. Grant execute permission cho gradlew
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # 5. Compile
+      - name: Compile
+        run: ./gradlew compileJava compileTestJava --no-daemon
+
+      # 6. Run tests
+      - name: Run tests
+        run: ./gradlew test --no-daemon
+        env:
+          # Datasource giả – không kết nối DB thật trong CI
+          SPRING_DATASOURCE_BUSINESS_URL: "jdbc:h2:mem:testdb_business;DB_CLOSE_DELAY=-1"
+          SPRING_DATASOURCE_SYSTEM_URL: "jdbc:h2:mem:testdb_system;DB_CLOSE_DELAY=-1"
+          SPRING_REDIS_HOST: "localhost"
+          SPRING_REDIS_PORT: "6379"
+          SPRING_ELASTICSEARCH_URIS: "http://localhost:9200"
+
+      # 7. Publish Test Report (luôn chạy dù test fail)
+      - name: Publish test report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: test-report
+          path: BaseBackend/build/reports/tests/test/
+          retention-days: 7
+
+      # 8. Build JAR (bỏ qua test vì đã chạy bước 6)
+      - name: Build JAR
+        run: ./gradlew bootJar --no-daemon -x test
+
+      # 9. Upload JAR artifact (chỉ chạy khi push vào main hoặc develop)
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
+        with:
+          name: base-backend-${{ github.ref_name }}-${{ github.sha }}
+          path: BaseBackend/build/libs/*.jar
+          retention-days: 14
