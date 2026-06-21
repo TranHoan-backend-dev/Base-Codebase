@@ -8,6 +8,8 @@
 # Jobs:
 #   lint   → ESLint check
 #   build  → next build (TypeScript check ngầm định + bundle)
+#
+# Lưu ý: pnpm@11.6.0 yêu cầu Node.js >= 22.13
 # =============================================================================
 
 name: CI – Next.js Base
@@ -34,7 +36,7 @@ defaults:
     working-directory: nextjs-base
 
 env:
-  NODE_VERSION: "20"
+  NODE_VERSION: "22"        # pnpm@11.6.0 requires Node >= 22.13
   PNPM_VERSION: "11.6.0"
 
 jobs:
@@ -61,6 +63,15 @@ jobs:
           node-version: ${{ env.NODE_VERSION }}
           cache: pnpm
           cache-dependency-path: nextjs-base/pnpm-lock.yaml
+
+      # Cache pnpm store toàn cục (shared giữa lint + build)
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-store-nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-nextjs-${{ runner.os }}-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
@@ -93,14 +104,24 @@ jobs:
           cache: pnpm
           cache-dependency-path: nextjs-base/pnpm-lock.yaml
 
-      # Cache Next.js build output (.next/cache) để tăng tốc lần build sau
+      # Cache pnpm store toàn cục
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-store-nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-nextjs-${{ runner.os }}-
+
+      # Cache .next/cache để tăng tốc incremental build
       - name: Cache Next.js build
         uses: actions/cache@v4
         with:
           path: nextjs-base/.next/cache
-          key: nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nextjs-base/**/*.ts', 'nextjs-base/**/*.tsx', 'nextjs-base/**/*.mjs') }}
+          key: nextjs-build-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nextjs-base/src/**/*.ts', 'nextjs-base/src/**/*.tsx', 'nextjs-base/app/**/*.ts', 'nextjs-base/app/**/*.tsx') }}
           restore-keys: |
-            nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-
+            nextjs-build-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-
+            nextjs-build-${{ runner.os }}-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
