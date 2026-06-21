@@ -1,0 +1,4 @@
+packages:
+  - "BaseBackend"
+  - "nextjs-base"
+  - "nuxtjs-base"
