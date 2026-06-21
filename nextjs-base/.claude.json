@@ -1,0 +1,16 @@
+{
+  "allowedCommands": [
+    "pnpm test",
+    "pnpm lint",
+    "pnpm typecheck",
+    "pnpm build",
+    "pnpm dev"
+  ],
+  "ignorePaths": [
+    "node_modules/",
+    ".next/",
+    "dist/",
+    "build/",
+    "coverage/"
+  ]
+}

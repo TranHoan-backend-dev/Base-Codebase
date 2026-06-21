@@ -23,6 +23,7 @@ BaseBackend có hệ thống quy tắc chi tiết nằm trong thư mục `.claud
 - Phân chia trách nhiệm nghiêm ngặt: Tầng Boundary (API/Controller), Tầng Service (Core Business Logic), Tầng Data (Repository/DAO).
 - Clean Architecture / Hexagonal.
 - GBAC (Group-Based Access Control) và Microservices.
+- **Zero Trust Security:** Không tin tưởng bất cứ DTO/Input nào. Bắt buộc tạo Base Validator ở mọi tầng để chặn dữ liệu độc hại (Defense in Depth).
 
 ### B. Chuẩn Viết Code (`.claude/rules/coding-standards.md`)
 
