@@ -33,7 +33,7 @@ BaseBackend có hệ thống quy tắc chi tiết nằm trong thư mục `.claud
 
 ### C. Cấu trúc Dự án (`.claude/context/project-structure.md`)
 
-- Mô tả mapping logic các package, quy định thư mục tài liệu `resources/docs/.specify`.
+- Mô tả mapping logic các package, quy định thư mục tài liệu `app/main/resources/docs/.specify`.
 
 ### D. Hệ thống Agent Chuyên gia (`.claude/agents/`)
 
@@ -42,5 +42,5 @@ BaseBackend có hệ thống quy tắc chi tiết nằm trong thư mục `.claud
 ## 3. Quy trình Vận hành Riêng
 
 1. **Tuân thủ Monorepo:** Quy tắc trong file `CLAUDE.md` này bổ sung cho `CLAUDE.md` ở thư mục Root. Nếu có xung đột về Backend, ưu tiên file này.
-2. **Docs-driven Development:** Không tạo code Backend khi chưa thiết kế tài liệu đặc tả trong `resources/docs/.specify`.
+2. **Docs-driven Development:** Không tạo code Backend khi chưa thiết kế tài liệu đặc tả trong `app/main/resources/docs/.specify`.
 3. **Môi trường:** Đảm bảo IDE sử dụng JDK 21+ để tương thích tính năng Records và Pattern Matching.

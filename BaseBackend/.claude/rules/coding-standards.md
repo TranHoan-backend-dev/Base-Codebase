@@ -46,5 +46,5 @@ Bắt buộc có comment hoặc Javadoc ở các thành phần cốt lõi (Class
 
 ## 4. Tài liệu Đặc tả (Specification)
 
-- Bất kỳ API hoặc tính năng mới nào (ví dụ: Auth, Payment) trước khi code phải có bản thiết kế/đặc tả lưu vào thư mục `resources/docs/.specify`.
+- Bất kỳ API hoặc tính năng mới nào (ví dụ: Auth, Payment) trước khi code phải có bản thiết kế/đặc tả lưu vào thư mục `app/main/resources/docs/.specify`.
 - Không bắt đầu viết Code Java nếu chưa viết xong file Markdown trong thư mục `.specify` mô tả Input/Output của tính năng đó.

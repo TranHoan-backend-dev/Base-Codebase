@@ -21,6 +21,7 @@ Dự án có hệ thống quy tắc chi tiết nằm trong thư mục `.claude/`
 - Mô hình **Atomic Design**.
 - Tái sử dụng tối đa (SCSS mixins/variables, UI Components).
 - Sử dụng Composition API (`<script setup>`). Tách biệt UI và Logic (Composables).
+- **Quản lý Màu sắc:** Các style về màu sắc (color) BẮT BUỘC phải được tách ra thành các biến màu và cấu hình riêng vào thư mục `assets/style/`. Không hardcode mã màu trực tiếp trong các component.
 
 ### B. Chuẩn Viết Code (`.claude/rules/coding-standards.md`)
 

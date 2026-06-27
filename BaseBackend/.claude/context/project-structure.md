@@ -30,7 +30,7 @@ BaseBackend/
 └── .claude/              # Chứa toàn bộ Context, Rules và Agents chuyên môn
 ```
 
-## 2. Thư mục `resources/docs/.specify/` (Bắt Buộc)
+## 2. Thư mục `app/main/resources/docs/.specify/` (Bắt Buộc)
 
 - Đây là nơi chứa các file Markdown (`*.md`) mô tả chi tiết logic, API Contract, và thiết kế của mọi tính năng Backend **TRƯỚC KHI** code.
 - Mỗi module nghiệp vụ lớn (ví dụ `authentication`, `payment`, `dynamic-grid`) sẽ có một file `.md` ở đây.
