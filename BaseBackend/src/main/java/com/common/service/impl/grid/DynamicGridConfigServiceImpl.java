@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import com.common.exception.ResourceNotFoundException;
+import com.common.exception.NotFoundException;
 import com.common.model.sql.grid.DynamicGridConfig;
 import com.common.repository.sql.DynamicGridConfigRepository;
 import com.common.service.MessageService;
@@ -36,7 +36,7 @@ public class DynamicGridConfigServiceImpl implements DynamicGridConfigService {
     @Transactional("systemTransactionManager")
     public GridConfigResponse getConfig(String gridCode) {
         DynamicGridConfig configEntity = dynamicGridConfigRepository.findByGridKey(gridCode)
-                .orElseThrow(() -> new ResourceNotFoundException(messageService.get("error.grid.not.found", gridCode)));
+                .orElseThrow(() -> new NotFoundException(messageService.get("error.grid.not.found", gridCode)));
 
         return GridConfigResponse.builder()
                 .gridCode(configEntity.getGridKey())
