@@ -28,3 +28,4 @@ replay_pid*
 node_modules/
 .env
 test/
+plan/
