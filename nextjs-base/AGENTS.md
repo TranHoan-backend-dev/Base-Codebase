@@ -5,12 +5,18 @@ Các AI Agent khi hoạt động trong thư mục `nextjs-base/` PHẢI tuân th
 
 ## 1. Lệnh Thực thi Bắt Buộc (Commands)
 
-Agent BẮT BUỘC sử dụng **pnpm** thay vì npm/yarn để tránh xung đột dependency:
+1.1 Agent BẮT BUỘC sử dụng **pnpm** thay vì npm/yarn để tránh xung đột dependency:
 
 - **Khởi chạy:** `pnpm dev`
 - **Build:** `pnpm build`
 - **Lint & Typecheck:** `pnpm lint`, `pnpm typecheck`
 - **Cài đặt thư viện:** Bắt buộc xin phép người dùng trước khi gọi `pnpm add <package>`
+
+1.2 Gọi các skill sau để hỗ trợ (nếu có):
+
+- nextjs-app-router-patterns
+- nextjs-best-practices
+- react-nextjs-development
 
 ## 2. Ngữ cảnh & Hệ thống Kiến thức (Context & Knowledge)
 

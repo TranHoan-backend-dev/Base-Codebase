@@ -2,3 +2,21 @@ packages:
   - "BaseBackend"
   - "nextjs-base"
   - "nuxtjs-base"
+
+onlyBuiltDependencies:
+  - "@parcel/watcher"
+  - "@swc/core"
+  - "@tailwindcss/oxide"
+  - "esbuild"
+  - "sharp"
+  - "unrs-resolver"
+  - "vue-demi"
+
+allowBuilds:
+  '@parcel/watcher': true
+  '@swc/core': true
+  '@tailwindcss/oxide': true
+  esbuild: true
+  sharp: true
+  unrs-resolver: true
+  vue-demi: true
