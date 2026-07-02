@@ -17,5 +17,16 @@
     "nuxtjs-base/**/*.{ts,vue}": [
       "pnpm --filter nuxtjs-base lint"
     ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@swc/core",
+      "@tailwindcss/oxide",
+      "esbuild",
+      "sharp",
+      "unrs-resolver",
+      "vue-demi"
+    ]
   }
 }

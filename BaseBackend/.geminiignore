@@ -1,0 +1,8 @@
+.claude/
+.claude.json
+.claudeignore
+CLAUDE.md
+.gradle/
+.idea/
+.vscode/
+build/

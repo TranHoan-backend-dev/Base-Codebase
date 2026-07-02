@@ -1,0 +1,7 @@
+.gemini/
+.geminiignore
+GEMINI.md
+.gradle/
+.idea/
+.vscode/
+build/

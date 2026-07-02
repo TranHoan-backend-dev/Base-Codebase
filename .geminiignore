@@ -1,0 +1,7 @@
+node_modules/
+.env.example
+pnpm-wowrkspace.yaml
+.claude/
+CLAUDE.md
+.github/
+test/
