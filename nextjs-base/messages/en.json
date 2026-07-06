@@ -1,0 +1,22 @@
+{
+  "grid": {
+    "no_data": "No data available",
+    "showing": "Showing",
+    "in_total": "of",
+    "records": "records",
+    "previous_page": "Previous",
+    "next_page": "Next",
+    "search": "Search",
+    "reset": "Reset",
+    "select_placeholder": "-- Select --",
+    "confirm_action_title": "Confirm Action",
+    "confirm_action_message": "Are you sure you want to perform this action?",
+    "cancel": "Cancel",
+    "agree": "Confirm",
+    "action_success": "Action executed successfully!",
+    "action_error": "An error occurred while executing the action!",
+    "grid_config_error": "Failed to load grid configuration for code:",
+    "selected_count": "Selected:",
+    "index": "No."
+  }
+}

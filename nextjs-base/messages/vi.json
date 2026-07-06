@@ -1,0 +1,22 @@
+{
+  "grid": {
+    "no_data": "Không có dữ liệu",
+    "showing": "Hiển thị",
+    "in_total": "trong tổng số",
+    "records": "bản ghi",
+    "previous_page": "Trang trước",
+    "next_page": "Trang sau",
+    "search": "Tìm kiếm",
+    "reset": "Đặt lại",
+    "select_placeholder": "-- Chọn --",
+    "confirm_action_title": "Xác nhận thao tác",
+    "confirm_action_message": "Bạn có chắc chắn muốn thực hiện thao tác này?",
+    "cancel": "Hủy",
+    "agree": "Đồng ý",
+    "action_success": "Thao tác thực hiện thành công!",
+    "action_error": "Có lỗi xảy ra khi thực hiện thao tác!",
+    "grid_config_error": "Lỗi tải cấu hình grid cho mã:",
+    "selected_count": "Đã chọn:",
+    "index": "STT"
+  }
+}

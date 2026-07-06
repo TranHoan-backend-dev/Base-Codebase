@@ -22,5 +22,5 @@ Toàn bộ UI Component trong dự án phải được thiết kế theo tư tư
 
 ## 4. Tái Sử Dụng Tối Đa
 
-- Ưu tiên sử dụng TailwindCSS utility classes và các component từ HeroUI v2.
+- Ưu tiên sử dụng TailwindCSS utility classes và các component từ HeroUI v3.2.1.
 - Gom các classes Tailwind lặp đi lặp lại thành các thành phần dùng chung, tránh rác mã nguồn.
