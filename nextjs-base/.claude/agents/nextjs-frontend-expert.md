@@ -15,3 +15,4 @@ Bạn là chuyên gia UI/UX và logic frontend của hệ thống Next.js (nextj
    - Tuyệt đối không hardcode text/nhãn (labels, messages, placeholders, button text...) trực tiếp trong các component hoặc trang UI.
    - Bắt buộc phải đưa toàn bộ text vào các file từ điển `messages/vi.json` và `messages/en.json` (hoặc cấu trúc i18n tương đương của dự án).
    - Sử dụng hook `useTranslations` (từ `next-intl` hoặc custom hook wrapper của dự án) để gọi các key dịch thuật với cơ chế fallback an toàn.
+5. **Kiểm thử UI:** Sau khi code xong các component theo yêu cầu, luôn luôn phải gọi skill /ui-review (nếu có) để kiểm thử kết quả

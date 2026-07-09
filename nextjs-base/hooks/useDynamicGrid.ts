@@ -8,18 +8,21 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 
+import { useGridTranslations } from "@/hooks/useGridTranslations";
 import { baseService } from "@/services/core/BaseService";
 import {
   GridConfigResponse,
   GridDataResponse,
   GridFilterValue,
 } from "@/types/grid";
+import { isValidGridConfig, isValidGridData } from "@/utils/security";
 
 export function useDynamicGrid(
   gridCode: string,
   fallbackConfig?: GridConfigResponse,
   fallbackData?: GridDataResponse,
 ) {
+  const { t } = useGridTranslations();
   const [page, setPage] = useState<number>(1);
   const [filters, setFilters] = useState<Record<string, GridFilterValue>>({});
   const [selectedKeys, setSelectedKeys] = useState<Set<string>>(new Set());
@@ -34,39 +37,54 @@ export function useDynamicGrid(
   const [isDataLoading, setIsDataLoading] = useState<boolean>(!fallbackData);
   const [error, setError] = useState<Error | null>(null);
 
-  // Tải cấu hình Grid nếu chưa có fallbackConfig từ SSR
+  // Reset state và tải cấu hình khi gridCode thay đổi
   useEffect(() => {
-    if (config) return;
+    if (config?.gridCode === gridCode) return;
     let isMounted = true;
 
     Promise.resolve().then(() => {
-      if (isMounted) setIsConfigLoading(true);
+      if (!isMounted) return;
+      setIsConfigLoading(true);
+      setConfig(
+        fallbackConfig?.gridCode === gridCode ? fallbackConfig : undefined,
+      );
+      setData(fallbackData);
+      setPage(1);
+      setSelectedKeys(new Set());
     });
 
-    baseService
-      .get<{ data?: GridConfigResponse } & GridConfigResponse>(
-        `/api/v1/grid-config/${gridCode}`,
-      )
-      .then((res) => {
-        if (!isMounted) return;
-        const configData = res.data || res;
+    if (!fallbackConfig || fallbackConfig.gridCode !== gridCode) {
+      baseService
+        .get<{ data?: GridConfigResponse } & GridConfigResponse>(
+          `/api/v1/grid-config/${gridCode}`,
+        )
+        .then((res) => {
+          if (!isMounted) return;
+          const configData = res.data || res;
 
-        if (configData && configData.gridCode) {
-          setConfig(configData as GridConfigResponse);
-        }
-      })
-      .catch((err) => {
-        if (isMounted)
-          setError(err instanceof Error ? err : new Error(String(err)));
-      })
-      .finally(() => {
+          if (isValidGridConfig(configData)) {
+            setConfig(configData);
+          } else {
+            throw new Error(t("grid_config_invalid"));
+          }
+        })
+        .catch((err) => {
+          if (isMounted)
+            setError(err instanceof Error ? err : new Error(String(err)));
+        })
+        .finally(() => {
+          if (isMounted) setIsConfigLoading(false);
+        });
+    } else {
+      Promise.resolve().then(() => {
         if (isMounted) setIsConfigLoading(false);
       });
+    }
 
     return () => {
       isMounted = false;
     };
-  }, [gridCode, config]);
+  }, [gridCode, config?.gridCode, fallbackConfig, fallbackData]);
 
   // Tải dữ liệu Grid theo trang và bộ lọc
   const fetchData = useCallback(async () => {
@@ -94,7 +112,11 @@ export function useDynamicGrid(
       >(`/api/v1/grid-data/${gridCode}?${queryParams.toString()}`);
       const gridData = res.data || res;
 
-      setData(gridData as GridDataResponse);
+      if (isValidGridData(gridData)) {
+        setData(gridData);
+      } else {
+        throw new Error(t("grid_data_invalid"));
+      }
     } catch (err) {
       setError(err instanceof Error ? err : new Error(String(err)));
     } finally {

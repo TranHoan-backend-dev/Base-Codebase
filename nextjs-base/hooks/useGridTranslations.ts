@@ -10,33 +10,35 @@ import { useTranslations } from "next-intl";
 
 import viMessages from "@/messages/vi.json";
 
-export interface GridTranslations {
-  no_data: string;
-  showing: string;
-  in_total: string;
-  records: string;
-  previous_page: string;
-  next_page: string;
-  search: string;
-  reset: string;
-  select_placeholder: string;
-  confirm_action_title: string;
-  confirm_action_message: string;
-  cancel: string;
-  agree: string;
-  action_success: string;
-  action_error: string;
-  grid_config_error: string;
-  selected_count: string;
-  index: string;
-}
+export type GridTranslations = typeof viMessages.grid;
+export type GridTranslationKey = keyof GridTranslations | (string & {});
 
-const defaultTranslations: GridTranslations = viMessages.grid;
+const defaultTranslations: Record<string, string> = viMessages.grid;
 
+/**
+ * Hook cung cấp phương thức dịch i18n cho toàn bộ hệ thống Dynamic Grid.
+ * Tự động đồng bộ type từ file vi.json và có cơ chế fallback khi thiếu context next-intl.
+ *
+ * @returns Object chứa phương thức dịch `t`.
+ */
 export function useGridTranslations(): {
-  t: (key: keyof GridTranslations, fallback?: string) => string;
+  /**
+   * Phương thức dịch (translate) một key sang chuỗi tương ứng.
+   *
+   * @param key - Mã key cần dịch (tự động gợi ý từ viMessages.grid hoặc chuỗi tự do).
+   * @param valuesOrFallback - Object chứa các biến động để nội suy (VD: `{ count: 5 }`) hoặc chuỗi fallback nếu truyền string.
+   * @param fallback - Chuỗi fallback mặc định nếu không tìm thấy bản dịch và tham số thứ 2 là object biến.
+   * @returns Chuỗi văn bản đã được dịch hoặc nội suy.
+   */
+  t: (
+    key: GridTranslationKey,
+    valuesOrFallback?: Record<string, string | number> | string,
+    fallback?: string,
+  ) => string;
 } {
-  let translator: ((key: string) => string) | null = null;
+  let translator:
+    | ((key: string, values?: Record<string, string | number>) => string)
+    | null = null;
 
   try {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -45,20 +47,40 @@ export function useGridTranslations(): {
     translator = null;
   }
 
-  const t = (key: keyof GridTranslations, fallback?: string): string => {
+  /**
+   * Xử lý dịch và thay thế biến nội suy theo cú pháp {variableName}.
+   */
+  const t = (
+    key: GridTranslationKey,
+    valuesOrFallback?: Record<string, string | number> | string,
+    fallback?: string,
+  ): string => {
+    const values =
+      typeof valuesOrFallback === "object" ? valuesOrFallback : undefined;
+    const fb =
+      typeof valuesOrFallback === "string" ? valuesOrFallback : fallback;
+
     if (translator) {
       try {
-        const val = translator(key);
+        const val = translator(key, values);
 
         if (val && val !== `grid.${key}` && val !== key) {
           return val;
         }
       } catch {
-        // Fallback below
+        // Fallback bên dưới khi next-intl xảy ra ngoại lệ
       }
     }
 
-    return fallback || defaultTranslations[key] || String(key);
+    let result = fb || defaultTranslations[key] || String(key);
+
+    if (values && typeof result === "string") {
+      Object.entries(values).forEach(([k, v]) => {
+        result = result.replace(new RegExp(`\\{${k}\\}`, "g"), String(v));
+      });
+    }
+
+    return result;
   };
 
   return { t };

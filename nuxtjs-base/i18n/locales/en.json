@@ -1,0 +1,28 @@
+{
+  "grid": {
+    "showing": "Showing",
+    "in_total": "of",
+    "records": "entries",
+    "no_data": "No data available",
+    "previous_page": "Previous",
+    "next_page": "Next",
+    "search": "Search",
+    "reset": "Reset",
+    "select_placeholder": "-- Select --",
+    "confirm_action_title": "Confirm Action",
+    "confirm_action_message": "Are you sure you want to perform this action?",
+    "cancel": "Cancel",
+    "agree": "Confirm",
+    "action_success": "Action completed successfully!",
+    "action_error": "An error occurred while performing the action!",
+    "selected_count": "Selected:",
+    "index": "No.",
+    "grid_config_error": "Error loading grid config for code:"
+  },
+  "test_page": {
+    "title": "Dynamic Grid System Testing (Nuxt 3)",
+    "subtitle": "Full demonstration of SSR Hydration, Pagination, Filtering, and Bulk Actions.",
+    "users_btn": "Users (USERS)",
+    "orders_btn": "Orders (ORDERS)"
+  }
+}

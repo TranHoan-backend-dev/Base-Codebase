@@ -13,3 +13,4 @@ Bạn là chuyên gia về Nuxt 4 và Vue 3. Đảm nhiệm xây dựng UI/UX ch
    - Tuyệt đối không hardcode text/nhãn (labels, messages, placeholders, button text...) trực tiếp trong các component hoặc trang UI.
    - Bắt buộc phải đưa toàn bộ text vào các file từ điển `locales/vi.json` và `locales/en.json` (hoặc `messages/vi.json` / `messages/en.json` tuỳ theo cấu hình i18n `@nuxtjs/i18n` của dự án).
    - Sử dụng `$t()` hoặc composable `useI18n()` để truy xuất các chuỗi văn bản theo ngôn ngữ hiện tại.
+5. **Kiểm thử UI:** Sau khi code xong các component theo yêu cầu, luôn luôn phải gọi skill /ui-review (nếu có) để kiểm thử kết quả

@@ -20,13 +20,20 @@ export type ColumnType =
 export type ActionType = "ROUTE" | "EXTERNAL_LINK" | "API";
 export type HttpMethod = "GET" | "POST" | "PUT" | "DELETE";
 export type ActionPosition = "TOOLBAR" | "ROW" | "BULK";
-export type ButtonVariant = "primary" | "danger" | "default";
+export type ButtonVariant =
+  | "primary"
+  | "secondary"
+  | "tertiary"
+  | "outline"
+  | "ghost"
+  | "danger";
 export type FilterType = "TEXT_INPUT" | "SELECT" | "ASYNC_SELECT";
 export type ColumnAlign = "left" | "center" | "right";
 export type ChipColor =
   | "default"
   | "primary"
   | "secondary"
+  | "accent"
   | "success"
   | "warning"
   | "danger";
@@ -84,15 +91,15 @@ export type GridFilterValue = string | number | boolean | undefined;
 
 export type CustomFilterRenderer =
   | ComponentType<{
-    value: GridFilterValue;
-    onChange: (val: GridFilterValue) => void;
-    filter: GridFilterConfig;
-  }>
+      value: GridFilterValue;
+      onChange: (val: GridFilterValue) => void;
+      filter: GridFilterConfig;
+    }>
   | ((props: {
-    value: GridFilterValue;
-    onChange: (val: GridFilterValue) => void;
-    filter: GridFilterConfig;
-  }) => ReactNode);
+      value: GridFilterValue;
+      onChange: (val: GridFilterValue) => void;
+      filter: GridFilterConfig;
+    }) => ReactNode);
 
 export interface GridFilterConfig {
   field: string;
