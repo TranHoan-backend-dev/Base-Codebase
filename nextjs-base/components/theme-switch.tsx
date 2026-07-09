@@ -19,9 +19,9 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({ className }) => {
   };
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setIsMounted(true);
   }, []);
-
 
   if (!isMounted) return <div aria-hidden className="w-6 h-6" />;
 

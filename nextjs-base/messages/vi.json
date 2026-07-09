@@ -1,0 +1,32 @@
+{
+  "grid": {
+    "no_data": "Không có dữ liệu",
+    "showing": "Hiển thị",
+    "in_total": "trong tổng số",
+    "records": "bản ghi",
+    "previous_page": "Trang trước",
+    "next_page": "Trang sau",
+    "search": "Tìm kiếm",
+    "reset": "Đặt lại",
+    "select_placeholder": "-- Chọn --",
+    "confirm_action_title": "Xác nhận thao tác",
+    "confirm_action_message": "Bạn có chắc chắn muốn thực hiện thao tác này?",
+    "cancel": "Hủy",
+    "agree": "Đồng ý",
+    "action_success": "Thao tác thực hiện thành công!",
+    "action_error": "Có lỗi xảy ra khi thực hiện thao tác!",
+    "grid_config_error": "Lỗi tải cấu hình grid cho mã:",
+    "grid_config_invalid": "Cấu hình Grid không hợp lệ hoặc sai schema",
+    "grid_data_invalid": "Dữ liệu Grid không hợp lệ hoặc sai schema",
+    "selected_count": "Đã chọn:",
+    "index": "STT",
+    "action_success_time": "Thao tác [{actionCode}] thành công lúc {time}",
+    "test_no_action": "Chưa có thao tác nào",
+    "test_title": "Kiểm thử Dynamic Grid (HeroUI v3.2.1)",
+    "test_desc": "Trang kiểm thử cho hệ thống lưới dữ liệu động với khả năng phân trang, bộ lọc, hành động hàng loạt và xử lý bảo mật XSS.",
+    "test_last_action": "Thao tác gần nhất",
+    "test_last_clicked_row": "Dòng được click gần nhất",
+    "test_no_row_selected": "Chưa chọn dòng nào",
+    "test_selected_rows_count": "Số dòng đang chọn checkbox"
+  }
+}

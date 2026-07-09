@@ -1,0 +1,36 @@
+{
+    "project_name": "Base Codebase",
+    "pnpm": true,
+    "max_context_tokens": 1000000,
+    "max_context_window": 1000000,
+    "token_saving_strategy": "summarize_inactive_files",
+    "permissions": [
+        {
+            "type": "file_read",
+            "allow": true,
+            "description": "Allow AI to scan project structure and internal configs"
+        },
+        {
+            "type": "terminal_execute",
+            "allow": [
+                "pnpm lint",
+                "pnpm build"
+            ],
+            "description": "Allow AI to verify code quality automatically"
+        }
+    ],
+    "behavior": {
+        "always_propose_before_execute": true,
+        "require_plan_approval": true,
+        "read_all_configs_on_start": true,
+        "always_run_lint_before_finish": true,
+        "script_shell": "bash",
+        "primary_context_source": ".claude"
+    },
+    "project_rules": [
+        "./CLAUDE.md",
+        "./BaseBackend/CLAUDE.md",
+        "./nextjs-base/CLAUDE.md",
+        "./nuxtjs-base/CLAUDE.md"
+    ]
+}

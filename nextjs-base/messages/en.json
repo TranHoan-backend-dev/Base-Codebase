@@ -1,0 +1,32 @@
+{
+  "grid": {
+    "no_data": "No data available",
+    "showing": "Showing",
+    "in_total": "of",
+    "records": "records",
+    "previous_page": "Previous",
+    "next_page": "Next",
+    "search": "Search",
+    "reset": "Reset",
+    "select_placeholder": "-- Select --",
+    "confirm_action_title": "Confirm Action",
+    "confirm_action_message": "Are you sure you want to perform this action?",
+    "cancel": "Cancel",
+    "agree": "Confirm",
+    "action_success": "Action executed successfully!",
+    "action_error": "An error occurred while executing the action!",
+    "grid_config_error": "Failed to load grid configuration for code:",
+    "grid_config_invalid": "Invalid Grid configuration or schema mismatch",
+    "grid_data_invalid": "Invalid Grid data or schema mismatch",
+    "selected_count": "Selected:",
+    "index": "No.",
+    "action_success_time": "Action [{actionCode}] executed successfully at {time}",
+    "test_no_action": "No actions performed yet",
+    "test_title": "Dynamic Grid Testing (HeroUI v3.2.1)",
+    "test_desc": "Testing page for dynamic grid system with pagination, filtering, bulk actions, and XSS security.",
+    "test_last_action": "Latest action",
+    "test_last_clicked_row": "Last clicked row",
+    "test_no_row_selected": "No row selected",
+    "test_selected_rows_count": "Selected rows count"
+  }
+}

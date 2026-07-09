@@ -1,0 +1,17 @@
+{
+  "allowedCommands": [
+    "pnpm test",
+    "pnpm lint",
+    "pnpm typecheck",
+    "pnpm build",
+    "pnpm dev"
+  ],
+  "ignorePaths": [
+    "node_modules/",
+    ".nuxt/",
+    ".output/",
+    "dist/",
+    "build/",
+    "coverage/"
+  ]
+}

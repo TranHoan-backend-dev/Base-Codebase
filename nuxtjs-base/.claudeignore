@@ -1,0 +1,9 @@
+.nuxt/
+.output/
+.vscode/
+.idea/
+node_modules/
+.gemini/
+.geminiignore
+GEMINI.md
+pnpm-lock.yaml

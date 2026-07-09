@@ -1,0 +1,21 @@
+{
+  "name": "base-codebase-root",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "generate": "plop"
+  },
+  "devDependencies": {
+    "husky": "^9.0.0",
+    "lint-staged": "^15.2.0",
+    "plop": "^4.0.0"
+  },
+  "lint-staged": {
+    "nextjs-base/**/*.{ts,tsx}": [
+      "pnpm --filter nextjs-base lint"
+    ],
+    "nuxtjs-base/**/*.{ts,vue}": [
+      "pnpm --filter nuxtjs-base lint"
+    ]
+  }
+}

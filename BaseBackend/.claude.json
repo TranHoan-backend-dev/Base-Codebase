@@ -1,0 +1,18 @@
+{
+  "allowedCommands": [
+    "./gradlew test",
+    "./gradlew build",
+    "./gradlew clean",
+    "./gradlew bootRun",
+    ".\\gradlew.bat test",
+    ".\\gradlew.bat build",
+    ".\\gradlew.bat clean"
+  ],
+  "ignorePaths": [
+    "build/",
+    ".gradle/",
+    "out/",
+    ".idea/",
+    "*.class"
+  ]
+}

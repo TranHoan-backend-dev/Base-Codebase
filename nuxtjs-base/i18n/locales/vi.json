@@ -1,0 +1,28 @@
+{
+  "grid": {
+    "showing": "Hiển thị",
+    "in_total": "trong tổng số",
+    "records": "bản ghi",
+    "no_data": "Không có dữ liệu",
+    "previous_page": "Trang trước",
+    "next_page": "Trang sau",
+    "search": "Tìm kiếm",
+    "reset": "Đặt lại",
+    "select_placeholder": "-- Chọn --",
+    "confirm_action_title": "Xác nhận thao tác",
+    "confirm_action_message": "Bạn có chắc chắn muốn thực hiện thao tác này?",
+    "cancel": "Hủy",
+    "agree": "Đồng ý",
+    "action_success": "Thao tác thực hiện thành công!",
+    "action_error": "Có lỗi xảy ra khi thực hiện thao tác!",
+    "selected_count": "Đã chọn:",
+    "index": "STT",
+    "grid_config_error": "Lỗi tải cấu hình grid cho mã:"
+  },
+  "test_page": {
+    "title": "Kiểm thử Hệ thống Dynamic Grid (Nuxt 3)",
+    "subtitle": "Minh họa trọn gói SSR Hydration, Phân trang, Lọc và Thao tác hàng loạt.",
+    "users_btn": "Người dùng (USERS)",
+    "orders_btn": "Đơn hàng (ORDERS)"
+  }
+}

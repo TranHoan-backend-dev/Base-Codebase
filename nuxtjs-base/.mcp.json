@@ -1,0 +1,46 @@
+{
+    "mcpServers": {
+        "filesystem": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@modelcontextprotocol/server-filesystem",
+                "./"
+            ],
+            "description": "Cho phép AI đọc và ghi file trong dự án"
+        },
+        "web-search": {
+            "command": "sh",
+            "args": [
+                "-c",
+                "export $(grep -v '^#' .env | xargs) && npx -y @modelcontextprotocol/server-google-search"
+            ],
+            "description": "Tạm thời vô hiệu hóa cho đến khi có API Key. Giữ nguyên để bảo toàn cấu trúc."
+        },
+        "nuxtjs-docs-fetcher": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@mcp-server/fetch",
+                "https://nuxt.com/docs"
+            ]
+        },
+        "nuxt-ui-docs": {
+            "command": "npx",
+            "args": [
+                "-y",
+                "@mcp-server/fetch",
+                "https://ui.nuxt.com/docs/getting-started"
+            ]
+        },
+        "project_rules": [
+            "./.claude/rules/*.md",
+            "./.claude/agents/*.md"
+        ],
+        "external_skills_path": "./.agent/",
+        "behavior": {
+            "lazy_load_external_agents": true,
+            "primary_context_source": ".claude"
+        }
+    }
+}

@@ -1,0 +1,21 @@
+name: AI Code Reviewer (CodeRabbit)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  coderabbit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: CodeRabbit
+        uses: coderabbitai/coderabbit-action@v1
+        with:
+          # Automatically uses standard config to review code based on the project's markdown rules.
+          # CodeRabbit will look for instructions in .claude/rules and CLAUDE.md automatically.
+          # Optional custom prompt:
+          system_prompt: "You are an expert AI code reviewer. Please review this PR against the project rules specified in the .claude/ directory."

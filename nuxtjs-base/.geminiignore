@@ -1,0 +1,10 @@
+.nuxt/
+.output/
+.vscode/
+.idea/
+node_modules/
+.claude/
+.claudeignore
+CLAUDE.md
+pnpm-lock.yaml
+.claude.json

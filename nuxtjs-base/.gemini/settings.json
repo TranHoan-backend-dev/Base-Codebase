@@ -1,0 +1,10 @@
+{
+    "project_name": "Base Frontend (Nuxt.js)",
+    "primary_context_source": ".claude",
+    "project_rules": [
+        "../CLAUDE.md",
+        "./CLAUDE.md",
+        "./.claude/rules/*.md",
+        "./.claude/agents/*.md"
+    ]
+}

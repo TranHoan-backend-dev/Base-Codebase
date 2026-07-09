@@ -9,6 +9,8 @@
 #   lint       → ESLint check
 #   typecheck  → nuxt typecheck (vue-tsc)
 #   build      → nuxt build
+#
+# Lưu ý: pnpm@11.6.0 yêu cầu Node.js >= 22.13
 # =============================================================================
 
 name: CI – Nuxt.js Base
@@ -35,9 +37,12 @@ defaults:
     working-directory: nuxtjs-base
 
 env:
-  NODE_VERSION: "20"
+  NODE_VERSION: "22" # pnpm@11.6.0 requires Node >= 22.13
   PNPM_VERSION: "11.6.0"
 
+# ---------------------------------------------------------------------------
+# Reusable anchor cho pnpm setup (dùng lại ở mọi job)
+# ---------------------------------------------------------------------------
 jobs:
   # ---------------------------------------------------------------------------
   # Job: lint – ESLint
@@ -51,20 +56,25 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up pnpm ${{ env.PNPM_VERSION }}
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-
       - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: pnpm
-          cache-dependency-path: nuxtjs-base/pnpm-lock.yaml
+
+      - name: Set up pnpm ${{ env.PNPM_VERSION }}
+        run: npm install -g pnpm@${{ env.PNPM_VERSION }}
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-nuxtjs-${{ runner.os }}-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        working-directory: .
 
       - name: Run ESLint
         run: pnpm lint
@@ -81,27 +91,35 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up pnpm ${{ env.PNPM_VERSION }}
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-
       - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: pnpm
-          cache-dependency-path: nuxtjs-base/pnpm-lock.yaml
 
-      # Cache .nuxt/tsconfig.json và generated types
-      - name: Cache Nuxt prepare output
+      - name: Set up pnpm ${{ env.PNPM_VERSION }}
+        run: npm install -g pnpm@${{ env.PNPM_VERSION }}
+
+      - name: Cache pnpm store
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/pnpm/store
+          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}
+          restore-keys: |
+            pnpm-store-nuxtjs-${{ runner.os }}-
+
+      # Cache .nuxt/ (generated types từ nuxt prepare)
+      - name: Cache Nuxt generated types
         uses: actions/cache@v4
         with:
           path: nuxtjs-base/.nuxt
-          key: nuxt-prepare-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}
+          key: nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nuxtjs-base/nuxt.config.ts') }}
+          restore-keys: |
+            nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-
+            nuxt-types-${{ runner.os }}-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        working-directory: .
 
       - name: Prepare Nuxt (generate types)
         run: pnpm postinstall
@@ -122,35 +140,49 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up pnpm ${{ env.PNPM_VERSION }}
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ env.PNPM_VERSION }}
-
       - name: Set up Node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
-          cache: pnpm
-          cache-dependency-path: nuxtjs-base/pnpm-lock.yaml
 
-      - name: Cache Nuxt build
+      - name: Set up pnpm ${{ env.PNPM_VERSION }}
+        run: npm install -g pnpm@${{ env.PNPM_VERSION }}
+
+      - name: Cache pnpm store
         uses: actions/cache@v4
         with:
-          path: |
-            nuxtjs-base/.nuxt
-            nuxtjs-base/.output
-          key: nuxt-build-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nuxtjs-base/**/*.vue', 'nuxtjs-base/**/*.ts', 'nuxtjs-base/nuxt.config.ts') }}
+          path: ~/.local/share/pnpm/store
+          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}
           restore-keys: |
-            nuxt-build-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-
+            pnpm-store-nuxtjs-${{ runner.os }}-
+
+      # Cache .nuxt/ để tránh chạy lại nuxt prepare
+      - name: Cache Nuxt generated types
+        uses: actions/cache@v4
+        with:
+          path: nuxtjs-base/.nuxt
+          key: nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nuxtjs-base/nuxt.config.ts') }}
+          restore-keys: |
+            nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-
+            nuxt-types-${{ runner.os }}-
+
+      # Cache .output/ từ build trước (incremental)
+      - name: Cache Nuxt build output
+        uses: actions/cache@v4
+        with:
+          path: nuxtjs-base/.output
+          key: nuxt-output-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nuxtjs-base/app/**/*.vue', 'nuxtjs-base/app/**/*.ts', 'nuxtjs-base/nuxt.config.ts') }}
+          restore-keys: |
+            nuxt-output-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-
+            nuxt-output-${{ runner.os }}-
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+        working-directory: .
 
       - name: Build
         run: pnpm build
         env:
-          # Tắt Nuxt telemetry trong CI
           NUXT_TELEMETRY_DISABLED: 1
 
       - name: Upload build artifact

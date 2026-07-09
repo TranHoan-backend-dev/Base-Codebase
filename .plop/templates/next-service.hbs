@@ -1,0 +1,27 @@
+/**
+ * Service xử lý logic gọi API liên quan đến {{pascalCase name}}.
+ * Bắt buộc gọi qua lớp BFF nội bộ của Next.js, không gọi trực tiếp xuống Backend.
+ *
+ * @author AI Assistant
+ * @created_at {{date}}
+ */
+export const {{pascalCase name}}Service = {
+  /**
+   * Lấy danh sách {{pascalCase name}}
+   */
+  async getAll() {
+    // Gọi API của Next.js Route Handler (BFF)
+    const response = await fetch('/api/{{kebabCase name}}', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch {{pascalCase name}} data');
+    }
+
+    return response.json();
+  },
+};

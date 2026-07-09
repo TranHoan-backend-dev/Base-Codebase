@@ -1,0 +1,7 @@
+node_modules/
+.env.example
+pnpm-wowrkspace.yaml
+.gemini/
+GEMINI.md
+.github/
+test/
