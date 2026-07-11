@@ -1,0 +1,19 @@
+/**
+ * File SCSS chính của ứng dụng NuxtJS Base
+ * Được nạp toàn cục qua nuxt.config.ts
+ *
+ * @created_at 11/07/2026
+ * @author txhoan
+ */
+@use "./style" as *;
+@use "./font" as *;
+@use "./space" as *;
+@use "./color" as *;
+@use "./popup" as *;
+
+/* Thiết lập SCSS toàn cục chung cho toàn dự án */
+html, body {
+  font-family: $base-font-family;
+  font-size: $base-font-size;
+  color: $color-grid-text;
+}

@@ -9,7 +9,7 @@
 
 ```vue
 <script setup lang="ts">
-import GridPagination from '@/components/grid/GridPagination.vue'
+import GridPagination from '@/components/swe-pagination/GridPagination.vue'
 </script>
 ```
 

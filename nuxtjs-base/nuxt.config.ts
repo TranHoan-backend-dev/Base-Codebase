@@ -17,13 +17,27 @@ export default defineNuxtConfig({
     enabled: true
   },
 
-  css: ['~/assets/css/main.css'],
+  css: [
+    '~/assets/css/main.css',
+    '~/assets/scss/main.scss'
+  ],
 
   routeRules: {
     '/': { prerender: true }
   },
 
   compatibilityDate: '2025-01-15',
+
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          api: 'modern-compiler',
+          additionalData: '@use "@/assets/scss/style" as *; @use "@/assets/scss/font" as *; @use "@/assets/scss/space" as *; @use "@/assets/scss/color" as *;'
+        }
+      }
+    }
+  },
 
   eslint: {
     config: {
@@ -40,6 +54,9 @@ export default defineNuxtConfig({
       { code: 'en', file: 'en.json', name: 'English' }
     ],
     defaultLocale: 'vi',
-    langDir: 'locales'
+    langDir: 'locales',
+    bundle: {
+      optimizeTranslationDirective: false
+    }
   }
 })

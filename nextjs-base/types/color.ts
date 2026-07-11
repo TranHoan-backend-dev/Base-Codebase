@@ -1,0 +1,1 @@
+export const border_gray = "#e0e0e0";

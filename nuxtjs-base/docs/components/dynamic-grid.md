@@ -9,7 +9,7 @@
 
 ```vue
 <script setup lang="ts">
-import DynamicGrid from '@/components/grid/DynamicGrid.vue'
+import DynamicGrid from '@/components/swe-grid/DynamicGrid.vue'
 </script>
 ```
 

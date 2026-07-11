@@ -17,5 +17,5 @@ export { default as GridCell } from "./components/GridCell";
 export type { GridCellProps } from "./components/GridCell";
 export { default as GridAction } from "./components/GridAction";
 export type { GridActionProps } from "./components/GridAction";
-export { default as GridPagination } from "../pagination/GridPagination";
-export type { GridPaginationProps } from "../pagination/GridPagination";
+export { default as GridPagination } from "../swe-pagination/GridPagination";
+export type { GridPaginationProps } from "../swe-pagination/GridPagination";

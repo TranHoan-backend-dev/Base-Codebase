@@ -28,5 +28,37 @@
     "test_last_clicked_row": "Dòng được click gần nhất",
     "test_no_row_selected": "Chưa chọn dòng nào",
     "test_selected_rows_count": "Số dòng đang chọn checkbox"
+  },
+  "popup": {
+    "cancel": "Hủy",
+    "save": "Lưu",
+    "close": "Đóng",
+    "expand": "Phóng to",
+    "collapse": "Thu nhỏ",
+    "popup_label": "Hộp thoại",
+    "sidebar_label": "Khung trượt bên"
+  },
+  "popup_demo": {
+    "title": "BasePopup & BasePopupSidebar Demo",
+    "desc": "Kiểm thử tính năng Modal Center và Sidebar Left/Right, bao gồm nút Resize toàn màn hình và Guard dirty form.",
+    "open_center": "Mở Popup Center (Flat Props)",
+    "open_right": "Mở Sidebar Phải (Right)",
+    "open_left": "Mở Sidebar Trái (Left)",
+    "confirm_dirty": "Bạn có thay đổi chưa lưu, bạn có chắc muốn đóng popup không?",
+    "center_title": "Thông tin tài khoản",
+    "center_desc": "Cập nhật thông tin chi tiết tài khoản của bạn tại đây.",
+    "save_success": "Đã lưu thành công!",
+    "fullname_label": "Họ và tên",
+    "fullname_placeholder": "Nhập tên...",
+    "dirty_hint": "* Nhập dữ liệu và bấm ESC hoặc nút đóng để test xác nhận đóng khi form có thay đổi.",
+    "right_title": "Cấu hình hệ thống",
+    "right_desc": "Sidebar trượt từ bên phải",
+    "right_content": "Nội dung bên trong Sidebar Right.",
+    "right_save_success": "Đã lưu cấu hình!",
+    "left_title": "Menu điều hướng",
+    "left_desc": "Sidebar trượt từ bên trái",
+    "home": "Trang chủ",
+    "products": "Sản phẩm",
+    "settings": "Cài đặt"
   }
 }

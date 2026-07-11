@@ -1,0 +1,26 @@
+/**
+ * Các mixin & biến SCSS dùng chung cho hệ thống Popup
+ *
+ * @created_at 10/07/2026
+ * @author txhoan
+ */
+@use "./style" as *;
+@use "./font" as *;
+@use "./space" as *;
+
+@mixin popup-body {
+  padding: 0 $larger-space $medium-space-1 $larger-space;
+  overflow-y: auto;
+  flex: 1 1 auto;
+  font-size: $base-font-size;
+  font-weight: $base-font-weight;
+}
+
+@mixin popup-footer {
+  padding: $normal-space-1 $larger-space $normal-space-1 $medium-space-1;
+  margin-top: $normal-space-1;
+  display: flex;
+  justify-content: flex-end;
+  gap: $gap-1;
+  border-top: $base-border;
+}

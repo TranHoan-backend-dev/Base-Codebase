@@ -28,5 +28,37 @@
     "test_last_clicked_row": "Last clicked row",
     "test_no_row_selected": "No row selected",
     "test_selected_rows_count": "Selected rows count"
+  },
+  "popup": {
+    "cancel": "Cancel",
+    "save": "Save",
+    "close": "Close",
+    "expand": "Expand fullscreen",
+    "collapse": "Exit fullscreen",
+    "popup_label": "Popup dialog",
+    "sidebar_label": "Sidebar panel"
+  },
+  "popup_demo": {
+    "title": "BasePopup & BasePopupSidebar Demo",
+    "desc": "Testing Modal Center and Sidebar Left/Right features, including Fullscreen Resize button and dirty form guard.",
+    "open_center": "Open Popup Center (Flat Props)",
+    "open_right": "Open Right Sidebar",
+    "open_left": "Open Left Sidebar",
+    "confirm_dirty": "You have unsaved changes, are you sure you want to close?",
+    "center_title": "Account Information",
+    "center_desc": "Update your detailed account information here.",
+    "save_success": "Saved successfully!",
+    "fullname_label": "Full Name",
+    "fullname_placeholder": "Enter name...",
+    "dirty_hint": "* Enter data and press ESC or close button to test dirty close confirmation.",
+    "right_title": "System Configuration",
+    "right_desc": "Sidebar sliding from right",
+    "right_content": "Content inside Right Sidebar.",
+    "right_save_success": "Configuration saved!",
+    "left_title": "Navigation Menu",
+    "left_desc": "Sidebar sliding from left",
+    "home": "Home",
+    "products": "Products",
+    "settings": "Settings"
   }
 }

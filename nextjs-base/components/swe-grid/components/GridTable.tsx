@@ -20,7 +20,7 @@ import {
   ColumnAlign,
 } from "@/types/grid";
 
-import GridPagination from "../../pagination/GridPagination";
+import GridPagination from "../../swe-pagination/GridPagination";
 
 import GridCell from "./GridCell";
 
