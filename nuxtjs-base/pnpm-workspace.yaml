@@ -1,6 +1,14 @@
 allowBuilds:
-  '@parcel/watcher': true
-  '@tailwindcss/oxide': true
-  esbuild: true
-  unrs-resolver: true
-  vue-demi: true
+  '@apollo/protobufjs': true
+  '@parcel/watcher': false
+  '@tailwindcss/oxide': false
+  core-js: true
+  core-js-pure: true
+  esbuild: false
+  sharp: true
+  unrs-resolver: false
+  vue-demi: false
+  yarn: true
+minimumReleaseAgeExclude:
+  - '@formkit/auto-animate@0.10.0'
+  - '@nuxtjs/i18n@10.4.1'

@@ -6,34 +6,24 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n'
   ],
 
-  components: [
-    {
-      path: '~/components',
-      pathPrefix: false
-    }
-  ],
-
   devtools: {
     enabled: true
   },
 
-  css: [
-    '~/assets/css/main.css',
-    '~/assets/scss/main.scss'
-  ],
+  css: ['~/assets/css/main.css'],
 
   routeRules: {
     '/': { prerender: true }
   },
 
-  compatibilityDate: '2025-01-15',
+  compatibilityDate: '2026-06-30',
 
   vite: {
     css: {
       preprocessorOptions: {
         scss: {
-          api: 'modern-compiler',
-          additionalData: '@use "@/assets/scss/style" as *; @use "@/assets/scss/font" as *; @use "@/assets/scss/space" as *; @use "@/assets/scss/color" as *;'
+          additionalData:
+            '@use "~/assets/scss/_variables.scss" as *;'
         }
       }
     }
@@ -54,9 +44,6 @@ export default defineNuxtConfig({
       { code: 'en', file: 'en.json', name: 'English' }
     ],
     defaultLocale: 'vi',
-    langDir: 'locales',
-    bundle: {
-      optimizeTranslationDirective: false
-    }
+    langDir: 'locales'
   }
 })

@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   try {
     return await $fetch(url, {
       method: 'POST',
-      body
+      body: body as Record<string, unknown>
     })
   } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
     throw createError({

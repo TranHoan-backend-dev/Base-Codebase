@@ -111,24 +111,48 @@ const toggleFullscreen = () => {
     :title="title"
     :description="description"
     :dismissible="dismissible"
+    :close="false"
     :ui="{
       content: `${contentSizeClass} rounded-none`,
       header: 'py-3 px-4 border-b border-gray-200 dark:border-gray-800',
       body: 'p-0 flex-1 overflow-y-auto',
-      footer: 'p-0'
+      footer: 'p-0 sm:p-0'
     }"
     @update:open="handleOpenChange"
   >
-    <template #actions>
-      <UButton
-        v-if="showFullscreenButton && size !== 'full'"
-        :icon="isExpanded ? 'i-heroicons-arrows-pointing-in' : 'i-heroicons-arrows-pointing-out'"
-        color="neutral"
-        variant="ghost"
-        size="sm"
-        :aria-label="isExpanded ? $t('popup.collapse') : $t('popup.expand')"
-        @click="toggleFullscreen"
-      />
+    <template #header>
+      <div class="flex items-center justify-between w-full gap-4">
+        <div class="flex flex-col gap-0.5 min-w-0">
+          <h3 class="text-base font-semibold leading-6 text-gray-900 dark:text-white truncate">
+            {{ title }}
+          </h3>
+          <p
+            v-if="description"
+            class="text-xs text-gray-500 dark:text-gray-400 truncate"
+          >
+            {{ description }}
+          </p>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+          <UButton
+            v-if="showFullscreenButton && size !== 'full'"
+            :icon="isExpanded ? 'i-heroicons-arrows-pointing-in' : 'i-heroicons-arrows-pointing-out'"
+            color="neutral"
+            variant="ghost"
+            size="sm"
+            :aria-label="isExpanded ? $t('popup.collapse') : $t('popup.expand')"
+            @click="toggleFullscreen"
+          />
+          <UButton
+            color="neutral"
+            variant="ghost"
+            icon="i-lucide-x"
+            size="sm"
+            :aria-label="$t('popup.close')"
+            @click="handleRequestClose"
+          />
+        </div>
+      </div>
     </template>
 
     <template #body>
@@ -138,7 +162,7 @@ const toggleFullscreen = () => {
     </template>
 
     <template #footer>
-      <div class="swe-popup__footer">
+      <div class="swe-popup__footer w-full">
         <slot name="footer">
           <UButton
             v-if="showCancelButton"
@@ -164,7 +188,7 @@ const toggleFullscreen = () => {
 </template>
 
 <style scoped lang="scss">
-@use "@/assets/scss/popup" as *;
+@use "./popup" as *;
 
 .swe-popup__body {
   @include popup-body;

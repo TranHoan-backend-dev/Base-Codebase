@@ -8,22 +8,49 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "typecheck": "nuxt typecheck"
+    "typecheck": "nuxt typecheck",
+    "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@iconify-json/lucide": "^1.2.112",
-    "@iconify-json/simple-icons": "^1.2.86",
-    "@nuxt/ui": "^4.8.2",
-    "@nuxtjs/i18n": "^9.5.6",
-    "nuxt": "^4.4.8"
+    "@atoms-studio/nuxt-swiftsearch": "1.3.2",
+    "@bubblesortt/nuxt-es-toolkit": "1.0.11",
+    "@comark/nuxt": "0.5.0",
+    "@formkit/auto-animate": "0.10.0",
+    "@hypernym/nuxt-anime": "2.1.1",
+    "@iconify-json/lucide": "^1.2.114",
+    "@iconify-json/simple-icons": "^1.2.87",
+    "@norbiros/nuxt-auto-form": "0.6.2",
+    "@nuxt/a11y": "1.0.0-alpha.1",
+    "@nuxt/content": "3.15.0",
+    "@nuxt/hints": "1.1.3",
+    "@nuxt/image": "2.0.0",
+    "@nuxt/test-utils": "4.0.3",
+    "@nuxt/ui": "^4.9.0",
+    "@nuxtjs/apollo": "4.0.1-rc.5",
+    "@nuxtjs/eslint-module": "4.1.0",
+    "@nuxtjs/html-validator": "2.1.0",
+    "@nuxtjs/i18n": "10.4.1",
+    "@nuxtjs/mcp-toolkit": "0.17.2",
+    "@nuxtjs/ngrok": "4.0.0",
+    "@nuxtjs/storybook": "9.0.1",
+    "@nuxtjs/turnstile": "1.1.3",
+    "@oku-ui/primitives": "0.7.8",
+    "@oro.ad/nuxt-claude-devtools": "1.5.2",
+    "@sidebase/nuxt-auth": "1.3.1",
+    "@sidebase/nuxt-pdf": "1.0.0-alpha.0",
+    "@tresjs/nuxt": "5.6.3",
+    "@twicpics/components": "0.33.0",
+    "nuxt": "^4.4.8",
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
     "@nuxt/eslint": "^1.16.0",
+    "@playwright/test": "^1.51.1",
     "@types/node": "^26.0.1",
     "eslint": "^10.5.0",
     "sass": "^1.101.0",
-    "typescript": "^5.6.3",
+    "typescript": "^6.0.3",
     "vue-tsc": "^3.3.5"
   },
-  "packageManager": "pnpm@11.6.0"
+  "packageManager": "pnpm@11.9.0"
 }

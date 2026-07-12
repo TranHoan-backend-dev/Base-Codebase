@@ -1,11 +1,8 @@
+@import "tailwindcss";
 @import "@nuxt/ui";
 
-@theme static {
-  --font-sans: 'Public Sans', sans-serif;
-
-  --color-grid-bg: #ffffff;
-  --color-grid-text: #374151;
-  --color-grid-link: #2563eb;
+@theme {
+  --font-sans: "Public Sans", sans-serif;
 
   --color-green-50: #EFFDF5;
   --color-green-100: #D9FBE8;
