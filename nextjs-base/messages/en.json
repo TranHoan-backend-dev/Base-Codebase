@@ -60,5 +60,10 @@
     "home": "Home",
     "products": "Products",
     "settings": "Settings"
+  },
+  "toolbar": {
+    "selected": "{count} selected",
+    "deselect": "Deselect",
+    "delete": "Delete"
   }
 }

@@ -30,8 +30,9 @@ import React, {
 } from "react";
 
 import { ExpandIcon, CollapseIcon } from "@/components/icons";
-import { POPUP_SHARED_STYLES, POPUP_TYPOGRAPHY_TOKENS } from "@/config/popup";
 import { usePopupTranslations } from "@/hooks/usePopupTranslations";
+
+import "./swe-base-popup-sidebar.scss";
 
 // ─── Constants ──────────────────────────────────────────────────────────────
 
@@ -113,15 +114,14 @@ export interface BasePopupSidebarProps {
 
 function SidebarHeader({
   children,
-  className,
+  className = "",
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
     <Drawer.Header
-      className={className}
-      style={POPUP_SHARED_STYLES.headerCompound}
+      className={`swe_popup_header_compound ${className}`.trim()}
     >
       {children}
     </Drawer.Header>
@@ -131,13 +131,13 @@ SidebarHeader.displayName = "BasePopupSidebar.Header";
 
 function SidebarBody({
   children,
-  className,
+  className = "",
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
-    <Drawer.Body className={className} style={POPUP_SHARED_STYLES.bodyCompound}>
+    <Drawer.Body className={`swe_popup_body_compound ${className}`.trim()}>
       {children}
     </Drawer.Body>
   );
@@ -146,13 +146,13 @@ SidebarBody.displayName = "BasePopupSidebar.Body";
 
 function SidebarFooter({
   children,
-  className,
+  className = "",
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
-    <Drawer.Footer className={className} style={POPUP_SHARED_STYLES.footer}>
+    <Drawer.Footer className={`swe_popup_footer ${className}`.trim()}>
       {children}
     </Drawer.Footer>
   );
@@ -283,14 +283,10 @@ function BasePopupSidebarRoot({
             <Drawer.Dialog
               aria-label={title || t("sidebar_label", "Sidebar")}
               className={
-                `${className || ""} ${classNames?.dialog || ""}`.trim() ||
-                undefined
+                `swe_sidebar_dialog ${className || ""} ${classNames?.dialog || ""}`.trim()
               }
               style={{
-                ...POPUP_SHARED_STYLES.sidebarDialogReset,
-                borderRadius: 0,
                 width: resolvedWidth,
-                maxWidth: "100vw",
               }}
             >
               {showHandle && <Drawer.Handle />}
@@ -301,22 +297,21 @@ function BasePopupSidebarRoot({
                 <>
                   {header || (
                     <Drawer.Header
-                      className={classNames?.header}
-                      style={POPUP_SHARED_STYLES.headerFlat}
+                      className={`swe_popup_header_flat border-b ${classNames?.header || ""}`.trim()}
                     >
-                      <div style={POPUP_SHARED_STYLES.headerContent}>
+                      <div className="swe_popup_header_content flex flex-col gap-2">
                         {title && (
-                          <Drawer.Heading style={POPUP_TYPOGRAPHY_TOKENS.title}>
+                          <Drawer.Heading className="swe_popup_title">
                             {title}
                           </Drawer.Heading>
                         )}
                         {description && (
-                          <p style={POPUP_TYPOGRAPHY_TOKENS.description}>
+                          <p className="swe_popup_description">
                             {description}
                           </p>
                         )}
                       </div>
-                      <div style={POPUP_SHARED_STYLES.headerActions}>
+                      <div className="swe_popup_header_actions">
                         {showFullscreenButton && (
                           <Button
                             aria-label={
@@ -338,7 +333,7 @@ function BasePopupSidebarRoot({
                         )}
                         {showCloseButton && (
                           <Drawer.CloseTrigger
-                            style={POPUP_SHARED_STYLES.closeTrigger}
+                            className="swe_popup_close_trigger"
                           />
                         )}
                       </div>
@@ -346,23 +341,20 @@ function BasePopupSidebarRoot({
                   )}
 
                   <Drawer.Body
-                    className={classNames?.body}
-                    style={POPUP_SHARED_STYLES.bodyFlat}
+                    className={`swe_popup_body_flat ${classNames?.body || ""}`.trim()}
                   >
                     {children}
                   </Drawer.Body>
 
                   {footer !== undefined ? (
                     <Drawer.Footer
-                      className={classNames?.footer}
-                      style={POPUP_SHARED_STYLES.footer}
+                      className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
                     >
                       {footer}
                     </Drawer.Footer>
                   ) : (
                     <Drawer.Footer
-                      className={classNames?.footer}
-                      style={POPUP_SHARED_STYLES.footer}
+                      className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
                     >
                       <Button variant="secondary" onPress={handleCancel}>
                         {resolvedCancelLabel}

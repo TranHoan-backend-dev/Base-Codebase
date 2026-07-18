@@ -1,0 +1,23 @@
+@use "../../../../../styles/custom/font" as *;
+@use "../../../../../styles/custom/color" as *;
+
+.swe_toolbar {
+    .toolbar_left {
+        font-size: $base_font_size;
+        line-height: 1.2;
+    }
+}
+
+.swe_toolbar_title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.swe_back_btn {
+    height: 20px;
+    width: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

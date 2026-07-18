@@ -60,5 +60,10 @@
     "home": "Trang chủ",
     "products": "Sản phẩm",
     "settings": "Cài đặt"
+  },
+  "toolbar": {
+    "selected": "Đã chọn {count}",
+    "deselect": "Bỏ chọn",
+    "delete": "Xóa"
   }
 }

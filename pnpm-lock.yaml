@@ -20,6 +20,9 @@ importers:
 
   nextjs-base:
     dependencies:
+      '@gravity-ui/icons':
+        specifier: ^2.20.0
+        version: 2.20.0(react@19.2.6)
       '@heroui/react':
         specifier: 3.2.1
         version: 3.2.1(@react-spectrum/provider@3.11.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6))(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(tailwindcss@4.3.2)
@@ -129,6 +132,9 @@ importers:
       prettier:
         specifier: 3.5.3
         version: 3.5.3
+      sass:
+        specifier: ^1.101.0
+        version: 1.101.0
       tailwind-variants:
         specifier: 3.2.2
         version: 3.2.2(tailwind-merge@3.4.0)(tailwindcss@4.3.2)
@@ -1637,6 +1643,14 @@ packages:
     resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==}
     peerDependencies:
       graphql: ^0.8.0 || ^0.9.0 || ^0.10.0 || ^0.11.0 || ^0.12.0 || ^0.13.0 || ^14.0.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
+
+  '@gravity-ui/icons@2.20.0':
+    resolution: {integrity: sha512-0plcxNqMYX+P8H+J1dY0IgMFBSWJYlMWRo0tAczgIlUICQE4sdyOOTxwgBZQLz8qQ4aIsGabzU5Yr6IJVzuNyg==}
+    peerDependencies:
+      react: '*'
+    peerDependenciesMeta:
+      react:
+        optional: true
 
   '@hapi/address@2.1.4':
     resolution: {integrity: sha512-QD1PhQk+s31P1ixsX0H0Suoupp3VMXzIVMSwobR3F3MSUO2YCV0B7xqLcUw/Bh8yuvd3LhpyqLQWTNcRmp6IdQ==}
@@ -14709,6 +14723,12 @@ snapshots:
   '@graphql-typed-document-node/core@3.2.0(graphql@15.10.2)':
     dependencies:
       graphql: 15.10.2
+
+  '@gravity-ui/icons@2.20.0(react@19.2.6)':
+    dependencies:
+      tslib: 2.8.1
+    optionalDependencies:
+      react: 19.2.6
 
   '@hapi/address@2.1.4': {}
 

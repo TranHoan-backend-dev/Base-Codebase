@@ -11,3 +11,8 @@
 	--color-grid-text: #374151;
 	--color-grid-link: #2563eb;
 }
+
+html,
+body {
+  font-size: 13px;
+}

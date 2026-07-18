@@ -1,0 +1,7 @@
+// Định nghĩa các style dùng chung
+@use "./color" as *;
+
+$border_radius_4: 4px;
+$border_radius_8: 8px;
+
+$base_border: 1px solid $border_gray;

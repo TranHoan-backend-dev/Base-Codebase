@@ -1,0 +1,40 @@
+@use "../../../styles/custom/space.scss" as *;
+
+// Force constraint on the global Next.js template layout when SwePageLayout is active
+body:has(.swe_page_layout) {
+    overflow: hidden;
+
+    // The wrapper div inside Providers
+    div.relative.flex.flex-col.h-screen {
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1 0%;
+        min-height: 0;
+        overflow: hidden;
+    }
+
+    // Hide global template footer to avoid double footers
+    footer.w-full {
+        display: none;
+    }
+}
+
+.swe_page_layout {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.swe_page_content {
+    padding: $larger_space;
+    flex: 1 1 auto;
+    overflow-y: auto;
+    min-height: 0;
+}

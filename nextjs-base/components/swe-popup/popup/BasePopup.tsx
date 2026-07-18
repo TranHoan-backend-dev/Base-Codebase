@@ -42,9 +42,9 @@ import React, {
 } from "react";
 
 import { ExpandIcon, CollapseIcon } from "@/components/icons";
-import { POPUP_SHARED_STYLES, POPUP_TYPOGRAPHY_TOKENS } from "@/config/popup";
 import { usePopupTranslations } from "@/hooks/usePopupTranslations";
-import { border_radius_8 } from "@/types/style";
+
+import "./swe-base-popup.scss";
 
 // ─── Constants ──────────────────────────────────────────────────────────────
 
@@ -126,15 +126,14 @@ export interface BasePopupProps {
 
 function PopupHeader({
   children,
-  className,
+  className = "",
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
     <HeroModalHeader
-      className={className}
-      style={POPUP_SHARED_STYLES.headerCompound}
+      className={`swe_popup_header_compound ${className}`.trim()}
     >
       {children}
     </HeroModalHeader>
@@ -144,15 +143,14 @@ PopupHeader.displayName = "BasePopup.Header";
 
 function PopupBody({
   children,
-  className,
+  className = "",
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
     <HeroModalBody
-      className={className}
-      style={POPUP_SHARED_STYLES.bodyCompound}
+      className={`swe_popup_body_compound ${className}`.trim()}
     >
       {children}
     </HeroModalBody>
@@ -162,13 +160,13 @@ PopupBody.displayName = "BasePopup.Body";
 
 function PopupFooter({
   children,
-  className,
+  className = "",
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
-    <HeroModalFooter className={className} style={POPUP_SHARED_STYLES.footer}>
+    <HeroModalFooter className={`swe_popup_footer ${className}`.trim()}>
       {children}
     </HeroModalFooter>
   );
@@ -306,18 +304,8 @@ function BasePopupRoot({
             <ModalDialog
               aria-label={title || t("popup_label", "Popup")}
               className={
-                `${className || ""} ${classNames?.dialog || ""}`.trim() ||
-                undefined
+                `swe_popup_dialog ${isFullscreen ? "fullscreen" : ""} ${className || ""} ${classNames?.dialog || ""}`.trim()
               }
-              style={{
-                ...POPUP_SHARED_STYLES.popupDialogReset,
-                borderRadius: isFullscreen ? 0 : border_radius_8,
-                width: isFullscreen ? "100%" : "fit-content",
-                minWidth: isFullscreen ? "100%" : "min(400px, 90vw)",
-                maxWidth: isFullscreen ? "100%" : "90vw",
-                height: isFullscreen ? "100%" : "fit-content",
-                maxHeight: isFullscreen ? "100%" : "90vh",
-              }}
             >
               {isCompound ? (
                 children
@@ -325,22 +313,21 @@ function BasePopupRoot({
                 <>
                   {header || (
                     <HeroModalHeader
-                      className={classNames?.header}
-                      style={POPUP_SHARED_STYLES.headerFlat}
+                      className={`swe_popup_header_flat border-b ${classNames?.header || ""}`.trim()}
                     >
-                      <div style={POPUP_SHARED_STYLES.headerContent}>
+                      <div className="swe_popup_header_content flex flex-col gap-2">
                         {title && (
-                          <ModalHeading style={POPUP_TYPOGRAPHY_TOKENS.title}>
+                          <ModalHeading className="swe_popup_title">
                             {title}
                           </ModalHeading>
                         )}
                         {description && (
-                          <p style={POPUP_TYPOGRAPHY_TOKENS.description}>
+                          <p className="swe_popup_description">
                             {description}
                           </p>
                         )}
                       </div>
-                      <div style={POPUP_SHARED_STYLES.headerActions}>
+                      <div className="swe_popup_header_actions">
                         {showFullscreenButton && (
                           <Button
                             aria-label={
@@ -362,7 +349,7 @@ function BasePopupRoot({
                         )}
                         {showCloseButton && (
                           <Modal.CloseTrigger
-                            style={POPUP_SHARED_STYLES.closeTrigger}
+                            className="swe_popup_close_trigger"
                           />
                         )}
                       </div>
@@ -370,23 +357,20 @@ function BasePopupRoot({
                   )}
 
                   <HeroModalBody
-                    className={classNames?.body}
-                    style={POPUP_SHARED_STYLES.bodyFlat}
+                    className={`swe_popup_body_flat ${classNames?.body || ""}`.trim()}
                   >
                     {children}
                   </HeroModalBody>
 
                   {footer !== undefined ? (
                     <HeroModalFooter
-                      className={classNames?.footer}
-                      style={POPUP_SHARED_STYLES.footer}
+                      className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
                     >
                       {footer}
                     </HeroModalFooter>
                   ) : (
                     <HeroModalFooter
-                      className={classNames?.footer}
-                      style={POPUP_SHARED_STYLES.footer}
+                      className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
                     >
                       <Button variant="secondary" onPress={handleCancel}>
                         {resolvedCancelLabel}
