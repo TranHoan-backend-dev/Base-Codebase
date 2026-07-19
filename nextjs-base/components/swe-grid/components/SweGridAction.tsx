@@ -36,11 +36,11 @@ export interface GridActionProps {
 /**
  * GridAction thực thi hành động gọi API và hiển thị Toast/thông báo qua onSuccess callback.
  */
-export default function GridAction({
+export const SweGridAction = ({
   action,
   selectedKeys,
   onSuccess,
-}: GridActionProps): React.JSX.Element {
+}: GridActionProps): React.JSX.Element => {
   const { t } = useGridTranslations();
   const [isOpen, setIsOpen] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);

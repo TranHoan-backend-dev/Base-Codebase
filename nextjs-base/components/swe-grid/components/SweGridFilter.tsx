@@ -40,12 +40,12 @@ export interface GridFilterProps {
 /**
  * GridFilter quản lý state tìm kiếm tạm thời và gửi dữ liệu khi người dùng xác nhận lọc.
  */
-export default function GridFilter({
+export const SweGridFilter = ({
   filters,
   onSearch,
   customComponents,
   className,
-}: GridFilterProps): React.JSX.Element {
+}: GridFilterProps): React.JSX.Element => {
   const { t } = useGridTranslations();
   const [values, setValues] = useState<Record<string, GridFilterValue>>({});
 

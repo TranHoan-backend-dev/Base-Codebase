@@ -18,9 +18,9 @@ import {
   GridDataItem,
 } from "@/types/grid";
 
-import GridFilter from "./components/GridFilter";
-import GridTable from "./components/GridTable";
-import GridToolbar from "./components/GridToolbar";
+import { SweGridFilter } from "./components/SweGridFilter";
+import { SweGridTable } from "./components/SweGridTable";
+import { SweGridToolbar } from "./components/SweGridToolbar";
 
 export interface DynamicGridProps {
   gridCode: string;
@@ -44,7 +44,7 @@ export interface DynamicGridProps {
   onSelectionChange?: (selectedKeys: Set<string>) => void;
 }
 
-export default function DynamicGrid({
+export const SweDynamicGrid = ({
   gridCode,
   fallbackConfig,
   fallbackData,
@@ -57,7 +57,7 @@ export default function DynamicGrid({
   onActionSuccess,
   onRowClick,
   onSelectionChange,
-}: DynamicGridProps) {
+}: DynamicGridProps) => {
   const { t } = useGridTranslations();
   const {
     config,
@@ -129,7 +129,7 @@ export default function DynamicGrid({
     <div
       className={`flex flex-col gap-4 w-full ${className} ${classNames.wrapper || ""}`}
     >
-      <GridToolbar
+      <SweGridToolbar
         actions={config.actions.filter((a) => a.position === "TOOLBAR")}
         bulkActions={config.actions.filter((a) => a.position === "BULK")}
         className={classNames.toolbar}
@@ -139,14 +139,14 @@ export default function DynamicGrid({
       />
 
       {config.filters && config.filters.length > 0 && (
-        <GridFilter
+        <SweGridFilter
           className={classNames.filter}
           filters={config.filters}
           onSearch={setFilters}
         />
       )}
 
-      <GridTable
+      <SweGridTable
         className={classNames.table}
         columns={config.columns}
         data={data?.items || []}

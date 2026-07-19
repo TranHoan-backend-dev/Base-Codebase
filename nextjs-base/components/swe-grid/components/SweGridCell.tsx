@@ -24,11 +24,11 @@ export interface GridCellProps {
 /**
  * GridCell hiển thị nội dung ô dữ liệu theo cấu hình column.type.
  */
-export default function GridCell({
+export const SweGridCell = ({
   column,
   value,
   rowData,
-}: GridCellProps): React.JSX.Element {
+}: GridCellProps): React.JSX.Element => {
   const stringVal = String(value ?? "");
 
   switch (column.type) {

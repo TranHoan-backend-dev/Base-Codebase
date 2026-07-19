@@ -385,10 +385,10 @@ export function useSidebarContext(): SidebarContextValue {
   return useContext(SidebarContext);
 }
 
-export const BasePopupSidebar = Object.assign(BasePopupSidebarRoot, {
+export const SweBasePopupSidebar = Object.assign(BasePopupSidebarRoot, {
   Header: SidebarHeader,
   Body: SidebarBody,
   Footer: SidebarFooter,
 });
 
-export default BasePopupSidebar;
+export default SweBasePopupSidebar;

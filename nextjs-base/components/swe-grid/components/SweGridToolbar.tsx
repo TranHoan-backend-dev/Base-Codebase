@@ -11,7 +11,7 @@
 import { useGridTranslations } from "@/hooks/useGridTranslations";
 import { GridActionConfig } from "@/types/grid";
 
-import GridAction from "./GridAction";
+import { SweGridAction } from "./SweGridAction";
 
 export interface GridToolbarProps {
   title?: string;
@@ -22,14 +22,14 @@ export interface GridToolbarProps {
   className?: string;
 }
 
-export default function GridToolbar({
+export const SweGridToolbar = ({
   title = "",
   actions = [],
   bulkActions = [],
   selectedKeys = new Set(),
   onActionSuccess,
   className = "",
-}: GridToolbarProps) {
+}: GridToolbarProps) => {
   const { t } = useGridTranslations();
   const showBulkActions = selectedKeys.size > 0 && bulkActions.length > 0;
 
@@ -52,7 +52,7 @@ export default function GridToolbar({
               {t("selected_count")} {selectedKeys.size}
             </span>
             {bulkActions.map((action) => (
-              <GridAction
+              <SweGridAction
                 key={action.code}
                 action={action}
                 selectedKeys={selectedKeys}
@@ -63,7 +63,7 @@ export default function GridToolbar({
         )}
 
         {actions.map((action) => (
-          <GridAction
+          <SweGridAction
             key={action.code}
             action={action}
             selectedKeys={selectedKeys}

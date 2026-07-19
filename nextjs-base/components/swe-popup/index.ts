@@ -5,10 +5,10 @@
  * @author txhoan
  */
 
-export { BasePopup, usePopupContext } from "./popup/BasePopup";
-export type { BasePopupProps } from "./popup/BasePopup";
+export { SweBasePopup, usePopupContext } from "./popup/SweBasePopup";
+export type { BasePopupProps } from "./popup/SweBasePopup";
 
-export { BasePopupSidebar, useSidebarContext } from "./sidebar/BasePopupSidebar";
-export type { BasePopupSidebarProps } from "./sidebar/BasePopupSidebar";
+export { SweBasePopupSidebar, useSidebarContext } from "./sidebar/SweBasePopupSidebar";
+export type { BasePopupSidebarProps } from "./sidebar/SweBasePopupSidebar";
 
 export { usePopupTranslations } from "@/hooks/usePopupTranslations";

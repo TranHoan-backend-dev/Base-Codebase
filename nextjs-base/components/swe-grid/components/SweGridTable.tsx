@@ -17,12 +17,11 @@ import {
   GridColumnConfig,
   LayoutOptions,
   GridDataItem,
-  ColumnAlign,
 } from "@/types/grid";
 
-import GridPagination from "../../swe-pagination/GridPagination";
+import { SweGridPagination } from "../../swe-pagination/SweGridPagination";
 
-import GridCell from "./GridCell";
+import { SweGridCell } from "./SweGridCell";
 
 export interface GridTableProps {
   columns: GridColumnConfig[];
@@ -43,7 +42,7 @@ export interface GridTableProps {
   className?: string;
 }
 
-export default function GridTable({
+export const SweGridTable = ({
   columns,
   data,
   layout,
@@ -58,7 +57,7 @@ export default function GridTable({
   showSelectionCheckbox,
   showIndex: propShowIndex,
   className = "",
-}: GridTableProps) {
+}: GridTableProps) => {
   const { t } = useGridTranslations();
   const visibleColumns = columns.filter((c) => !c.hidden);
   const showCheckbox = showSelectionCheckbox ?? layout.rowSelection ?? false;
@@ -148,7 +147,7 @@ export default function GridTable({
                     ) : null}
                     {visibleColumns.map((col) => (
                       <Table.Cell key={col.field}>
-                        <GridCell
+                        <SweGridCell
                           column={col}
                           rowData={item}
                           value={item[col.field]}
@@ -164,7 +163,7 @@ export default function GridTable({
       </Table>
 
       {layout.pagination && total > 0 && (
-        <GridPagination
+        <SweGridPagination
           currentCount={data.length}
           page={page}
           total={total}

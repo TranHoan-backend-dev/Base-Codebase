@@ -402,10 +402,10 @@ export function usePopupContext(): PopupContextValue {
   return useContext(PopupContext);
 }
 
-export const BasePopup = Object.assign(BasePopupRoot, {
+export const SweBasePopup = Object.assign(BasePopupRoot, {
   Header: PopupHeader,
   Body: PopupBody,
   Footer: PopupFooter,
 });
 
-export default BasePopup;
+export default SweBasePopup;

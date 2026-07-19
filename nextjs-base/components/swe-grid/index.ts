@@ -5,17 +5,17 @@
  * @author txhoan
  */
 
-export { default as DynamicGrid } from "./DynamicGrid";
-export type { DynamicGridProps } from "./DynamicGrid";
-export { default as GridTable } from "./components/GridTable";
-export type { GridTableProps } from "./components/GridTable";
-export { default as GridToolbar } from "./components/GridToolbar";
-export type { GridToolbarProps } from "./components/GridToolbar";
-export { default as GridFilter } from "./components/GridFilter";
-export type { GridFilterProps } from "./components/GridFilter";
-export { default as GridCell } from "./components/GridCell";
-export type { GridCellProps } from "./components/GridCell";
-export { default as GridAction } from "./components/GridAction";
-export type { GridActionProps } from "./components/GridAction";
-export { default as GridPagination } from "../swe-pagination/GridPagination";
-export type { GridPaginationProps } from "../swe-pagination/GridPagination";
+export { SweDynamicGrid } from "./SweDynamicGrid";
+export type { DynamicGridProps } from "./SweDynamicGrid";
+export { SweGridTable } from "./components/SweGridTable";
+export type { GridTableProps } from "./components/SweGridTable";
+export { SweGridToolbar } from "./components/SweGridToolbar";
+export type { GridToolbarProps } from "./components/SweGridToolbar";
+export { SweGridFilter } from "./components/SweGridFilter";
+export type { GridFilterProps } from "./components/SweGridFilter";
+export { SweGridCell } from "./components/SweGridCell";
+export type { GridCellProps } from "./components/SweGridCell";
+export { SweGridAction } from "./components/SweGridAction";
+export type { GridActionProps } from "./components/SweGridAction";
+export { SweGridPagination } from "../swe-pagination/SweGridPagination";
+export type { GridPaginationProps } from "../swe-pagination/SweGridPagination";

@@ -31,3 +31,6 @@ test/
 plan/
 be/
 fe/
+
+**/test-results
+**/playwright-report

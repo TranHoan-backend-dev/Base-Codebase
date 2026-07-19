@@ -29,7 +29,7 @@ export interface GridPaginationProps {
   className?: string;
 }
 
-export default function GridPagination({
+export const SweGridPagination = ({
   page,
   total,
   currentCount,
@@ -37,7 +37,7 @@ export default function GridPagination({
   pageSize = 10,
   onPageChange,
   className = "",
-}: GridPaginationProps) {
+}: GridPaginationProps) => {
   const { t } = useGridTranslations();
   const totalPages = propTotalPages ?? Math.max(1, Math.ceil(total / pageSize));
 

@@ -23,7 +23,7 @@ export const Navbar = () => {
     <TextField aria-label="Search" type="search">
       <InputGroup>
         <InputGroup.Prefix>
-          <SearchIcon className="text-base text-muted pointer-events-none flex-shrink-0" />
+          <SearchIcon className="text-base text-muted pointer-events-none shrink-0" />
         </InputGroup.Prefix>
         <InputGroup.Input className="text-sm" placeholder="Search..." />
         <InputGroup.Suffix>
