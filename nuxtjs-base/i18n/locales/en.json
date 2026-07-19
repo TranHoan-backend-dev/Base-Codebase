@@ -25,6 +25,11 @@
     "users_btn": "Users (USERS)",
     "orders_btn": "Orders (ORDERS)"
   },
+  "toolbar": {
+    "selected": "{count} record(s) selected",
+    "deselect": "Deselect",
+    "delete": "Delete"
+  },
   "popup": {
     "cancel": "Cancel",
     "save": "Save",

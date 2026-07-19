@@ -19,5 +19,6 @@ export default defineConfig({
   use: {
     ...baseConfig.use,
     baseURL: 'http://127.0.0.1:3000'
-  }
+  },
+  headless: false
 })

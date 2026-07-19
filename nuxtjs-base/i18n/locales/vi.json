@@ -25,6 +25,11 @@
     "users_btn": "Người dùng (USERS)",
     "orders_btn": "Đơn hàng (ORDERS)"
   },
+  "toolbar": {
+    "selected": "Đã chọn {count} bản ghi",
+    "deselect": "Bỏ chọn",
+    "delete": "Xóa"
+  },
   "popup": {
     "cancel": "Hủy",
     "save": "Lưu",
