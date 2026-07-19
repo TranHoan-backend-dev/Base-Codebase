@@ -39,11 +39,11 @@ export const SweFormLayoutFooter = ({
     };
 
     return (
-        <div className="swe_form_layout_footer flex flex-row-reverse gap-2">
-            <Button variant="outline" onPress={onCancel}>
+        <div className="swe_form_layout_footer flex flex-row-reverse gap-2" data-testid="swe-form-layout-footer">
+            <Button variant="outline" onPress={onCancel} data-testid="swe-form-footer-cancel-btn">
                 {t("cancel")}
             </Button>
-            <Button variant="primary" onPress={onSave} isPending={isPending}>
+            <Button variant="primary" onPress={onSave} isPending={isPending} data-testid="swe-form-footer-save-btn">
                 {({ isPending }) => (
                     <>
                         {isPending ? <Spinner color="current" size="sm" /> : null}

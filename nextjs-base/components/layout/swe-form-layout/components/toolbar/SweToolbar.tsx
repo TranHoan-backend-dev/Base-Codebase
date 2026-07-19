@@ -56,22 +56,24 @@ export const SweToolbar = ({
     };
 
     return (
-        <div className={`swe_toolbar flex items-center justify-between px-4 py-3 ${className}`}>
+        <div className={`swe_toolbar flex items-center justify-between px-4 py-3 ${className}`} data-testid="swe-toolbar">
             {/* Toolbar trai */}
-            <div className="toolbar_left flex gap-2 justify-center items-center">
+            <div className="toolbar_left flex gap-2 justify-center items-center" data-testid="swe-toolbar-left">
                 {pickManyMode && numberOfPickedRecords ? (
                     <div className="flex items-center gap-2">
-                        <span>{t("selected", { count: numberOfPickedRecords })}</span>
+                        <span data-testid="swe-toolbar-selected-count">{t("selected", { count: numberOfPickedRecords })}</span>
                         <Button
                             variant="ghost"
                             className="text-danger px-0"
                             onPress={onDeselect}
+                            data-testid="swe-toolbar-deselect-btn"
                         >
                             {t("deselect")}
                         </Button>
                         <Button
                             variant="danger"
                             onPress={onDelete}
+                            data-testid="swe-toolbar-delete-btn"
                         >
                             <TrashBin />
                             {t("delete")}
@@ -79,14 +81,14 @@ export const SweToolbar = ({
                     </div>
                 ) : (
                     <>
-                        <BackIcon className="swe_back_btn" />
-                        <span className="swe_toolbar_title">{title}</span>
+                        <BackIcon className="swe_back_btn" data-testid="swe-toolbar-back-icon" />
+                        <span className="swe_toolbar_title" data-testid="swe-toolbar-title">{title}</span>
                     </>
                 )}
             </div>
 
             {/* Toolbar phai */}
-            <div className="toolbar_right flex gap-2">
+            <div className="toolbar_right flex gap-2" data-testid="swe-toolbar-right">
                 {rightSideActionButtons}
             </div>
         </div>

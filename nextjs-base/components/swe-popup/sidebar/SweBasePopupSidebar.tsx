@@ -122,6 +122,7 @@ function SidebarHeader({
   return (
     <Drawer.Header
       className={`swe_popup_header_compound ${className}`.trim()}
+      data-testid="swe-sidebar-header"
     >
       {children}
     </Drawer.Header>
@@ -137,7 +138,7 @@ function SidebarBody({
   className?: string;
 }) {
   return (
-    <Drawer.Body className={`swe_popup_body_compound ${className}`.trim()}>
+    <Drawer.Body className={`swe_popup_body_compound ${className}`.trim()} data-testid="swe-sidebar-body">
       {children}
     </Drawer.Body>
   );
@@ -152,7 +153,7 @@ function SidebarFooter({
   className?: string;
 }) {
   return (
-    <Drawer.Footer className={`swe_popup_footer ${className}`.trim()}>
+    <Drawer.Footer className={`swe_popup_footer ${className}`.trim()} data-testid="swe-sidebar-footer">
       {children}
     </Drawer.Footer>
   );
@@ -288,6 +289,7 @@ function BasePopupSidebarRoot({
               style={{
                 width: resolvedWidth,
               }}
+              data-testid="swe-sidebar-dialog"
             >
               {showHandle && <Drawer.Handle />}
 
@@ -298,15 +300,16 @@ function BasePopupSidebarRoot({
                   {header || (
                     <Drawer.Header
                       className={`swe_popup_header_flat border-b ${classNames?.header || ""}`.trim()}
+                      data-testid="swe-sidebar-header"
                     >
                       <div className="swe_popup_header_content flex flex-col gap-2">
                         {title && (
-                          <Drawer.Heading className="swe_popup_title">
+                          <Drawer.Heading className="swe_popup_title" data-testid="swe-sidebar-title">
                             {title}
                           </Drawer.Heading>
                         )}
                         {description && (
-                          <p className="swe_popup_description">
+                          <p className="swe_popup_description" data-testid="swe-sidebar-description">
                             {description}
                           </p>
                         )}
@@ -323,6 +326,7 @@ function BasePopupSidebarRoot({
                             size="sm"
                             variant="ghost"
                             onPress={toggleFullscreen}
+                            data-testid="swe-sidebar-fullscreen-btn"
                           >
                             {isFullscreen ? (
                               <CollapseIcon size={16} />
@@ -334,6 +338,7 @@ function BasePopupSidebarRoot({
                         {showCloseButton && (
                           <Drawer.CloseTrigger
                             className="swe_popup_close_trigger"
+                            data-testid="swe-sidebar-close-btn"
                           />
                         )}
                       </div>
@@ -342,6 +347,7 @@ function BasePopupSidebarRoot({
 
                   <Drawer.Body
                     className={`swe_popup_body_flat ${classNames?.body || ""}`.trim()}
+                    data-testid="swe-sidebar-body"
                   >
                     {children}
                   </Drawer.Body>
@@ -349,18 +355,20 @@ function BasePopupSidebarRoot({
                   {footer !== undefined ? (
                     <Drawer.Footer
                       className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
+                      data-testid="swe-sidebar-footer"
                     >
                       {footer}
                     </Drawer.Footer>
                   ) : (
                     <Drawer.Footer
                       className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
+                      data-testid="swe-sidebar-footer"
                     >
-                      <Button variant="secondary" onPress={handleCancel}>
+                      <Button variant="secondary" onPress={handleCancel} data-testid="swe-sidebar-cancel-btn">
                         {resolvedCancelLabel}
                       </Button>
                       {showSaveButton && (
-                        <Button variant="primary" onPress={handleSave}>
+                        <Button variant="primary" onPress={handleSave} data-testid="swe-sidebar-save-btn">
                           {resolvedSaveLabel}
                         </Button>
                       )}

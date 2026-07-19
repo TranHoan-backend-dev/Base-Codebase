@@ -134,6 +134,7 @@ function PopupHeader({
   return (
     <HeroModalHeader
       className={`swe_popup_header_compound ${className}`.trim()}
+      data-testid="swe-popup-header"
     >
       {children}
     </HeroModalHeader>
@@ -151,6 +152,7 @@ function PopupBody({
   return (
     <HeroModalBody
       className={`swe_popup_body_compound ${className}`.trim()}
+      data-testid="swe-popup-body"
     >
       {children}
     </HeroModalBody>
@@ -166,7 +168,7 @@ function PopupFooter({
   className?: string;
 }) {
   return (
-    <HeroModalFooter className={`swe_popup_footer ${className}`.trim()}>
+    <HeroModalFooter className={`swe_popup_footer ${className}`.trim()} data-testid="swe-popup-footer">
       {children}
     </HeroModalFooter>
   );
@@ -306,6 +308,7 @@ function BasePopupRoot({
               className={
                 `swe_popup_dialog ${isFullscreen ? "fullscreen" : ""} ${className || ""} ${classNames?.dialog || ""}`.trim()
               }
+              data-testid="swe-popup-dialog"
             >
               {isCompound ? (
                 children
@@ -314,15 +317,16 @@ function BasePopupRoot({
                   {header || (
                     <HeroModalHeader
                       className={`swe_popup_header_flat border-b ${classNames?.header || ""}`.trim()}
+                      data-testid="swe-popup-header"
                     >
                       <div className="swe_popup_header_content flex flex-col gap-2">
                         {title && (
-                          <ModalHeading className="swe_popup_title">
+                          <ModalHeading className="swe_popup_title" data-testid="swe-popup-title">
                             {title}
                           </ModalHeading>
                         )}
                         {description && (
-                          <p className="swe_popup_description">
+                          <p className="swe_popup_description" data-testid="swe-popup-description">
                             {description}
                           </p>
                         )}
@@ -339,6 +343,7 @@ function BasePopupRoot({
                             size="sm"
                             variant="ghost"
                             onPress={toggleFullscreen}
+                            data-testid="swe-popup-fullscreen-btn"
                           >
                             {isFullscreen ? (
                               <CollapseIcon size={16} />
@@ -350,6 +355,7 @@ function BasePopupRoot({
                         {showCloseButton && (
                           <Modal.CloseTrigger
                             className="swe_popup_close_trigger"
+                            data-testid="swe-popup-close-btn"
                           />
                         )}
                       </div>
@@ -358,6 +364,7 @@ function BasePopupRoot({
 
                   <HeroModalBody
                     className={`swe_popup_body_flat ${classNames?.body || ""}`.trim()}
+                    data-testid="swe-popup-body"
                   >
                     {children}
                   </HeroModalBody>
@@ -365,18 +372,20 @@ function BasePopupRoot({
                   {footer !== undefined ? (
                     <HeroModalFooter
                       className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
+                      data-testid="swe-popup-footer"
                     >
                       {footer}
                     </HeroModalFooter>
                   ) : (
                     <HeroModalFooter
                       className={`swe_popup_footer ${classNames?.footer || ""}`.trim()}
+                      data-testid="swe-popup-footer"
                     >
-                      <Button variant="secondary" onPress={handleCancel}>
+                      <Button variant="secondary" onPress={handleCancel} data-testid="swe-popup-cancel-btn">
                         {resolvedCancelLabel}
                       </Button>
                       {showSaveButton && (
-                        <Button variant="primary" onPress={handleSave}>
+                        <Button variant="primary" onPress={handleSave} data-testid="swe-popup-save-btn">
                           {resolvedSaveLabel}
                         </Button>
                       )}

@@ -39,3 +39,5 @@ bun.lockb
 
 .vscode/
 .idea/
+playwright-report/
+test-results/

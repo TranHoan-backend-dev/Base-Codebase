@@ -33,7 +33,7 @@ export const SwePageLayout = ({
     isPending = false,
 }: SwePageLayoutProps) => {
     return (
-        <div className={`swe_page_layout ${className}`}>
+        <div className={`swe_page_layout ${className}`} data-testid="swe-page-layout">
             <SweToolbar
                 title={title}
                 rightSideActionButtons={rightSideActionButtons}
@@ -43,7 +43,7 @@ export const SwePageLayout = ({
                 onDelete={onDelete}
             />
 
-            <div className="swe_page_content">
+            <div className="swe_page_content" data-testid="swe-page-content">
                 {children}
             </div>
 

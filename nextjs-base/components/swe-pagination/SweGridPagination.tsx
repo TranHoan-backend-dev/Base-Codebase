@@ -44,8 +44,9 @@ export const SweGridPagination = ({
   return (
     <div
       className={`flex w-full items-center justify-between px-2 py-2 ${className}`.trim()}
+      data-testid="swe-grid-pagination"
     >
-      <div className="text-sm text-default-500">
+      <div className="text-sm text-default-500" data-testid="swe-pagination-info">
         {t("showing")} {currentCount} {t("in_total")} {total} {t("records")}
       </div>
       {totalPages > 1 && (
@@ -55,6 +56,7 @@ export const SweGridPagination = ({
               <Pagination.Previous
                 isDisabled={page <= 1}
                 onPress={() => onPageChange(page - 1)}
+                data-testid="swe-pagination-prev-btn"
               >
                 <span>{t("previous_page")}</span>
               </Pagination.Previous>
@@ -64,6 +66,7 @@ export const SweGridPagination = ({
                 <Pagination.Link
                   isActive={p === page}
                   onPress={() => onPageChange(p)}
+                  data-testid={`swe-pagination-page-${p}`}
                 >
                   {p}
                 </Pagination.Link>
@@ -73,6 +76,7 @@ export const SweGridPagination = ({
               <Pagination.Next
                 isDisabled={page >= totalPages}
                 onPress={() => onPageChange(page + 1)}
+                data-testid="swe-pagination-next-btn"
               >
                 <span>{t("next_page")}</span>
               </Pagination.Next>

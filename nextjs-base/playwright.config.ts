@@ -20,4 +20,7 @@ export default defineConfig({
     ...baseConfig.use,
     baseURL: 'http://127.0.0.1:3000',
   },
+  workers: process.env.CI ? 1 : 2,
+  retries: process.env.CI ? 2 : 1,
+  headless: false
 });
