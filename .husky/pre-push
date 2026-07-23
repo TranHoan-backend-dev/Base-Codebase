@@ -1,0 +1,14 @@
+#!/bin/sh
+
+current_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+
+if [ "$current_branch" != "main" ] && [ -n "$current_branch" ]; then
+  echo "🔄 Nhánh hiện tại là '$current_branch'. Đang tự động đồng bộ & rebase từ main..."
+  
+  git checkout main || { echo "❌ Lỗi: Không thể checkout main"; exit 1; }
+  git pull origin main || { echo "❌ Lỗi: Không thể pull origin main"; exit 1; }
+  git checkout - || { echo "❌ Lỗi: Không thể quay lại nhánh $current_branch"; exit 1; }
+  git rebase main || { echo "❌ Lỗi: Rebase gặp xung đột! Vui lòng giải quyết conflict và chạy git rebase --continue"; exit 1; }
+  
+  echo "✅ Rebase từ main thành công!"
+fi

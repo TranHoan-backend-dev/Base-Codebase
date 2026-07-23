@@ -19,18 +19,47 @@
 *.tar.gz
 *.rar
 
-# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+# Virtual machine crash logs
 hs_err_pid*
 replay_pid*
 **.local.txt
 **.local.md
 
+# Dependencies & Environments
 node_modules/
 .env
+.env*.local
+.env.local
+*.env.local
+
+# Child projects & Custom app workspaces
+apps/*
+!apps/.gitkeep
+projects/*
+!projects/.gitkeep
+child-projects/*
+custom/*
+
+# Temporary & Build files
 test/
 plan/
 be/
 fe/
+tmp/
+temp/
+.cache/
+dist/
+out/
+build/
 
+# Test reports
 **/test-results
 **/playwright-report
+
+# IDE & OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

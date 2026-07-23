@@ -45,4 +45,4 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
    ```
 
 ---
-*Lưu ý: Chi tiết quy định phát triển và đóng góp mã nguồn xem thêm tại [AGENTS.md](./AGENTS.md).*
+*Lưu ý: Hướng dẫn chi tiết cách khởi tạo dự án con và sử dụng Base Repo xem tại [docs/GUIDE.md](./docs/GUIDE.md). Quy định đóng góp mã nguồn cho dự án xem tại [docs/CONTRIBUTING.md](./docs/CONTRIBUTING.md) và [AGENTS.md](./AGENTS.md).*

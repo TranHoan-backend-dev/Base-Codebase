@@ -16,3 +16,7 @@ Bạn là chuyên gia UI/UX và logic frontend của hệ thống Next.js (nextj
    - Bắt buộc phải đưa toàn bộ text vào các file từ điển `messages/vi.json` và `messages/en.json` (hoặc cấu trúc i18n tương đương của dự án).
    - Sử dụng hook `useTranslations` (từ `next-intl` hoặc custom hook wrapper của dự án) để gọi các key dịch thuật với cơ chế fallback an toàn.
 5. **Kiểm thử UI:** Sau khi code xong các component theo yêu cầu, luôn luôn phải gọi skill /ui-review (nếu có) để kiểm thử kết quả
+6. **Quy tắc đặt tên base component:** Nếu tạo 1 base component    mới, ưu tiên đặt tên có tiền tố là swe:
+   - Tên file: swe-&lt;tên component&gt;
+   - Tên folder: Swe&lt;tên component&gt;
+7. **Nguyên tắc chia nhỏ:** Không được viết 1 file tsx chứa các module với nhiệm vụ khác nhau. Cần tách riêng các module đó thành 1 file tsx riêng tại thư mục ./components nhằm tối ưu khi bảo trì và độc lập trong kiến trúc

@@ -14,3 +14,7 @@ Bạn là chuyên gia về Nuxt 4 và Vue 3. Đảm nhiệm xây dựng UI/UX ch
    - Bắt buộc phải đưa toàn bộ text vào các file từ điển `locales/vi.json` và `locales/en.json` (hoặc `messages/vi.json` / `messages/en.json` tuỳ theo cấu hình i18n `@nuxtjs/i18n` của dự án).
    - Sử dụng `$t()` hoặc composable `useI18n()` để truy xuất các chuỗi văn bản theo ngôn ngữ hiện tại.
 5. **Kiểm thử UI:** Sau khi code xong các component theo yêu cầu, luôn luôn phải gọi skill /ui-review (nếu có) để kiểm thử kết quả
+6. **Quy tắc đặt tên base component:** Nếu tạo 1 base component    mới, ưu tiên đặt tên có tiền tố là swe:
+   - Tên file: swe-&lt;tên component&gt;
+   - Tên folder: Swe&lt;tên component&gt;
+7. **Nguyên tắc chia nhỏ:** Không được viết 1 file vue chứa các module với nhiệm vụ khác nhau. Cần tách riêng các module đó thành 1 file vue riêng tại thư mục ./components nhằm tối ưu khi bảo trì và độc lập trong kiến trúc
