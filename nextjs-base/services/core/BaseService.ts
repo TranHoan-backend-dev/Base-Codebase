@@ -1,6 +1,8 @@
+import { getTenantIdClient } from "@/utils/tenantCookie";
+
 /**
  * Lớp cơ sở (Core BaseService) cung cấp nền tảng xử lý HTTP request chung cho toàn ứng dụng.
- * Có trách nhiệm cấu hình headers mặc định, đính kèm authentication token và xử lý lỗi global.
+ * Có trách nhiệm cấu hình headers mặc định, đính kèm authentication token, tenant id và xử lý lỗi global.
  *
  * Created at: 21/06/2026
  * @author txhoan
@@ -10,9 +12,11 @@ export class BaseService {
     url: string,
     options: RequestInit = {},
   ): Promise<T> {
-    const defaultHeaders = {
+    const tenantId = getTenantIdClient();
+    const defaultHeaders: Record<string, string> = {
       "Content-Type": "application/json",
       // Add Authorization header here from cookies/local storage
+      ...(tenantId ? { "X-Tenant-ID": tenantId } : {}),
     };
 
     const response = await fetch(url, {

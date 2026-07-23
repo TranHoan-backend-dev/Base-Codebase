@@ -10,7 +10,6 @@ export default defineEventHandler(async (event) => {
       body
     })
   } catch (error: unknown) {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const err = error as any
     throw createError({
       statusCode: err.response?.status || 500,

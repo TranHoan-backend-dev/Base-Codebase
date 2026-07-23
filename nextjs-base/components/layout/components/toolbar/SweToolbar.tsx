@@ -10,7 +10,8 @@ import "@/styles/custom/space.scss"
 import { useTranslations } from "next-intl";
 import viMessages from "@/messages/vi.json";
 
-interface ToolbarProps {
+export interface ToolbarProps {
+    isBack?: boolean;
     className?: string;
     title: string;
     rightSideActionButtons?: ReactNode;
@@ -21,6 +22,7 @@ interface ToolbarProps {
 }
 
 export const SweToolbar = ({
+    isBack = false,
     className = "",
     title = "",
     rightSideActionButtons,
@@ -81,7 +83,9 @@ export const SweToolbar = ({
                     </div>
                 ) : (
                     <>
-                        <BackIcon className="swe_back_btn" data-testid="swe-toolbar-back-icon" />
+                        {isBack && (
+                            <BackIcon className="swe_back_btn" data-testid="swe-toolbar-back-icon" />
+                        )}
                         <span className="swe_toolbar_title" data-testid="swe-toolbar-title">{title}</span>
                     </>
                 )}

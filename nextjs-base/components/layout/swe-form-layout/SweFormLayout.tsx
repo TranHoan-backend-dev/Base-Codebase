@@ -2,10 +2,10 @@
 
 import { ReactNode } from "react";
 import { SweFormLayoutFooter } from "./components/footer/SweFormLayoutFooter";
-import { SweToolbar } from "./components/toolbar/SweToolbar";
-import "./swe-page-layout.scss";
+import { SweToolbar } from "@/components/layout/components/toolbar/SweToolbar";
+import "./swe-form-layout.scss";
 
-interface SwePageLayoutProps {
+interface SweFormLayoutProps {
     title: string;
     className?: string;
     rightSideActionButtons?: ReactNode;
@@ -19,7 +19,7 @@ interface SwePageLayoutProps {
     isPending?: boolean;
 }
 
-export const SwePageLayout = ({
+export const SweFormLayout = ({
     title,
     className = "",
     rightSideActionButtons,
@@ -31,7 +31,7 @@ export const SwePageLayout = ({
     onSave,
     onCancel,
     isPending = false,
-}: SwePageLayoutProps) => {
+}: SweFormLayoutProps) => {
     return (
         <div className={`swe_page_layout ${className}`} data-testid="swe-page-layout">
             <SweToolbar

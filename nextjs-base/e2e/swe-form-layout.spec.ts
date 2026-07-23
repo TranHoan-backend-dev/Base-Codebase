@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('SwePageLayout & SweToolbar Component E2E Tests', () => {
+test.describe('SweFormLayout & SweToolbar Component E2E Tests', () => {
   test.setTimeout(60000);
 
   test.beforeEach(async ({ page }) => {

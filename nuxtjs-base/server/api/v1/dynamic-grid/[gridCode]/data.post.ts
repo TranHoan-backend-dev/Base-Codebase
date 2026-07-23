@@ -9,7 +9,7 @@ export default defineEventHandler(async (event) => {
       method: 'POST',
       body: body as Record<string, unknown>
     })
-  } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     throw createError({
       statusCode: error.response?.status || 500,
       statusMessage: error.message || 'Internal Server Error'

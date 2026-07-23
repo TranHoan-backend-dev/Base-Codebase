@@ -1,6 +1,6 @@
 @use "../../../styles/custom/space.scss" as *;
 
-// Force constraint on the global Next.js template layout when SwePageLayout is active
+// Force constraint on the global Next.js template layout when SweFormLayout is active
 body:has(.swe_page_layout) {
     overflow: hidden;
 

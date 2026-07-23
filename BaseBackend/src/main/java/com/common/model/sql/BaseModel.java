@@ -31,6 +31,10 @@ import java.time.LocalDateTime;
 @FieldDefaults(level = AccessLevel.PRIVATE)
 @EntityListeners(AuditingEntityListener.class)
 public abstract class BaseModel {
+    // Mã định danh khách hàng (Tenant ID) trong kiến trúc Multi-Tenant
+    @Column(name = "tenant_id")
+    String tenantID;
+
     // Thời điểm tạo bản ghi
     @CreatedDate
     @Column(nullable = false)

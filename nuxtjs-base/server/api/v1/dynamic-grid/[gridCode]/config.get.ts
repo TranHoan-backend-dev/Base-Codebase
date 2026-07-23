@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
     return await $fetch(url, {
       method: 'GET'
     })
-  } catch (error: any) { // eslint-disable-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
     throw createError({
       statusCode: error.response?.status || 500,
       statusMessage: error.message || 'Internal Server Error'
