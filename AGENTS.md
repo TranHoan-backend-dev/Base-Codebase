@@ -41,6 +41,7 @@ Repository này chứa các dự án cơ sở. Khi làm việc với dự án n�
   - `docs:` Cập nhật tài liệu.
   - `test:` Viết hoặc sửa unit test/e2e test.
 - **Thông điệp Commit:** Rõ ràng, mô tả chính xác những gì đã được thay đổi. Nên dùng tiếng Anh cho thông điệp commit.
+- **Sửa code ở nhánh phụ & Merge:** Khi sửa code ở nhánh phụ để merge vào nhánh chính (`main`/`dev`/...), hạn chế xóa code cũ, thay vào đó hãy comment lại.
 
 ## 4. Quy trình xử lý lỗi và Logging
 
