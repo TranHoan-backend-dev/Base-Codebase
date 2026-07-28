@@ -61,5 +61,9 @@
     "home": "Home",
     "products": "Products",
     "settings": "Settings"
+  },
+  "combobox": {
+    "select_option": "Select an option",
+    "no_selection": "Not selected"
   }
 }

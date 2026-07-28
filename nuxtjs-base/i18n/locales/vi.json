@@ -61,5 +61,9 @@
     "home": "Trang chủ",
     "products": "Sản phẩm",
     "settings": "Cài đặt"
+  },
+  "combobox": {
+    "select_option": "Chọn một tùy chọn",
+    "no_selection": "Chưa chọn"
   }
 }
