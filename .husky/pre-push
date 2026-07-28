@@ -1,9 +1,5 @@
 #!/bin/sh
 
-if [ "$PRE_PUSH_RUNNING" = "1" ]; then
-  exit 0
-fi
-
 current_branch=$(git symbolic-ref --short HEAD 2>/dev/null)
 
 if [ "$current_branch" != "main" ] && [ -n "$current_branch" ]; then
@@ -14,7 +10,5 @@ if [ "$current_branch" != "main" ] && [ -n "$current_branch" ]; then
   git checkout - || { echo "❌ Lỗi: Không thể quay lại nhánh $current_branch"; exit 1; }
   git rebase main || { echo "❌ Lỗi: Rebase gặp xung đột! Vui lòng giải quyết conflict và chạy git rebase --continue"; exit 1; }
   
-  echo "✅ Rebase từ main thành công! Đang tự động Force Push..."
-  PRE_PUSH_RUNNING=1 git push origin "$current_branch" --force --no-verify
-  exit 1
+  echo "✅ Rebase từ main thành công!"
 fi

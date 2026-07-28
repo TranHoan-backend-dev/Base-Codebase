@@ -14,6 +14,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Set;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -29,9 +30,15 @@ class SecurityUtilitiesTest {
 
     @BeforeAll
     static void setUp() {
-        java.util.Locale.setDefault(new java.util.Locale("vi", "VN"));
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        validator = factory.getValidator();
+        Locale.setDefault(new Locale("vi", "VN"));
+        var messageSourceConfig = new com.common.config.i18n.MessageSourceConfig();
+        var messageSource = messageSourceConfig.messageSource();
+
+        var validatorFactoryBean = new org.springframework.validation.beanvalidation.LocalValidatorFactoryBean();
+        validatorFactoryBean.setValidationMessageSource(messageSource);
+        validatorFactoryBean.afterPropertiesSet();
+
+        validator = validatorFactoryBean.getValidator();
     }
 
     @Getter
