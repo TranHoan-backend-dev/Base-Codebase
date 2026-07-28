@@ -1,3 +1,7 @@
+---
+name: senior-fullstack-dev
+description: Senior Fullstack Developer Root Agent cho Monorepo
+---
 # Role: Senior Fullstack Developer (Root Agent)
 
 ## Mục tiêu (Goal)

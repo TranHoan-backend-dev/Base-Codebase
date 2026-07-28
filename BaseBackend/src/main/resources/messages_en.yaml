@@ -1,0 +1,39 @@
+resource:
+  not_found: "Resource not found with id: {0}"
+
+stream:
+  read_listener_unsupported: "ReadListener is not supported."
+
+security:
+  unsafe_url: "URL contains unsafe characters or keywords."
+  unsafe_parameter: "Parameter '{0}' contains unsafe characters or keywords."
+  unsafe_body: "Request Body contains unsafe characters or keywords."
+  invalid_request: "Invalid request."
+
+error:
+  grid:
+    not:
+      found: "Grid configuration not found: {0}"
+  qr:
+    data_empty: "QR code data cannot be empty."
+    dimension_invalid: "QR code dimensions must be greater than 0."
+    generation_failed: "Failed to generate QR Code."
+  excel:
+    input_stream_null: "Excel file input stream cannot be null."
+    read_failed: "Error reading Excel file: {0}"
+    file_empty: "Uploaded Excel file cannot be empty."
+    upload_stream_failed: "Error reading stream from uploaded file."
+
+controller:
+  get_success: "Retrieve information successfully."
+  paging_success: "Retrieve paginated list successfully."
+
+validation:
+  sql_injection: "Field {0} contains invalid SQL Injection characters or keywords."
+  xss: "Field {0} contains invalid script/XSS code."
+  sql_safe: "Input data contains dangerous SQL Injection keywords or characters"
+  xss_safe: "Input data contains unsafe HTML tags or XSS script code"
+
+utility:
+  class:
+    instantiation_unsupported: "Utility class cannot be instantiated."
