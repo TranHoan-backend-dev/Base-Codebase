@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: CodeRabbit
-        uses: coderabbitai/coderabbit-action@v1
+        uses: coderabbitai/ai-pr-reviewer@v1
         with:
           # Automatically uses standard config to review code based on the project's markdown rules.
           # CodeRabbit will look for instructions in .claude/rules and CLAUDE.md automatically.
