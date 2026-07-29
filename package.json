@@ -18,17 +18,17 @@
       "pnpm --filter nuxtjs-base lint"
     ]
   },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@apollo/protobufjs",
-      "@parcel/watcher",
-      "@swc/core",
-      "core-js",
-      "core-js-pure",
-      "sharp",
-      "unrs-resolver",
-      "vue-demi",
-      "yarn"
-    ]
-  }
+  "onlyBuiltDependencies": [
+    "@apollo/protobufjs",
+    "@parcel/watcher",
+    "@swc/core",
+    "@tailwindcss/oxide",
+    "core-js",
+    "core-js-pure",
+    "esbuild",
+    "sharp",
+    "unrs-resolver",
+    "vue-demi",
+    "yarn"
+  ]
 }
