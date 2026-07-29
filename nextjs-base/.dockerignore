@@ -1,0 +1,21 @@
+node_modules
+.next
+.git
+.gitignore
+README.md
+playwright-report
+test-results
+.idea
+.vscode
+
+# AI Coding configs
+.claude
+.claude.json
+.claudeignore
+.gemini
+.geminiignore
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.cursor
+.cursorrules

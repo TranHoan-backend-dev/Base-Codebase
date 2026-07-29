@@ -1,0 +1,19 @@
+.gradle
+build
+.idea
+.vscode
+.git
+.gitignore
+*.log
+
+# AI Coding configs
+.claude
+.claude.json
+.claudeignore
+.gemini
+.geminiignore
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.cursor
+.cursorrules
