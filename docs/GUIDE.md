@@ -82,3 +82,4 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 ### D. Testing & Automation
 
 * [Playwright E2E Testing Guide - Cấu hình & Hướng dẫn viết test E2E](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/playwright.md)
+* [AI Agent Testing Guide - Hướng dẫn sử dụng & vận hành Java Unit Test Automation AI Agent](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/testing/ai-agent-testing.md)

@@ -55,11 +55,12 @@ build/
 # Test reports
 **/test-results
 **/playwright-report
+report/
 
 # IDE & OS files
 .DS_Store
 Thumbs.db
 .idea/
-.vscode/*
+.vscode/
 !.vscode/settings.json
 !.vscode/extensions.json
