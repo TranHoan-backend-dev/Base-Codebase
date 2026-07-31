@@ -29,7 +29,7 @@
     },
     "project_rules": [
         "./CLAUDE.md",
-        "./BaseBackend/CLAUDE.md",
+        "./be/BaseBackend/CLAUDE.md",
         "./fe/nextjs-base/CLAUDE.md",
         "./fe/nuxtjs-base/CLAUDE.md"
     ]

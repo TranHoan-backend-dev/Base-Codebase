@@ -12,10 +12,10 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 * **Cơ chế Dev song song (Hot Reload)**: Nhờ liên kết Symlink của `pnpm workspace`, các chỉnh sửa tại component dùng chung sẽ lập tức phản hồi (HMR) trên dự án con.
 * **Quy trình đóng góp (Contribution Workflow)**: Chi tiết quy định và các bước đóng góp mã nguồn (Pull Request) cho Base Repo xem tại tài liệu [docs/CONTRIBUTING.md](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/CONTRIBUTING.md).
 
-### B. Backend Sub-Repo (`BaseBackend`)
+### B. Backend Sub-Repo (`be/BaseBackend`)
 
-* **Kiến trúc Maven / Gradle Artifact**: Dự án `BaseBackend` (Java / Spring Boot) được đóng gói thành các thư viện cơ sở (`base-backend-core.jar`).
-* **Kế thừa Dependency**: Các dự án con Backend khai báo phụ thuộc vào `BaseBackend` thông qua Maven Local hoặc Private Maven Repository:
+* **Kiến trúc Maven / Gradle Artifact**: Dự án `be/BaseBackend` (Java / Spring Boot) được đóng gói thành các thư viện cơ sở (`base-backend-core.jar`).
+* **Kế thừa Dependency**: Các dự án con Backend khai báo phụ thuộc vào `be/BaseBackend` thông qua Maven Local hoặc Private Maven Repository:
 
   ```kotlin
   // build.gradle.kts của dự án con
@@ -54,7 +54,7 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 
 ### B. Khởi tạo Dự án Backend Con
 
-1. Tạo dự án Spring Boot mới hoặc kế thừa từ `BaseBackend`.
+1. Tạo dự án Spring Boot mới hoặc kế thừa từ `be/BaseBackend`.
 2. Khai báo dependency `base-backend-core` trong `build.gradle.kts` hoặc `pom.xml`.
 3. Tạo file `application.yaml` định nghĩa các thông số cấu hình riêng (Database URL, JWT Secret, v.v.).
 
@@ -62,10 +62,10 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 
 ## 3. Danh mục Tài liệu Đặc tả Component & Backend Architecture
 
-### A. Backend Architecture & Specs (`BaseBackend`)
+### A. Backend Architecture & Specs (`be/BaseBackend`)
 
-* [BaseBackend - Tổng quan Kiến trúc & Hướng dẫn Core](file:///d:/Du_an_ca_nhan/Base-Codebase/BaseBackend/src/main/resources/docs/README.md)
-* *Lưu ý: Mọi tính năng Backend mới bắt buộc phải bổ sung tài liệu đặc tả tại `BaseBackend/src/main/resources/docs/.specify`.*
+* [be/BaseBackend - Tổng quan Kiến trúc & Hướng dẫn Core](file:///d:/Du_an_ca_nhan/Base-Codebase/be/BaseBackend/src/main/resources/docs/README.md)
+* *Lưu ý: Mọi tính năng Backend mới bắt buộc phải bổ sung tài liệu đặc tả tại `be/BaseBackend/src/main/resources/docs/.specify`.*
 
 ### B. Next.js Base Components (`fe/nextjs-base`)
 

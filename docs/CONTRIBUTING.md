@@ -44,7 +44,7 @@ Bổ sung bài kiểm thử tự động với Playwright tại thư mục `e2e/
 
 ---
 
-## 3. Quy trình Đóng góp Backend (`BaseBackend`)
+## 3. Quy trình Đóng góp Backend (`be/BaseBackend`)
 
 ### Bước 1: Nguyên tắc Code Backend
 
@@ -55,7 +55,7 @@ Bổ sung bài kiểm thử tự động với Playwright tại thư mục `e2e/
 ### Bước 2: Viết Tài liệu Đặc tả Tính năng (Bắt buộc)
 
 Khi đóng góp bất cứ tính năng hoặc module mới nào cho Backend, bắt buộc phải bổ sung tài liệu đặc tả (specification) lưu tại:
-`BaseBackend/src/main/resources/docs/.specify/`
+`be/BaseBackend/src/main/resources/docs/.specify/`
 
 ---
 

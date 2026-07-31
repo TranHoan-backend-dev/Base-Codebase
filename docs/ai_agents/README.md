@@ -14,7 +14,7 @@ Tài liệu chỉ mục tổng hợp các file đặc tả chi tiết cho từng
 
 | STT | AI Agent Name | Mục đích & Chức năng chính | Tài liệu đặc tả chi tiết |
 | --- | --- | --- | --- |
-| 1 | **Java Unit Test Agent** | Tự động chạy và fix Unit Tests trên dự án Java (BaseBackend) | 📄 [ai-agent-testing.md](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/testing/ai-agent-testing.md) |
+| 1 | **Java Unit Test Agent** | Tự động chạy và fix Unit Tests trên dự án Java (be/BaseBackend) | 📄 [ai-agent-testing.md](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/testing/ai-agent-testing.md) |
 | 2 | **API Contract Checker** | Kiểm tra sự khớp nối REST Endpoints & API Calls giữa BE và FE | 📄 [api-contract-checker.md](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/api-contract-checker.md) |
 | 3 | **FE Build Analyzer** | Tự động chạy build FE (Next.js/Nuxt.js) và phân tích lỗi `tsc`/`eslint` | 📄 [fe-build-analyzer.md](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/fe-build-analyzer.md) |
 | 4 | **Dependency Audit** | Quét lỗ hổng bảo mật CVE và thư viện lỗi thời (`pom.xml`, `package.json`) | 📄 [dependency-audit.md](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/dependency-audit.md) |

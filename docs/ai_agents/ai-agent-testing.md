@@ -87,12 +87,12 @@ Trước khi chạy kiểm thử thực tế trên dự án Java (Maven/Gradle),
 antigravity_env\Scripts\python config/agents/java_test_agent/run.py --dry-run
 ```
 
-### B. Thực thi Pipeline 6 Phase trên Dự án Backend (`BaseBackend`)
+### B. Thực thi Pipeline 6 Phase trên Dự án Backend (`be/BaseBackend`)
 
-Chạy agent mặc định với dự án `BaseBackend` (dùng Maven):
+Chạy agent mặc định với dự án `be/BaseBackend` (dùng Maven):
 
 ```powershell
-antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path BaseBackend --build-tool maven
+antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path be/BaseBackend --build-tool maven
 ```
 
 Đối với dự án dùng Gradle:
@@ -112,13 +112,13 @@ antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path apps/
 - **Chạy toàn bộ test (Tắt lọc Git)**:
 
   ```powershell
-  antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path BaseBackend --all-tests
+  antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path be/BaseBackend --all-tests
   ```
 
 - **Chạy duy nhất 1 file test cụ thể**:
 
   ```powershell
-  antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path BaseBackend --test-class UserServiceTest
+  antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path be/BaseBackend --test-class UserServiceTest
   ```
 
 ### D. Tự động Phê duyệt (Auto-Approve Mode)
@@ -126,7 +126,7 @@ antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path apps/
 Nếu muốn cho phép AI Agent tự động áp dụng bản vá code Java mà không dừng lại chờ duyệt ở Phase 4:
 
 ```powershell
-antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path BaseBackend --auto-approve
+antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path be/BaseBackend --auto-approve
 ```
 
 ---
@@ -149,8 +149,8 @@ antigravity_env\Scripts\python config/agents/java_test_agent/run.py --path BaseB
 
 ---
 
-## 💡 6. Tích hợp Agent Skill (`java-unit-test`) cho `BaseBackend`
+## 💡 6. Tích hợp Agent Skill (`java-unit-test`) cho `be/BaseBackend`
 
-Đã khởi tạo Skill tại `BaseBackend/.agents/skills/java-unit-test/SKILL.md`.
+Đã khởi tạo Skill tại `be/BaseBackend/.agents/skills/java-unit-test/SKILL.md`.
 
-Khi bạn đưa ra câu lệnh như `"chạy unit test cho BaseBackend"` hoặc `"fix test backend"`, AI Agent sẽ tự động kích hoạt Skill này để thực thi script runner `run_java_test_agent.py`.
+Khi bạn đưa ra câu lệnh như `"chạy unit test cho be/BaseBackend"` hoặc `"fix test backend"`, AI Agent sẽ tự động kích hoạt Skill này để thực thi script runner `run_java_test_agent.py`.

@@ -1,18 +1,18 @@
 # =============================================================================
-# CI Workflow – BaseBackend (Spring Boot Library / Gradle / Java 21)
+# CI Workflow – be/BaseBackend (Spring Boot Library / Gradle / Java 21)
 #
 # Trigger:
 #   - Push lên branch: main, develop, release/**
 #   - Pull Request nhắm vào: main, develop
 #
-# Lưu ý: BaseBackend là LIBRARY project (không có main class).
+# Lưu ý: be/BaseBackend là LIBRARY project (không có main class).
 #   - Dùng task `jar` thay vì `bootJar`.
 #
 # Jobs:
 #   build  → compile + test + package JAR
 # =============================================================================
 
-name: CI – BaseBackend
+name: CI – be/BaseBackend
 
 on:
   push:
@@ -21,19 +21,19 @@ on:
       - develop
       - "release/**"
     paths:
-      - "BaseBackend/**"
+      - "be/BaseBackend/**"
       - ".github/workflows/ci-base-backend.yml"
   pull_request:
     branches:
       - main
       - develop
     paths:
-      - "BaseBackend/**"
+      - "be/BaseBackend/**"
       - ".github/workflows/ci-base-backend.yml"
 
 defaults:
   run:
-    working-directory: BaseBackend
+    working-directory: be/BaseBackend
 
 env:
   JAVA_VERSION: "21"
@@ -66,14 +66,14 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.gradle/wrapper
-          key: gradle-wrapper-${{ runner.os }}-${{ hashFiles('BaseBackend/gradle/wrapper/gradle-wrapper.properties') }}
+          key: gradle-wrapper-${{ runner.os }}-${{ hashFiles('be/BaseBackend/gradle/wrapper/gradle-wrapper.properties') }}
 
       # 4. Cache Gradle dependencies
       - name: Cache Gradle dependencies
         uses: actions/cache@v4
         with:
           path: ~/.gradle/caches
-          key: gradle-deps-${{ runner.os }}-${{ hashFiles('BaseBackend/**/*.gradle*', 'BaseBackend/**/gradle-wrapper.properties') }}
+          key: gradle-deps-${{ runner.os }}-${{ hashFiles('be/BaseBackend/**/*.gradle*', 'be/BaseBackend/**/gradle-wrapper.properties') }}
           restore-keys: |
             gradle-deps-${{ runner.os }}-
 
@@ -81,8 +81,8 @@ jobs:
       - name: Cache build output
         uses: actions/cache@v4
         with:
-          path: BaseBackend/build
-          key: gradle-build-${{ runner.os }}-${{ hashFiles('BaseBackend/src/**', 'BaseBackend/**/*.gradle*') }}
+          path: be/BaseBackend/build
+          key: gradle-build-${{ runner.os }}-${{ hashFiles('be/BaseBackend/src/**', 'be/BaseBackend/**/*.gradle*') }}
           restore-keys: |
             gradle-build-${{ runner.os }}-
 
@@ -110,11 +110,11 @@ jobs:
         if: always()
         with:
           name: test-report
-          path: BaseBackend/build/reports/tests/test/
+          path: be/BaseBackend/build/reports/tests/test/
           retention-days: 7
 
       # 10. Package JAR (library → dùng `jar`, không dùng `bootJar`)
-      #     bootJar yêu cầu main class — BaseBackend là library nên không có.
+      #     bootJar yêu cầu main class — be/BaseBackend là library nên không có.
       - name: Package JAR
         run: ./gradlew jar --no-daemon -x test
 
@@ -124,5 +124,5 @@ jobs:
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
         with:
           name: base-backend-${{ github.ref_name }}-${{ github.sha }}
-          path: BaseBackend/build/libs/*.jar
+          path: be/BaseBackend/build/libs/*.jar
           retention-days: 14

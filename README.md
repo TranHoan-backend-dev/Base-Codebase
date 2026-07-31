@@ -4,7 +4,7 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
 
 ## 📁 Cấu trúc Dự án
 
-- **`BaseBackend/`**: Dự án Backend cơ sở xây dựng trên Java & Spring Boot (cung cấp core logic, authentication, cấu hình DB, security, v.v.).
+- **`be/BaseBackend/`**: Dự án Backend cơ sở xây dựng trên Java & Spring Boot (cung cấp core logic, authentication, cấu hình DB, security, v.v.).
 - **`fe/nextjs-base/`**: Dự án Frontend cơ sở xây dựng trên React & Next.js (chứa các UI component, layout và utils dùng chung).
 - **`fe/nuxtjs-base/`**: Dự án Frontend cơ sở xây dựng trên Vue & Nuxt.js (chứa các UI component, layout và utils dùng chung).
 
@@ -40,7 +40,7 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
 4. **Khởi chạy Backend (Spring Boot):**
 
    ```bash
-   cd BaseBackend
+   cd be/BaseBackend
    ./gradlew bootRun
    ```
 

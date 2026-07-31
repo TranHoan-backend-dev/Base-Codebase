@@ -24,13 +24,13 @@ class DepAuditAgent:
         print("[+] [Dep Audit Agent] Auditing Nuxt.js dependencies...")
         nuxt_audit = audit_npm_dependencies(self.repo_root / "fe/nuxtjs-base")
 
-        print("[+] [Dep Audit Agent] Auditing Maven BaseBackend dependencies...")
-        be_audit = audit_maven_dependencies(self.repo_root / "BaseBackend")
+        print("[+] [Dep Audit Agent] Auditing Maven be/BaseBackend dependencies...")
+        be_audit = audit_maven_dependencies(self.repo_root / "be/BaseBackend")
 
         results = {
             "fe/nextjs-base": next_audit,
             "fe/nuxtjs-base": nuxt_audit,
-            "BaseBackend": be_audit
+            "be/BaseBackend": be_audit
         }
 
         report_file = generate_dep_audit_report(results, self.repo_root)

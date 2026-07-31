@@ -11,7 +11,7 @@
 
 Repository này chứa các dự án cơ sở. Khi làm việc với dự án nào, hãy luôn kiểm tra file `CLAUDE.md` nằm bên trong thư mục của dự án đó để biết các quy tắc chi tiết:
 
-- `BaseBackend/`: Dự án Backend cơ sở (Java / Spring Boot). Cung cấp core logic, config database chung, authentication, v.v.
+- `be/BaseBackend/`: Dự án Backend cơ sở (Java / Spring Boot). Cung cấp core logic, config database chung, authentication, v.v.
 - `fe/nextjs-base/`: Dự án Frontend cơ sở (React / Next.js). Chứa các layout, UI components, và utils dùng chung.
 - `fe/nuxtjs-base/`: Dự án Frontend cơ sở (Vue / Nuxt.js). Chứa các layout, UI components, và utils dùng chung.
 

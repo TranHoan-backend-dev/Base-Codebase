@@ -35,8 +35,8 @@ def main() -> None:
     parser.add_argument(
         "--path",
         type=str,
-        default="BaseBackend",
-        help="Đường dẫn tới thư mục Java project (Mặc định: BaseBackend)"
+        default="be/BaseBackend",
+        help="Đường dẫn tới thư mục Java project (Mặc định: be/BaseBackend)"
     )
     parser.add_argument(
         "--build-tool",

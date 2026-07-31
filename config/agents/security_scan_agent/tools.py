@@ -66,7 +66,7 @@ def check_cors_and_csp(repo_root: Path) -> Dict[str, Any]:
     """
     res = {"be_cors": [], "fe_csp": []}
     
-    be_dir = repo_root / "BaseBackend"
+    be_dir = repo_root / "be/BaseBackend"
     if be_dir.exists():
         for root, _, files in os.walk(be_dir):
             for file in files:

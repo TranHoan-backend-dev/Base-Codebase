@@ -1,5 +1,5 @@
 packages:
-  - "BaseBackend"
+  - "be/BaseBackend"
   - "fe/nextjs-base"
   - "fe/nuxtjs-base"
 
