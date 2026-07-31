@@ -79,7 +79,8 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 * [DynamicGrid - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/nuxtjs-base/docs/components/dynamic-grid.md)
 * [GridPagination - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/nuxtjs-base/docs/components/grid-pagination.md)
 
-### D. Testing & Automation
+### D. AI Agents, Testing & Automation
 
+* [AI Agents System Overview & Specs Catalog - Danh mục đặc tả & Hướng dẫn hệ thống AI Agents](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/README.md)
 * [Playwright E2E Testing Guide - Cấu hình & Hướng dẫn viết test E2E](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/playwright.md)
-* [AI Agent Testing Guide - Hướng dẫn sử dụng & vận hành Java Unit Test Automation AI Agent](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/testing/ai-agent-testing.md)
+* [AI Agent Testing Guide - Hướng dẫn sử dụng & vận hành Java Unit Test Automation AI Agent](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/testing/ai-agent-testing.md)
