@@ -12,8 +12,8 @@
 Repository này chứa các dự án cơ sở. Khi làm việc với dự án nào, hãy luôn kiểm tra file `CLAUDE.md` nằm bên trong thư mục của dự án đó để biết các quy tắc chi tiết:
 
 - `BaseBackend/`: Dự án Backend cơ sở (Java / Spring Boot). Cung cấp core logic, config database chung, authentication, v.v.
-- `nextjs-base/`: Dự án Frontend cơ sở (React / Next.js). Chứa các layout, UI components, và utils dùng chung.
-- `nuxtjs-base/`: Dự án Frontend cơ sở (Vue / Nuxt.js). Chứa các layout, UI components, và utils dùng chung.
+- `fe/nextjs-base/`: Dự án Frontend cơ sở (React / Next.js). Chứa các layout, UI components, và utils dùng chung.
+- `fe/nuxtjs-base/`: Dự án Frontend cơ sở (Vue / Nuxt.js). Chứa các layout, UI components, và utils dùng chung.
 
 ## 2. Nguyên tắc Code chung (Clean Code & Architecture)
 
@@ -74,7 +74,7 @@ Repository này chứa các dự án cơ sở. Khi làm việc với dự án n�
 7. **Thực thi (Execution):** CHỈ viết code sau khi kế hoạch đã được phê duyệt bằng cách gọi skill /executing-plans. Tuân theo các chuẩn thiết kế chung (ví dụ: HeroUI v3.2.1 Compound patterns).
 8. **Đảm bảo Chất lượng (QA):** Chạy `pnpm lint` và `pnpm tsc` (hoặc các lệnh test/build backend tương đương). Xác minh logic phân quyền GBAC và tính tương thích SSR. Sau đó gọi skill /code-review để review code lần cuối.
 
-**Lưu ý** Nếu là các sub repo FE như nextjs-base và nuxtjs-base, gọi thêm /webapp-testing để kiểm thử web application.
+**Lưu ý** Nếu là các sub repo FE như fe/nextjs-base và fe/nuxtjs-base, gọi thêm /webapp-testing để kiểm thử web application.
 
 # Response Style
 

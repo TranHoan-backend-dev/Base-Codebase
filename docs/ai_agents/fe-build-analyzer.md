@@ -1,11 +1,12 @@
 # 🌐 Hướng dẫn Sử dụng Frontend Build & Error Analyzer Agent
 
 > **Metadata**:  
+>
 > - `@created_at`: 2026-07-31  
 > - `@author`: Base-Codebase AI Team  
 > - `@references`: `config/agents/fe_build_analyzer_agent/`
 
-Agent này tự động chạy lệnh build cho các dự án Frontend (`nextjs-base` và `nuxtjs-base`), thu thập và phân tích các lỗi TypeScript (`tsc`), ESLint và build errors.
+Agent này tự động chạy lệnh build cho các dự án Frontend (`fe/nextjs-base` và `fe/nuxtjs-base`), thu thập và phân tích các lỗi TypeScript (`tsc`), ESLint và build errors.
 
 ---
 
@@ -31,8 +32,8 @@ Base-Codebase/
 Đảm bảo đã cài đặt Node.js và pnpm/npm dependencies cho các sub-projects Frontend:
 
 ```powershell
-cd nextjs-base && pnpm install
-cd ../nuxtjs-base && pnpm install
+cd fe/nextjs-base && pnpm install
+cd ../fe/nuxtjs-base && pnpm install
 ```
 
 ---

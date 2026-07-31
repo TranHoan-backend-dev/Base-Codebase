@@ -38,8 +38,8 @@ class CodeSyncAgent:
         print(f"✅ Generated TypeScript types preview saved to: {report_file}")
         
         if write_to_fe:
-            next_types_dir = self.repo_root / "nextjs-base" / "types"
-            nuxt_types_dir = self.repo_root / "nuxtjs-base" / "types"
+            next_types_dir = self.repo_root / "fe/nextjs-base" / "types"
+            nuxt_types_dir = self.repo_root / "fe/nuxtjs-base" / "types"
             next_types_dir.mkdir(parents=True, exist_ok=True)
             nuxt_types_dir.mkdir(parents=True, exist_ok=True)
 
@@ -47,6 +47,6 @@ class CodeSyncAgent:
                 f.write(combined_ts)
             with open(nuxt_types_dir / "backend-api.d.ts", "w", encoding="utf-8") as f:
                 f.write(combined_ts)
-            print("✅ Synchronized types directly to nextjs-base & nuxtjs-base types directory.")
+            print("✅ Synchronized types directly to fe/nextjs-base & fe/nuxtjs-base types directory.")
 
         return True

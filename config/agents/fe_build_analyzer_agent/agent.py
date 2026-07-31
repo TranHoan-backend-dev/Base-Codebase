@@ -18,8 +18,8 @@ class FEBuildAnalyzerAgent:
 
     def run(self) -> bool:
         fe_dirs = {
-            "nextjs-base": self.repo_root / "nextjs-base",
-            "nuxtjs-base": self.repo_root / "nuxtjs-base"
+            "fe/nextjs-base": self.repo_root / "fe/nextjs-base",
+            "fe/nuxtjs-base": self.repo_root / "fe/nuxtjs-base"
         }
 
         results = {}

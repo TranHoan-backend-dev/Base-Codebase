@@ -18,7 +18,7 @@ importers:
         specifier: ^4.0.0
         version: 4.0.5(@types/node@26.1.1)
 
-  nextjs-base:
+  fe/nextjs-base:
     dependencies:
       '@gravity-ui/icons':
         specifier: ^2.20.0
@@ -145,7 +145,7 @@ importers:
         specifier: 5.6.3
         version: 5.6.3
 
-  nuxtjs-base:
+  fe/nuxtjs-base:
     dependencies:
       '@atoms-studio/nuxt-swiftsearch':
         specifier: 1.3.2
@@ -12857,6 +12857,9 @@ packages:
   vue-component-type-helpers@3.3.7:
     resolution: {integrity: sha512-Skkhw9agYSgsWqv7bxSOGJZa9SaiJbZVGdXuFWnrzKaQYHnw9qbjD630rw6RyMqDbp54nfLCLw5SZA55if7JLg==}
 
+  vue-component-type-helpers@3.3.9:
+    resolution: {integrity: sha512-3c/UfMe0SqyEfcGTyH7mfshHagJ9QTCbppCb0/uGpHZpFug7+If3GeGZN7I0YheKEExemx3xldQPoO7PQSOLQg==}
+
   vue-demi@0.14.10:
     resolution: {integrity: sha512-nMZBOwuzabUO0nLgIcc6rycZEebF6eeUfaiQx9+WSk8e29IbLvPU9feI6tqW4kTo3hvoYAJkMh8n8D0fuISphg==}
     engines: {node: '>=12'}
@@ -13516,7 +13519,7 @@ snapshots:
 
   '@babel/generator@7.17.10':
     dependencies:
-      '@babel/types': 7.17.10
+      '@babel/types': 7.29.7
       '@jridgewell/gen-mapping': 0.1.1
       jsesc: 2.5.2
 
@@ -13635,7 +13638,7 @@ snapshots:
 
   '@babel/parser@7.12.16':
     dependencies:
-      '@babel/types': 7.12.13
+      '@babel/types': 7.29.7
 
   '@babel/parser@7.29.7':
     dependencies:
@@ -13846,8 +13849,8 @@ snapshots:
       '@babel/generator': 7.29.7
       '@babel/helper-function-name': 7.24.7
       '@babel/helper-split-export-declaration': 7.24.7
-      '@babel/parser': 7.12.16
-      '@babel/types': 7.12.13
+      '@babel/parser': 7.29.7
+      '@babel/types': 7.29.7
       debug: 4.4.3(supports-color@8.1.1)
       globals: 11.12.0
       lodash: 4.18.1
@@ -16531,7 +16534,7 @@ snapshots:
   '@oclif/command@1.8.16(@oclif/config@1.18.3)':
     dependencies:
       '@oclif/config': 1.18.3
-      '@oclif/errors': 1.3.5
+      '@oclif/errors': 1.3.6
       '@oclif/help': 1.0.15
       '@oclif/parser': 3.8.17
       debug: 4.4.3(supports-color@8.1.1)
@@ -16552,7 +16555,7 @@ snapshots:
 
   '@oclif/config@1.18.3':
     dependencies:
-      '@oclif/errors': 1.3.5
+      '@oclif/errors': 1.3.6
       '@oclif/parser': 3.8.17
       debug: 4.4.3(supports-color@8.1.1)
       globby: 11.1.0
@@ -17419,7 +17422,7 @@ snapshots:
     dependencies:
       '@swc/helpers': 0.5.23
       react: 19.2.6
-      react-aria: 3.49.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-aria: 3.50.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-dom: 19.2.6(react@19.2.6)
 
   '@react-aria/i18n@3.13.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
@@ -17429,21 +17432,21 @@ snapshots:
       '@internationalized/string': 3.2.9
       '@swc/helpers': 0.5.23
       react: 19.2.6
-      react-aria: 3.49.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-aria: 3.50.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-dom: 19.2.6(react@19.2.6)
 
   '@react-aria/ssr@3.10.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@swc/helpers': 0.5.23
       react: 19.2.6
-      react-aria: 3.49.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-aria: 3.50.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-dom: 19.2.6(react@19.2.6)
 
   '@react-aria/utils@3.34.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)':
     dependencies:
       '@swc/helpers': 0.5.23
       react: 19.2.6
-      react-aria: 3.49.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      react-aria: 3.50.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       react-dom: 19.2.6(react@19.2.6)
       react-stately: 3.48.0(react@19.2.6)
 
@@ -17897,7 +17900,7 @@ snapshots:
       storybook: 9.0.18(@testing-library/dom@10.4.1)(prettier@3.9.5)
       type-fest: 2.19.0
       vue: 3.5.39(typescript@6.0.3)
-      vue-component-type-helpers: 3.3.7
+      vue-component-type-helpers: 3.3.9
 
   '@stylistic/eslint-plugin@5.10.0(eslint@10.7.0(jiti@2.7.0))':
     dependencies:
@@ -18754,8 +18757,8 @@ snapshots:
 
   '@typescript-eslint/project-service@8.34.1(typescript@5.6.3)':
     dependencies:
-      '@typescript-eslint/tsconfig-utils': 8.34.1(typescript@5.6.3)
-      '@typescript-eslint/types': 8.34.1
+      '@typescript-eslint/tsconfig-utils': 8.63.0(typescript@5.6.3)
+      '@typescript-eslint/types': 8.63.0
       debug: 4.4.3(supports-color@8.1.1)
       typescript: 5.6.3
     transitivePeerDependencies:
@@ -22722,7 +22725,7 @@ snapshots:
       fs.realpath: 1.0.0
       inflight: 1.0.6
       inherits: 2.0.4
-      minimatch: 3.0.8
+      minimatch: 3.1.5
       once: 1.4.0
       path-is-absolute: 1.0.1
 
@@ -26589,7 +26592,7 @@ snapshots:
   react-aria-components@1.18.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6):
     dependencies:
       '@internationalized/date': 3.12.2
-      '@react-types/shared': 3.35.0(react@19.2.6)
+      '@react-types/shared': 3.36.0(react@19.2.6)
       '@swc/helpers': 0.5.23
       client-only: 0.0.1
       react: 19.2.6
@@ -26613,7 +26616,7 @@ snapshots:
       '@internationalized/date': 3.12.2
       '@internationalized/number': 3.6.7
       '@internationalized/string': 3.2.9
-      '@react-types/shared': 3.35.0(react@19.2.6)
+      '@react-types/shared': 3.36.0(react@19.2.6)
       '@swc/helpers': 0.5.23
       aria-hidden: 1.2.6
       clsx: 2.1.1
@@ -26650,7 +26653,7 @@ snapshots:
       '@internationalized/date': 3.12.2
       '@internationalized/number': 3.6.7
       '@internationalized/string': 3.2.9
-      '@react-types/shared': 3.35.0(react@19.2.6)
+      '@react-types/shared': 3.36.0(react@19.2.6)
       '@swc/helpers': 0.5.23
       react: 19.2.6
       use-sync-external-store: 1.6.0(react@19.2.6)
@@ -28854,6 +28857,8 @@ snapshots:
   vue-component-type-helpers@2.2.12: {}
 
   vue-component-type-helpers@3.3.7: {}
+
+  vue-component-type-helpers@3.3.9: {}
 
   vue-demi@0.14.10(vue@3.5.39(typescript@6.0.3)):
     dependencies:

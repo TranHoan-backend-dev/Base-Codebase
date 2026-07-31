@@ -43,8 +43,6 @@ custom/*
 # Temporary & Build files
 test/
 plan/
-be/
-fe/
 tmp/
 temp/
 .cache/

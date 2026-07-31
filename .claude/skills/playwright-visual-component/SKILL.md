@@ -5,7 +5,7 @@ description: Quy chuẩn lập Test Plan và viết Visual Regression & Componen
 
 # Playwright Visual & Component Testing Skill
 
-Skill này quy định quy trình và tiêu chuẩn bắt buộc khi thực hiện kiểm thử giao diện bằng hình ảnh (Visual Regression Testing) và Component Testing cho các thư viện UI (HeroUI v3.2.1 trong `nextjs-base` và NuxtUI trong `nuxtjs-base`).
+Skill này quy định quy trình và tiêu chuẩn bắt buộc khi thực hiện kiểm thử giao diện bằng hình ảnh (Visual Regression Testing) và Component Testing cho các thư viện UI (HeroUI v3.2.1 trong `fe/nextjs-base` và NuxtUI trong `fe/nuxtjs-base`).
 
 ---
 

@@ -76,7 +76,7 @@ def generate_ts_interface(class_name: str, fields: List[Tuple[str, str]]) -> str
 
 def sync_dtos_to_frontend(repo_root: Path) -> Dict[str, str]:
     """
-    Quét DTOs từ BaseBackend và sinh file TS types vào FE (nextjs-base và nuxtjs-base).
+    Quét DTOs từ BaseBackend và sinh file TS types vào FE (fe/nextjs-base và fe/nuxtjs-base).
     """
     generated_types = {}
     be_dir = repo_root / "BaseBackend"

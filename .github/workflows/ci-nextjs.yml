@@ -1,5 +1,5 @@
 # =============================================================================
-# CI Workflow – nextjs-base (Next.js 16 / React 19 / TypeScript / pnpm)
+# CI Workflow – fe/nextjs-base (Next.js 16 / React 19 / TypeScript / pnpm)
 #
 # Trigger:
 #   - Push lên branch: main, develop, release/**
@@ -21,19 +21,19 @@ on:
       - develop
       - "release/**"
     paths:
-      - "nextjs-base/**"
+      - "fe/nextjs-base/**"
       - ".github/workflows/ci-nextjs.yml"
   pull_request:
     branches:
       - main
       - develop
     paths:
-      - "nextjs-base/**"
+      - "fe/nextjs-base/**"
       - ".github/workflows/ci-nextjs.yml"
 
 defaults:
   run:
-    working-directory: nextjs-base
+    working-directory: fe/nextjs-base
 
 env:
   NODE_VERSION: "22" # pnpm@11.6.0 requires Node >= 22.13
@@ -65,7 +65,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.local/share/pnpm/store
-          key: pnpm-store-nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}
+          key: pnpm-store-nextjs-${{ runner.os }}-${{ hashFiles('fe/nextjs-base/pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-store-nextjs-${{ runner.os }}-
 
@@ -102,7 +102,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.local/share/pnpm/store
-          key: pnpm-store-nextjs-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}
+          key: pnpm-store-nextjs-${{ runner.os }}-${{ hashFiles('fe/nextjs-base/pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-store-nextjs-${{ runner.os }}-
 
@@ -110,10 +110,10 @@ jobs:
       - name: Cache Next.js build
         uses: actions/cache@v4
         with:
-          path: nextjs-base/.next/cache
-          key: nextjs-build-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nextjs-base/src/**/*.ts', 'nextjs-base/src/**/*.tsx', 'nextjs-base/app/**/*.ts', 'nextjs-base/app/**/*.tsx') }}
+          path: fe/nextjs-base/.next/cache
+          key: nextjs-build-${{ runner.os }}-${{ hashFiles('fe/nextjs-base/pnpm-lock.yaml') }}-${{ hashFiles('fe/nextjs-base/src/**/*.ts', 'fe/nextjs-base/src/**/*.tsx', 'fe/nextjs-base/app/**/*.ts', 'fe/nextjs-base/app/**/*.tsx') }}
           restore-keys: |
-            nextjs-build-${{ runner.os }}-${{ hashFiles('nextjs-base/pnpm-lock.yaml') }}-
+            nextjs-build-${{ runner.os }}-${{ hashFiles('fe/nextjs-base/pnpm-lock.yaml') }}-
             nextjs-build-${{ runner.os }}-
 
       - name: Install dependencies
@@ -131,6 +131,6 @@ jobs:
         with:
           name: nextjs-build-${{ github.ref_name }}-${{ github.sha }}
           path: |
-            nextjs-base/.next/
-            !nextjs-base/.next/cache
+            fe/nextjs-base/.next/
+            !fe/nextjs-base/.next/cache
           retention-days: 7

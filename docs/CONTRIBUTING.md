@@ -15,7 +15,7 @@ Tài liệu này quy định chi tiết quy trình, tiêu chuẩn kỹ thuật v
 
 ---
 
-## 2. Quy trình Đóng góp Frontend (`nextjs-base` / `nuxtjs-base`)
+## 2. Quy trình Đóng góp Frontend (`fe/nextjs-base` / `fe/nuxtjs-base`)
 
 ### Bước 1: Thao tác trên thư mục dùng chung
 
@@ -26,7 +26,7 @@ Thực hiện thêm/sửa component tại thư mục dùng chung (`components/`,
 Đảm bảo commit chỉ chứa các thay đổi thuộc thư mục dùng chung, không lọt code dự án riêng:
 
 ```bash
-git add nextjs-base/components/swe-new-component
+git add fe/nextjs-base/components/swe-new-component
 git commit -m "feat(ui): thêm component SweNewComponent"
 ```
 

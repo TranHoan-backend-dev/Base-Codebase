@@ -5,8 +5,8 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
 ## 📁 Cấu trúc Dự án
 
 - **`BaseBackend/`**: Dự án Backend cơ sở xây dựng trên Java & Spring Boot (cung cấp core logic, authentication, cấu hình DB, security, v.v.).
-- **`nextjs-base/`**: Dự án Frontend cơ sở xây dựng trên React & Next.js (chứa các UI component, layout và utils dùng chung).
-- **`nuxtjs-base/`**: Dự án Frontend cơ sở xây dựng trên Vue & Nuxt.js (chứa các UI component, layout và utils dùng chung).
+- **`fe/nextjs-base/`**: Dự án Frontend cơ sở xây dựng trên React & Next.js (chứa các UI component, layout và utils dùng chung).
+- **`fe/nuxtjs-base/`**: Dự án Frontend cơ sở xây dựng trên Vue & Nuxt.js (chứa các UI component, layout và utils dùng chung).
 
 ## 🚀 Khởi chạy Nhanh
 
@@ -26,14 +26,14 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
 2. **Khởi chạy Next.js Base:**
 
    ```bash
-   cd nextjs-base
+   cd fe/nextjs-base
    pnpm dev
    ```
 
 3. **Khởi chạy Nuxt.js Base:**
 
    ```bash
-   cd nuxtjs-base
+   cd fe/nuxtjs-base
    pnpm dev
    ```
 

@@ -11,11 +11,11 @@
     "plop": "^4.0.0"
   },
   "lint-staged": {
-    "nextjs-base/**/*.{ts,tsx}": [
-      "pnpm --filter nextjs-base lint"
+    "fe/nextjs-base/**/*.{ts,tsx}": [
+      "pnpm --filter fe/nextjs-base lint"
     ],
-    "nuxtjs-base/**/*.{ts,vue}": [
-      "pnpm --filter nuxtjs-base lint"
+    "fe/nuxtjs-base/**/*.{ts,vue}": [
+      "pnpm --filter fe/nuxtjs-base lint"
     ]
   },
   "onlyBuiltDependencies": [

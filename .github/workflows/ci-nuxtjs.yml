@@ -1,5 +1,5 @@
 # =============================================================================
-# CI Workflow – nuxtjs-base (Nuxt 4 / Vue 3 / TypeScript / pnpm)
+# CI Workflow – fe/nuxtjs-base (Nuxt 4 / Vue 3 / TypeScript / pnpm)
 #
 # Trigger:
 #   - Push lên branch: main, develop, release/**
@@ -22,19 +22,19 @@ on:
       - develop
       - "release/**"
     paths:
-      - "nuxtjs-base/**"
+      - "fe/nuxtjs-base/**"
       - ".github/workflows/ci-nuxtjs.yml"
   pull_request:
     branches:
       - main
       - develop
     paths:
-      - "nuxtjs-base/**"
+      - "fe/nuxtjs-base/**"
       - ".github/workflows/ci-nuxtjs.yml"
 
 defaults:
   run:
-    working-directory: nuxtjs-base
+    working-directory: fe/nuxtjs-base
 
 env:
   NODE_VERSION: "22" # pnpm@11.6.0 requires Node >= 22.13
@@ -68,7 +68,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.local/share/pnpm/store
-          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}
+          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-store-nuxtjs-${{ runner.os }}-
 
@@ -103,7 +103,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.local/share/pnpm/store
-          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}
+          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-store-nuxtjs-${{ runner.os }}-
 
@@ -111,10 +111,10 @@ jobs:
       - name: Cache Nuxt generated types
         uses: actions/cache@v4
         with:
-          path: nuxtjs-base/.nuxt
-          key: nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nuxtjs-base/nuxt.config.ts') }}
+          path: fe/nuxtjs-base/.nuxt
+          key: nuxt-types-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('fe/nuxtjs-base/nuxt.config.ts') }}
           restore-keys: |
-            nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-
+            nuxt-types-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}-
             nuxt-types-${{ runner.os }}-
 
       - name: Install dependencies
@@ -152,7 +152,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.local/share/pnpm/store
-          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}
+          key: pnpm-store-nuxtjs-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}
           restore-keys: |
             pnpm-store-nuxtjs-${{ runner.os }}-
 
@@ -160,20 +160,20 @@ jobs:
       - name: Cache Nuxt generated types
         uses: actions/cache@v4
         with:
-          path: nuxtjs-base/.nuxt
-          key: nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nuxtjs-base/nuxt.config.ts') }}
+          path: fe/nuxtjs-base/.nuxt
+          key: nuxt-types-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('fe/nuxtjs-base/nuxt.config.ts') }}
           restore-keys: |
-            nuxt-types-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-
+            nuxt-types-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}-
             nuxt-types-${{ runner.os }}-
 
       # Cache .output/ từ build trước (incremental)
       - name: Cache Nuxt build output
         uses: actions/cache@v4
         with:
-          path: nuxtjs-base/.output
-          key: nuxt-output-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('nuxtjs-base/app/**/*.vue', 'nuxtjs-base/app/**/*.ts', 'nuxtjs-base/nuxt.config.ts') }}
+          path: fe/nuxtjs-base/.output
+          key: nuxt-output-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}-${{ hashFiles('fe/nuxtjs-base/app/**/*.vue', 'fe/nuxtjs-base/app/**/*.ts', 'fe/nuxtjs-base/nuxt.config.ts') }}
           restore-keys: |
-            nuxt-output-${{ runner.os }}-${{ hashFiles('nuxtjs-base/pnpm-lock.yaml') }}-
+            nuxt-output-${{ runner.os }}-${{ hashFiles('fe/nuxtjs-base/pnpm-lock.yaml') }}-
             nuxt-output-${{ runner.os }}-
 
       - name: Install dependencies
@@ -190,5 +190,5 @@ jobs:
         if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
         with:
           name: nuxtjs-build-${{ github.ref_name }}-${{ github.sha }}
-          path: nuxtjs-base/.output/
+          path: fe/nuxtjs-base/.output/
           retention-days: 7

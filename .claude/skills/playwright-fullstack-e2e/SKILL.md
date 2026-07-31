@@ -5,7 +5,7 @@ description: Quy chuẩn lập Test Plan và viết E2E test cho Full-stack appl
 
 # Playwright Full-Stack E2E Testing Skill
 
-Skill này quy định quy trình và chuẩn mực bắt buộc khi lên kế hoạch và triển khai End-to-End (E2E) testing bằng Playwright cho dự án Base-Codebase (bao gồm `nextjs-base` và `nuxtjs-base`).
+Skill này quy định quy trình và chuẩn mực bắt buộc khi lên kế hoạch và triển khai End-to-End (E2E) testing bằng Playwright cho dự án Base-Codebase (bao gồm `fe/nextjs-base` và `fe/nuxtjs-base`).
 
 ---
 

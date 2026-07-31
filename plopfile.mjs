@@ -12,7 +12,7 @@ export default function (plop) {
     actions: [
       {
         type: 'add',
-        path: 'nextjs-base/services/{{camelCase name}}.service.ts',
+        path: 'fe/nextjs-base/services/{{camelCase name}}.service.ts',
         templateFile: '.plop/templates/next-service.hbs'
       }
     ]

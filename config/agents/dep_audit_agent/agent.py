@@ -19,17 +19,17 @@ class DepAuditAgent:
 
     def run(self) -> bool:
         print("[+] [Dep Audit Agent] Auditing Next.js dependencies...")
-        next_audit = audit_npm_dependencies(self.repo_root / "nextjs-base")
+        next_audit = audit_npm_dependencies(self.repo_root / "fe/nextjs-base")
 
         print("[+] [Dep Audit Agent] Auditing Nuxt.js dependencies...")
-        nuxt_audit = audit_npm_dependencies(self.repo_root / "nuxtjs-base")
+        nuxt_audit = audit_npm_dependencies(self.repo_root / "fe/nuxtjs-base")
 
         print("[+] [Dep Audit Agent] Auditing Maven BaseBackend dependencies...")
         be_audit = audit_maven_dependencies(self.repo_root / "BaseBackend")
 
         results = {
-            "nextjs-base": next_audit,
-            "nuxtjs-base": nuxt_audit,
+            "fe/nextjs-base": next_audit,
+            "fe/nuxtjs-base": nuxt_audit,
             "BaseBackend": be_audit
         }
 

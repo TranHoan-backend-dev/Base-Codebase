@@ -1,7 +1,7 @@
 packages:
   - "BaseBackend"
-  - "nextjs-base"
-  - "nuxtjs-base"
+  - "fe/nextjs-base"
+  - "fe/nuxtjs-base"
 
 onlyBuiltDependencies:
   - "@apollo/protobufjs"

@@ -55,13 +55,13 @@ def scan_backend_api_endpoints(repo_root: Path) -> List[Dict[str, Any]]:
 
 def scan_frontend_api_calls(repo_root: Path) -> List[Dict[str, Any]]:
     """
-    Quét các API call trong nextjs-base và nuxtjs-base.
+    Quét các API call trong fe/nextjs-base và fe/nuxtjs-base.
     
     @param repo_root: Thư mục gốc repo.
     @returns List[Dict]: Danh sách API calls ở FE.
     """
     api_calls = []
-    fe_dirs = [repo_root / "nextjs-base", repo_root / "nuxtjs-base"]
+    fe_dirs = [repo_root / "fe/nextjs-base", repo_root / "fe/nuxtjs-base"]
 
     for fe_dir in fe_dirs:
         if not fe_dir.exists():

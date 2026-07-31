@@ -6,7 +6,7 @@
 > - `@author`: Base-Codebase AI Team  
 > - `@references`: `config/agents/api_contract_agent/`
 
-Agent này thực hiện tự động kiểm tra và đối soát tính đồng bộ về REST API Contract giữa Backend (`BaseBackend`) và Frontend (`nextjs-base`, `nuxtjs-base`).
+Agent này thực hiện tự động kiểm tra và đối soát tính đồng bộ về REST API Contract giữa Backend (`BaseBackend`) và Frontend (`fe/nextjs-base`, `fe/nuxtjs-base`).
 
 ---
 
@@ -56,7 +56,7 @@ antigravity_env\Scripts\python config/agents/api_contract_agent/run.py
 ## 🔄 4. Quy trình Hoạt động (Pipeline)
 
 1. **Phase 1: Scan Backend**: Quét tất cả các RestControllers Java trong `BaseBackend` (`@GetMapping`, `@PostMapping`, `@RequestMapping`).
-2. **Phase 2: Scan Frontend**: Quét các lệnh gọi API (`axios`, `fetch`, `$fetch`, `useFetch`) trong `nextjs-base` và `nuxtjs-base`.
+2. **Phase 2: Scan Frontend**: Quét các lệnh gọi API (`axios`, `fetch`, `$fetch`, `useFetch`) trong `fe/nextjs-base` và `fe/nuxtjs-base`.
 3. **Phase 3: Compare Contract**: So sánh URL endpoint và HTTP method giữa BE và FE.
 4. **Phase 4: Generate Report**: Xuất báo cáo danh sách API calls ở FE chưa tìm thấy ở BE tại `./report/api_contract_report.md`.
 

@@ -19,15 +19,15 @@ Hệ thống sử dụng cấu hình kế thừa (Inherited Configuration) để
    - Số lần thử lại (retries) và workers tùy biến theo môi trường CI.
 
 2. **Cấu hình cụ thể từng dự án (Sub-repo Config):**
-   - **Next.js:** [nextjs-base/playwright.config.ts](file:///d:/Du_an_ca_nhan/Base-Codebase/nextjs-base/playwright.config.ts)
-   - **Nuxt.js:** [nuxtjs-base/playwright.config.ts](file:///d:/Du_an_ca_nhan/Base-Codebase/nuxtjs-base/playwright.config.ts)
+   - **Next.js:** [fe/nextjs-base/playwright.config.ts](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nextjs-base/playwright.config.ts)
+   - **Nuxt.js:** [fe/nuxtjs-base/playwright.config.ts](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nuxtjs-base/playwright.config.ts)
    - Cả 2 đều import `baseConfig` từ root và bổ sung/override `baseURL`, `testDir` (`./e2e`), và cấu hình tự động khởi chạy môi trường dev qua `webServer`.
 
 ---
 
 ## 2. Cách viết test mới (Writing Tests)
 
-Tất cả các file test E2E phải được đặt trong thư mục `e2e` của mỗi sub-repo (ví dụ: `nextjs-base/e2e/example.spec.ts`).
+Tất cả các file test E2E phải được đặt trong thư mục `e2e` của mỗi sub-repo (ví dụ: `fe/nextjs-base/e2e/example.spec.ts`).
 
 ### Mẫu viết test cơ bản
 
@@ -60,12 +60,12 @@ Bạn có thể chạy kiểm thử từ thư mục root của dự án hoặc b
 - Chạy e2e tests cho Nuxt.js:
 
   ```bash
-  pnpm --filter nuxtjs-base test:e2e
+  pnpm --filter fe/nuxtjs-base test:e2e
   ```
 
 ### Chạy từ thư mục sub-repo
 
-Di chuyển vào thư mục sub-repo tương ứng (`nextjs-base` hoặc `nuxtjs-base`) và chạy:
+Di chuyển vào thư mục sub-repo tương ứng (`fe/nextjs-base` hoặc `fe/nuxtjs-base`) và chạy:
 
 ```bash
 # Chạy tất cả test
