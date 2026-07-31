@@ -1,5 +1,7 @@
 package com.common.config.security;
 
+import com.common.config.security.jwt.JwtAuthenticationFilter;
+import com.common.config.security.jwt.JwtProperties;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -13,9 +15,12 @@ import org.springframework.security.config.annotation.method.configuration.Enabl
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -61,19 +66,28 @@ abstract class SecurityConfiguration {
      * @throws Exception nếu xảy ra lỗi cấu hình
      */
     @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        // Khởi tạo danh sách các URL công khai tĩnh (Swagger, Docs, Healthcheck)
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityFilterChain filterChain(
+            HttpSecurity http,
+            JwtAuthenticationFilter jwtAuthenticationFilter,
+            JwtProperties jwtProperties) throws Exception {
+        // Khởi tạo danh sách các URL công khai tĩnh (Swagger, Docs, Healthcheck, Auth)
         var allPublicUrls = new ArrayList<>(List.of(
                 "/v3/api-docs/**",
                 "/swagger-ui/**",
-                "/health"
+                "/health",
+                "/api/v1/auth/**"
         ));
         // Đọc thêm các URL công khai từ file cấu hình động (application.yaml)
         if (securityProperties.getPublicUrls() != null) {
             allPublicUrls.addAll(securityProperties.getPublicUrls());
         }
 
-        return http
+        http
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
@@ -81,27 +95,33 @@ abstract class SecurityConfiguration {
                         .anyRequest().authenticated())
                 .exceptionHandling(ex -> ex
                         .authenticationEntryPoint((request, response, authException) -> {
-                            response.setContentType("application/json");
+                            response.setContentType("application/json;charset=UTF-8");
                             response.setStatus(HttpStatus.UNAUTHORIZED.value());
                             response.getWriter().write("{\"error\": \"Authentication required\"}");
                         })
                         .accessDeniedHandler((request, response, exception) -> {
-                            response.setContentType("application/json");
+                            response.setContentType("application/json;charset=UTF-8");
                             response.setStatus(HttpStatus.FORBIDDEN.value());
                             response.getWriter().write("{\"error\": \"Access denied\"}");
-                        }))
-                .oauth2ResourceServer(oauth2 -> oauth2
-                        .jwt(jwt -> jwt
-                                .decoder(decoder)
-                                .jwtAuthenticationConverter(converter))
-                )
-                .build();
+                        }));
+
+        if ("jwt".equalsIgnoreCase(jwtProperties.getProvider())) {
+            http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+        } else if (decoder != null && converter != null) {
+            http.oauth2ResourceServer(oauth2 -> oauth2
+                    .jwt(jwt -> jwt
+                            .decoder(decoder)
+                            .jwtAuthenticationConverter(converter))
+            );
+        }
+
+        return http.build();
     }
 
     UrlBasedCorsConfigurationSource corsConfigurationSource() {
         var corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(corsProperties.getAllowedOrigins());
-        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE"));
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
         corsConfiguration.setAllowedHeaders(List.of("*"));
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setMaxAge(3600L);

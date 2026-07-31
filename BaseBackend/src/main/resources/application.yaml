@@ -103,6 +103,22 @@ springdoc:
     enabled: true
     path: ${SPRINGDOC_SWAGGER_UI_PATH:/swagger-ui/index.html}
 
+app:
+  api:
+    auth-prefix: ${SERVER_SERVLET_CONTEXT_PATH:/api/v1}/auth
+    tenants-prefix: ${SERVER_SERVLET_CONTEXT_PATH:/api/v1}/tenants
+    users-prefix: ${SERVER_SERVLET_CONTEXT_PATH:/api/v1}/users
+    profiles-prefix: ${SERVER_SERVLET_CONTEXT_PATH:/api/v1}/profiles
+    dynamic-grid-prefix: ${SERVER_SERVLET_CONTEXT_PATH:/api/v1}/dynamic-grid
+  security:
+    provider: ${APP_SECURITY_PROVIDER:jwt}
+    jwt:
+      enabled: true
+      # secret-key: ${APP_SECURITY_JWT_SECRET_KEY:dGhpc0lzQVNlY3JldEtleUZvckJhc2VDb2RlYmFzZUpXVEN1c3RvbUF1dGhlbnRpY2F0aW9uU2VjdXJpdHlLZXk=}
+      # expiration-ms: ${APP_SECURITY_JWT_EXPIRATION_MS:86400000}
+      # refresh-expiration-ms: ${APP_SECURITY_JWT_REFRESH_EXPIRATION_MS:604800000}
+      # issuer: Base-Codebase
+
 resilience4j:
   circuitbreaker:
     configs:

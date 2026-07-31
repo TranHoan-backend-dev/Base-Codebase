@@ -17,7 +17,7 @@ import lombok.RequiredArgsConstructor;
  * @author txhoan
  */
 @RestController
-@RequestMapping("/api/v1/dynamic-grid")
+@RequestMapping("${app.api.dynamic-grid-prefix:${server.servlet.context-path:/api/v1}/dynamic-grid}")
 @RequiredArgsConstructor
 public class DynamicGridController {
 
