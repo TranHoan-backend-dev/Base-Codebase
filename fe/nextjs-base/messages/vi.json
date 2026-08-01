@@ -65,5 +65,11 @@
     "selected": "Đã chọn {count}",
     "deselect": "Bỏ chọn",
     "delete": "Xóa"
+  },
+  "validation": {
+    "required": "{fieldName} không được để trống",
+    "maxLength": "{fieldName} không được vượt quá {max} ký tự",
+    "phone": "Số điện thoại phải bắt đầu bằng 0 và gồm đúng 10 chữ số",
+    "digitsOnly": "{fieldName} chỉ được chứa ký tự số"
   }
 }

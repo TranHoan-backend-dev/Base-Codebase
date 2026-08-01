@@ -65,5 +65,11 @@
     "selected": "{count} selected",
     "deselect": "Deselect",
     "delete": "Delete"
+  },
+  "validation": {
+    "required": "{fieldName} cannot be empty",
+    "maxLength": "{fieldName} must not exceed {max} characters",
+    "phone": "Phone number must start with 0 and contain exactly 10 digits",
+    "digitsOnly": "{fieldName} must contain digits only"
   }
 }
