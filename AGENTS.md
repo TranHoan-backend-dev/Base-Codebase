@@ -28,7 +28,7 @@ Repository này chứa các dự án cơ sở. Khi làm việc với dự án n�
 - **Tài liệu & Bình luận (Documentation & Comments):**
   - Tất cả các component, class/method, và các dòng code phức tạp **PHẢI** có comment, Javadocs, hoặc JSDoc/TSDoc đầy đủ.
   - Phải mô tả chi tiết nhiệm vụ của phần code đó.
-  - Phải bao gồm các thông tin metadata: `@created_at`, `@author`, và `@references` (nếu có tham khảo từ nguồn khác).
+  - Phải bao gồm các thông tin metadata: `@created_at`, `@author` (là người đang sử dụng công cụ AI, không phải công cụ AI như antigravity, cursor,...).
   - Đối với **Backend**, khi tạo bất cứ tính năng mới nào, bắt buộc phải có tài liệu đặc tả (specification) và lưu vào thư mục `app/main/resources/docs/.specify`.
 
 ## 3. Quy chuẩn Git & Commits
@@ -75,6 +75,13 @@ Repository này chứa các dự án cơ sở. Khi làm việc với dự án n�
 8. **Đảm bảo Chất lượng (QA):** Chạy `pnpm lint` và `pnpm tsc` (hoặc các lệnh test/build backend tương đương). Xác minh logic phân quyền GBAC và tính tương thích SSR. Sau đó gọi skill /code-review để review code lần cuối.
 
 **Lưu ý** Nếu là các sub repo FE như fe/nextjs-base và fe/nuxtjs-base, gọi thêm /webapp-testing để kiểm thử web application.
+
+## 7. Các thành phần cần tạo khi triển khai component mới
+
+1. Component chính chứa giao diện, prop, event,... mà nghiệp vụ yêu cầu.
+2. Các component con module hóa được đặt tại thư mục cùng cấp mới component chính, là 1 phần của component cha nhưng được tách ra để đảm bảo tách biệt trách nhiệm và khả năng bảo trì tốt.
+3. Tài liệu đặc tả component.
+4. Kịch bản test với playwright. Tạo bộ test suite chứa các file spec.ts tương ứng với 1 test case.
 
 # Response Style
 
