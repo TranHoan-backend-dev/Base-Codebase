@@ -40,6 +40,6 @@ antigravity_env\Scripts\python config/agents/agent_runner.py --agent dep_audit_a
 ## 🔄 3. Quy trình Hoạt động (Pipeline)
 
 1. **Phase 1: NPM Audit**: Chạy `npm audit --json` trên `fe/nextjs-base` và `fe/nuxtjs-base`.
-2. **Phase 2: Maven Dependency Analysis**: Chạy `mvn dependency:analyze` trên `be/BaseBackend`.
+2. **Phase 2: Maven Dependency Analysis**: Chạy `mvn dependency:analyze` trên `be/SpringBoot`.
 3. **Phase 3: CVE Categorization**: Phân loại mức độ nghiêm trọng (Critical, High, Moderate, Low).
 4. **Phase 4: Export Report**: Xuất báo cáo tại `./report/dep_audit_report.md`.

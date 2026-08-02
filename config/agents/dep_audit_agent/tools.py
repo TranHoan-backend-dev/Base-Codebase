@@ -32,7 +32,7 @@ def audit_npm_dependencies(dir_path: Path) -> Dict[str, Any]:
 
 def audit_maven_dependencies(be_dir: Path) -> Dict[str, Any]:
     """
-    Chạy mvn dependency:analyze cho thư mục Java be/BaseBackend.
+    Chạy mvn dependency:analyze cho thư mục Java be/SpringBoot.
     """
     if not be_dir.exists() or not (be_dir / "pom.xml").exists():
         return {"raw": "pom.xml not found"}

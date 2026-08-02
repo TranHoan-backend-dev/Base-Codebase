@@ -48,7 +48,7 @@ class JavaTestAgent:
         """
         Khởi tạo Agent với thông tin dự án.
         
-        @param project_path: Thư mục dự án Java (ví dụ: be/BaseBackend).
+        @param project_path: Thư mục dự án Java (ví dụ: be/SpringBoot).
         @param build_tool: 'maven' hoặc 'gradle'.
         @param only_changed: Chỉ chạy test trên các file có thay đổi theo Git.
         @param test_class: Tên class test cụ thể (nếu chạy riêng 1 file).

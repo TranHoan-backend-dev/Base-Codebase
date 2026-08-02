@@ -10,12 +10,12 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 
 * **Kiến trúc Workspace**: Áp dụng mô hình **pnpm workspace** để chia sẻ thành phần UI (`components/`, `utils/`) giữa Base Repo và ứng dụng con.
 * **Cơ chế Dev song song (Hot Reload)**: Nhờ liên kết Symlink của `pnpm workspace`, các chỉnh sửa tại component dùng chung sẽ lập tức phản hồi (HMR) trên dự án con.
-* **Quy trình đóng góp (Contribution Workflow)**: Chi tiết quy định và các bước đóng góp mã nguồn (Pull Request) cho Base Repo xem tại tài liệu [docs/CONTRIBUTING.md](file:////Base-Codebase/docs/CONTRIBUTING.md).
+* **Quy trình đóng góp (Contribution Workflow)**: Chi tiết quy định và các bước đóng góp mã nguồn (Pull Request) cho Base Repo xem tại tài liệu [docs/CONTRIBUTING.md](file://docs/CONTRIBUTING.md).
 
-### B. Backend Sub-Repo (`be/BaseBackend`)
+### B. Backend Sub-Repo (`be/SpringBoot`)
 
-* **Kiến trúc Maven / Gradle Artifact**: Dự án `be/BaseBackend` (Java / Spring Boot) được đóng gói thành các thư viện cơ sở (`base-backend-core.jar`).
-* **Kế thừa Dependency**: Các dự án con Backend khai báo phụ thuộc vào `be/BaseBackend` thông qua Maven Local hoặc Private Maven Repository:
+* **Kiến trúc Maven / Gradle Artifact**: Dự án `be/SpringBoot` (Java / Spring Boot) được đóng gói thành các thư viện cơ sở (`base-backend-core.jar`).
+* **Kế thừa Dependency**: Các dự án con Backend khai báo phụ thuộc vào `be/SpringBoot` thông qua Maven Local hoặc Private Maven Repository:
 
   ```kotlin
   // build.gradle.kts của dự án con
@@ -54,7 +54,7 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 
 ### B. Khởi tạo Dự án Backend Con
 
-1. Tạo dự án Spring Boot mới hoặc kế thừa từ `be/BaseBackend`.
+1. Tạo dự án Spring Boot mới hoặc kế thừa từ `be/SpringBoot`.
 2. Khai báo dependency `base-backend-core` trong `build.gradle.kts` hoặc `pom.xml`.
 3. Tạo file `application.yaml` định nghĩa các thông số cấu hình riêng (Database URL, JWT Secret, v.v.).
 
@@ -62,25 +62,25 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 
 ## 3. Danh mục Tài liệu Đặc tả Component & Backend Architecture
 
-### A. Backend Architecture & Specs (`be/BaseBackend`)
+### A. Backend Architecture & Specs (`be/SpringBoot`)
 
-* [be/BaseBackend - Tổng quan Kiến trúc & Hướng dẫn Core](file:////Base-Codebase/be/BaseBackend/src/main/resources/docs/README.md)
-* *Lưu ý: Mọi tính năng Backend mới bắt buộc phải bổ sung tài liệu đặc tả tại `be/BaseBackend/src/main/resources/docs/.specify`.*
+* [be/SpringBoot - Tổng quan Kiến trúc & Hướng dẫn Core](file://be/SpringBoot/src/main/resources/docs/README.md)
+* *Lưu ý: Mọi tính năng Backend mới bắt buộc phải bổ sung tài liệu đặc tả tại `be/SpringBoot/src/main/resources/docs/.specify`.*
 
 ### B. Next.js Base Components (`fe/nextjs-base`)
 
-* [SweButton - Đặc tả Component](file:////Base-Codebase/fe/nextjs-base/docs/components/swe-button.md)
+* [SweButton - Đặc tả Component](file://fe/nextjs-base/docs/components/swe-button.md)
 
 ### C. Nuxt.js Base Components (`fe/nuxtjs-base`)
 
-* [SweButton - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/swe-button.md)
-* [SweFormLayout - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/swe-form-layout.md)
-* [BasePopup - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/base-popup.md)
-* [DynamicGrid - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/dynamic-grid.md)
-* [GridPagination - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/grid-pagination.md)
+* [SweButton - Đặc tả Component](file://fe/nuxtjs-base/docs/components/swe-button.md)
+* [SweFormLayout - Đặc tả Component](file://fe/nuxtjs-base/docs/components/swe-form-layout.md)
+* [BasePopup - Đặc tả Component](file://fe/nuxtjs-base/docs/components/base-popup.md)
+* [DynamicGrid - Đặc tả Component](file://fe/nuxtjs-base/docs/components/dynamic-grid.md)
+* [GridPagination - Đặc tả Component](file://fe/nuxtjs-base/docs/components/grid-pagination.md)
 
 ### D. AI Agents, Testing & Automation
 
-* [AI Agents System Overview & Specs Catalog - Danh mục đặc tả & Hướng dẫn hệ thống AI Agents](file:////Base-Codebase/docs/ai_agents/README.md)
-* [Playwright E2E Testing Guide - Cấu hình & Hướng dẫn viết test E2E](file:////Base-Codebase/docs/playwright.md)
-* [AI Agent Testing Guide - Hướng dẫn sử dụng & vận hành Java Unit Test Automation AI Agent](file:////Base-Codebase/docs/ai_agents/testing/ai-agent-testing.md)
+* [AI Agents System Overview & Specs Catalog - Danh mục đặc tả & Hướng dẫn hệ thống AI Agents](file://docs/ai_agents/README.md)
+* [Playwright E2E Testing Guide - Cấu hình & Hướng dẫn viết test E2E](file://docs/playwright.md)
+* [AI Agent Testing Guide - Hướng dẫn sử dụng & vận hành Java Unit Test Automation AI Agent](file://docs/ai_agents/testing/ai-agent-testing.md)

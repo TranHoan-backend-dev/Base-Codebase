@@ -33,7 +33,7 @@ class PipelineState:
         """
         Khởi tạo PipelineState với đường dẫn dự án và công cụ build.
         
-        @param project_path: Thư mục chứa project Java (ví dụ: be/BaseBackend).
+        @param project_path: Thư mục chứa project Java (ví dụ: be/SpringBoot).
         @param build_tool: 'maven' hoặc 'gradle'.
         """
         self.project_path = project_path

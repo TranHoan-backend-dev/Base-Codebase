@@ -35,8 +35,8 @@ def main() -> None:
     parser.add_argument(
         "--path",
         type=str,
-        default="be/BaseBackend",
-        help="Đường dẫn tới thư mục Java project (Mặc định: be/BaseBackend)"
+        default="be/SpringBoot",
+        help="Đường dẫn tới thư mục Java project (Mặc định: be/SpringBoot)"
     )
     parser.add_argument(
         "--build-tool",

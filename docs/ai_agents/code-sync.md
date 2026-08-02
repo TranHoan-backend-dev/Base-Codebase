@@ -6,7 +6,7 @@
 > - `@author`: Base-Codebase AI Team  
 > - `@references`: `config/agents/code_sync_agent/`
 
-Agent này đọc các Java DTO/Entity từ Backend (`be/BaseBackend`) và tự động sinh ra TypeScript interfaces/types tương ứng cho `fe/nextjs-base` và `fe/nuxtjs-base`.
+Agent này đọc các Java DTO/Entity từ Backend (`be/SpringBoot`) và tự động sinh ra TypeScript interfaces/types tương ứng cho `fe/nextjs-base` và `fe/nuxtjs-base`.
 
 ---
 
@@ -45,7 +45,7 @@ antigravity_env\Scripts\python config/agents/agent_runner.py --agent code_sync_a
 
 ## 🔄 3. Quy trình Hoạt động (Pipeline)
 
-1. **Phase 1: Parse Java DTOs**: Quét các file `*DTO.java`, `*Request.java`, `*Response.java` trong `be/BaseBackend`.
+1. **Phase 1: Parse Java DTOs**: Quét các file `*DTO.java`, `*Request.java`, `*Response.java` trong `be/SpringBoot`.
 2. **Phase 2: Type Mapping**: Chuyển đổi kiểu dữ liệu Java (`String`, `Long`, `Boolean`, `LocalDateTime`...) sang TypeScript (`string`, `number`, `boolean`...).
 3. **Phase 3: Code Generation**: Sinh mã nguồn TypeScript interfaces.
 4. **Phase 4: Output / Sync**: Lưu bản preview tại `./report/generated_types_sync.ts` hoặc ghi vào `fe/nextjs-base/types/backend-api.d.ts` và `fe/nuxtjs-base/types/backend-api.d.ts`.

@@ -1,0 +1,70 @@
+resource:
+  not_found: "Không tìm thấy tài nguyên với id: {0}"
+
+stream:
+  read_listener_unsupported: "ReadListener không được hỗ trợ."
+
+security:
+  unsafe_url: "URL chứa ký tự hoặc từ khóa không an toàn."
+  unsafe_parameter: "Tham số '{0}' chứa ký tự hoặc từ khóa không an toàn."
+  unsafe_body: "Nội dung Request Body chứa ký tự hoặc từ khóa không an toàn."
+  invalid_request: "Yêu cầu không hợp lệ."
+
+error:
+  user:
+    exist: "Tài khoản {0} đã tồn tại trong hệ thống."
+  grid:
+    not:
+      found: "Không tìm thấy cấu hình bảng: {0}"
+  qr:
+    data_empty: "Dữ liệu tạo QR không được để rỗng."
+    dimension_invalid: "Kích thước QR code phải lớn hơn 0."
+    generation_failed: "Lỗi trong quá trình tạo QR Code."
+  excel:
+    input_stream_null: "Luồng dữ liệu file Excel không được null."
+    read_failed: "Lỗi khi đọc file Excel: {0}"
+    file_empty: "File Excel tải lên không được rỗng."
+    upload_stream_failed: "Lỗi đọc luồng dữ liệu từ file tải lên."
+
+controller:
+  get_success: "Lấy thông tin thành công."
+  paging_success: "Lấy danh sách phân trang thành công."
+
+validation:
+  sql_injection: "Trường {0} chứa ký tự hoặc từ khóa SQL Injection không hợp lệ."
+  xss: "Trường {0} chứa mã script/XSS không hợp lệ."
+  sql_safe: "Dữ liệu đầu vào chứa từ khóa hoặc ký tự SQL Injection nguy hiểm"
+  xss_safe: "Dữ liệu đầu vào chứa các thẻ HTML hoặc mã kịch bản XSS không an toàn"
+
+utility:
+  class:
+    instantiation_unsupported: "Lớp Utility không thể khởi tạo thể hiện."
+
+system_setting:
+  key:
+    blank: "Từ khóa cấu hình (settingKey) không được để trống"
+    size: "Từ khóa cấu hình không được vượt quá 100 ký tự"
+  value:
+    blank: "Giá trị cấu hình (settingValue) không được để trống"
+    size: "Giá trị cấu hình không được vượt quá 1000 ký tự"
+  description:
+    size: "Mô tả cấu hình không được vượt quá 255 ký tự"
+
+auth:
+  username_required: "Username hoặc email không được để trống"
+  username_or_email_invalid: "Username hoặc email không đúng định dạng"
+  password_required: "Mật khẩu không được để trống"
+  password_invalid: "Mật khẩu phải từ 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt"
+  email_required: "Email không được để trống"
+  email_invalid: "Định dạng email không hợp lệ"
+  tenant_name_required: "Tên công ty không được để trống"
+  tenant_code_required: "Mã công ty không được để trống"
+  refresh_token_required: "Refresh token không được để trống"
+  phone_invalid: "Số điện thoại không đúng định dạng (10 chữ số)"
+  username_taken: "Username này đã được sử dụng"
+  email_taken: "Email này đã được đăng ký"
+  invalid_credentials: "Tên đăng nhập hoặc mật khẩu không đúng"
+  account_inactive: "Tài khoản đã bị vô hiệu hóa"
+  invalid_refresh_token: "Refresh token không hợp lệ hoặc đã hết hạn"
+  refresh_token_revoked: "Phiên refresh token đã bị thu hồi hoặc không hợp lệ"
+  user_not_found: "Không tìm thấy người dùng"

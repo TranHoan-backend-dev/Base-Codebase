@@ -16,7 +16,7 @@ class CodeSyncAgent:
         self.repo_root = repo_root or Path(__file__).resolve().parent.parent.parent.parent
 
     def run(self, write_to_fe: bool = False) -> bool:
-        print("[+] [Code Sync Agent] Scanning Java DTOs & Entities in be/BaseBackend...")
+        print("[+] [Code Sync Agent] Scanning Java DTOs & Entities in be/SpringBoot...")
         dtos = sync_dtos_to_frontend(self.repo_root)
 
         print(f"    - Found {len(dtos)} DTO classes.")

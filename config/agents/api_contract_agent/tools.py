@@ -20,7 +20,7 @@ def scan_backend_api_endpoints(repo_root: Path) -> List[Dict[str, Any]]:
     @returns List[Dict]: Danh sách API endpoints phát hiện từ backend.
     """
     endpoints = []
-    be_dir = repo_root / "be/be/BaseBackend"
+    be_dir = repo_root / "be/SpringBoot"
     if not be_dir.exists():
         return endpoints
 

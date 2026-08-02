@@ -44,7 +44,7 @@ Bổ sung bài kiểm thử tự động với Playwright tại thư mục `e2e/
 
 ---
 
-## 3. Quy trình Đóng góp Backend (`be/BaseBackend`)
+## 3. Quy trình Đóng góp Backend (`be/SpringBoot`)
 
 ### Bước 1: Nguyên tắc Code Backend
 
@@ -55,7 +55,7 @@ Bổ sung bài kiểm thử tự động với Playwright tại thư mục `e2e/
 ### Bước 2: Viết Tài liệu Đặc tả Tính năng (Bắt buộc)
 
 Khi đóng góp bất cứ tính năng hoặc module mới nào cho Backend, bắt buộc phải bổ sung tài liệu đặc tả (specification) lưu tại:
-`be/BaseBackend/src/main/resources/docs/.specify/`
+`be/SpringBoot/src/main/resources/docs/.specify/`
 
 ---
 
