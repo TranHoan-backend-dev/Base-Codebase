@@ -10,8 +10,8 @@ Tài liệu này hướng dẫn cách cấu hình và sử dụng hệ thống t
 
 Hệ thống bao gồm:
 
-1. **Entity:** [SystemSetting](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/sql/SystemSetting.java) quản lý key, value và mô tả cấu hình.
-2. **Service:** [ISystemSettingService](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/service/contract/ISystemSettingService.java) cung cấp các phương thức CRUD và tìm kiếm tối ưu.
+1. **Entity:** [SystemSetting](file:////Base-Codebase/Common/src/main/java/com/common/model/sql/SystemSetting.java) quản lý key, value và mô tả cấu hình.
+2. **Service:** [ISystemSettingService](file:////Base-Codebase/Common/src/main/java/com/common/service/contract/ISystemSettingService.java) cung cấp các phương thức CRUD và tìm kiếm tối ưu.
 3. **Controller:** [BaseSystemSettingController](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/controller/BaseSystemSettingController.java) expose các API REST chuẩn cho giao diện Admin quản lý.
 
 ---

@@ -60,7 +60,7 @@ Dưới đây là sơ đồ luồng xử lý dữ liệu khi sử dụng cơ ch�
 
 ## 3. Chiến Lược Cấu Hình & Kết Nối (Configuration & Lettuce Connection Pool)
 
-Cấu hình Redis được đặt dưới khóa `spring.data.redis` trong file cấu hình [application.yaml](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/resources/application.yaml). Để tối ưu hóa kết nối, hệ thống sử dụng thư viện **Lettuce** làm driver kết nối mặc định của Spring Boot.
+Cấu hình Redis được đặt dưới khóa `spring.data.redis` trong file cấu hình [application.yaml](file:////Base-Codebase/Common/src/main/resources/application.yaml). Để tối ưu hóa kết nối, hệ thống sử dụng thư viện **Lettuce** làm driver kết nối mặc định của Spring Boot.
 
 ### Cấu hình YAML Chi Tiết
 
@@ -100,7 +100,7 @@ Mặc định, Spring Boot cấu hình `RedisTemplate` sử dụng serialization
 
 ### B. Giải pháp: Jackson JSON Serializer (`GenericJackson2JsonRedisSerializer`)
 
-Để giải quyết triệt để các vấn đề trên, lớp [RedisConfiguration](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/config/redis/RedisConfiguration.java) định nghĩa cấu hình ghi đè như sau:
+Để giải quyết triệt để các vấn đề trên, lớp [RedisConfiguration](file:////Base-Codebase/Common/src/main/java/com/common/config/redis/RedisConfiguration.java) định nghĩa cấu hình ghi đè như sau:
 
 * **Key**: Sử dụng `StringRedisSerializer` (Lưu dưới dạng chuỗi UTF-8 thuần túy, sạch sẽ).
 * **Value**: Sử dụng `GenericJackson2JsonRedisSerializer`.

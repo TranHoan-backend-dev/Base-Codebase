@@ -10,7 +10,7 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 
 * **Kiến trúc Workspace**: Áp dụng mô hình **pnpm workspace** để chia sẻ thành phần UI (`components/`, `utils/`) giữa Base Repo và ứng dụng con.
 * **Cơ chế Dev song song (Hot Reload)**: Nhờ liên kết Symlink của `pnpm workspace`, các chỉnh sửa tại component dùng chung sẽ lập tức phản hồi (HMR) trên dự án con.
-* **Quy trình đóng góp (Contribution Workflow)**: Chi tiết quy định và các bước đóng góp mã nguồn (Pull Request) cho Base Repo xem tại tài liệu [docs/CONTRIBUTING.md](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/CONTRIBUTING.md).
+* **Quy trình đóng góp (Contribution Workflow)**: Chi tiết quy định và các bước đóng góp mã nguồn (Pull Request) cho Base Repo xem tại tài liệu [docs/CONTRIBUTING.md](file:////Base-Codebase/docs/CONTRIBUTING.md).
 
 ### B. Backend Sub-Repo (`be/BaseBackend`)
 
@@ -64,23 +64,23 @@ Tài liệu này hướng dẫn chi tiết cách khởi tạo, phát triển cá
 
 ### A. Backend Architecture & Specs (`be/BaseBackend`)
 
-* [be/BaseBackend - Tổng quan Kiến trúc & Hướng dẫn Core](file:///d:/Du_an_ca_nhan/Base-Codebase/be/BaseBackend/src/main/resources/docs/README.md)
+* [be/BaseBackend - Tổng quan Kiến trúc & Hướng dẫn Core](file:////Base-Codebase/be/BaseBackend/src/main/resources/docs/README.md)
 * *Lưu ý: Mọi tính năng Backend mới bắt buộc phải bổ sung tài liệu đặc tả tại `be/BaseBackend/src/main/resources/docs/.specify`.*
 
 ### B. Next.js Base Components (`fe/nextjs-base`)
 
-* [SweButton - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nextjs-base/docs/components/swe-button.md)
+* [SweButton - Đặc tả Component](file:////Base-Codebase/fe/nextjs-base/docs/components/swe-button.md)
 
 ### C. Nuxt.js Base Components (`fe/nuxtjs-base`)
 
-* [SweButton - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nuxtjs-base/docs/components/swe-button.md)
-* [SweFormLayout - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nuxtjs-base/docs/components/swe-form-layout.md)
-* [BasePopup - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nuxtjs-base/docs/components/base-popup.md)
-* [DynamicGrid - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nuxtjs-base/docs/components/dynamic-grid.md)
-* [GridPagination - Đặc tả Component](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nuxtjs-base/docs/components/grid-pagination.md)
+* [SweButton - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/swe-button.md)
+* [SweFormLayout - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/swe-form-layout.md)
+* [BasePopup - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/base-popup.md)
+* [DynamicGrid - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/dynamic-grid.md)
+* [GridPagination - Đặc tả Component](file:////Base-Codebase/fe/nuxtjs-base/docs/components/grid-pagination.md)
 
 ### D. AI Agents, Testing & Automation
 
-* [AI Agents System Overview & Specs Catalog - Danh mục đặc tả & Hướng dẫn hệ thống AI Agents](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/README.md)
-* [Playwright E2E Testing Guide - Cấu hình & Hướng dẫn viết test E2E](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/playwright.md)
-* [AI Agent Testing Guide - Hướng dẫn sử dụng & vận hành Java Unit Test Automation AI Agent](file:///d:/Du_an_ca_nhan/Base-Codebase/docs/ai_agents/testing/ai-agent-testing.md)
+* [AI Agents System Overview & Specs Catalog - Danh mục đặc tả & Hướng dẫn hệ thống AI Agents](file:////Base-Codebase/docs/ai_agents/README.md)
+* [Playwright E2E Testing Guide - Cấu hình & Hướng dẫn viết test E2E](file:////Base-Codebase/docs/playwright.md)
+* [AI Agent Testing Guide - Hướng dẫn sử dụng & vận hành Java Unit Test Automation AI Agent](file:////Base-Codebase/docs/ai_agents/testing/ai-agent-testing.md)

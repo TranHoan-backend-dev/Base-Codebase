@@ -8,7 +8,7 @@ Tài liệu này hướng dẫn cách cấu hình Elasticsearch trong thư việ
 
 ### Bước 1: Kích hoạt tại Client Application
 
-Dự án Client muốn sử dụng Elasticsearch cần thêm annotation [@EnableCommonElasticsearch](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/config/elasticsearch/EnableCommonElasticsearch.java) vào class khởi chạy chính:
+Dự án Client muốn sử dụng Elasticsearch cần thêm annotation [@EnableCommonElasticsearch](file:////Base-Codebase/Common/src/main/java/com/common/config/elasticsearch/EnableCommonElasticsearch.java) vào class khởi chạy chính:
 
 ```java
 package com.client;
@@ -30,9 +30,9 @@ public class ClientApplication {
 
 Mặc định, thư viện `Common` đã tự động cấu hình sẵn các giá trị kết nối mặc định của Spring Boot Elasticsearch trong file cấu hình nội bộ:
 
-*   `spring.elasticsearch.uris`: `http://localhost:9200`
-*   `spring.elasticsearch.username`: `elastic`
-*   `spring.elasticsearch.password`: `password`
+* `spring.elasticsearch.uris`: `http://localhost:9200`
+* `spring.elasticsearch.username`: `elastic`
+* `spring.elasticsearch.password`: `password`
 
 Dự án Client **không cần phải cấu hình gì thêm** nếu sử dụng môi trường mặc định này. Nếu muốn ghi đè các cấu hình kết nối, Client chỉ cần khai báo lại các thuộc tính chuẩn của Spring Boot trong file `application.yaml` như sau:
 

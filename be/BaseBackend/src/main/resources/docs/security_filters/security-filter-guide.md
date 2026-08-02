@@ -11,7 +11,7 @@ Tài liệu này mô tả chi tiết cơ chế hoạt động, bộ lọc an nin
 ### Cơ Chế Hoạt Động
 
 - **Query String & Params**: Tự động quét và đối khớp các regex mã độc SQL/XSS trong `queryString` và `parameterMap`.
-- **Request Body (JSON)**: Đối với các request `application.json`, bộ lọc bọc request bằng [CachedBodyHttpServletRequest](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/filter/CachedBodyHttpServletRequest.java) để lưu tạm mảng byte của body vào bộ nhớ, cho phép đọc đi đọc lại nhiều lần mà không bị lỗi cạn luồng (`ServletInputStream`).
+- **Request Body (JSON)**: Đối với các request `application.json`, bộ lọc bọc request bằng [CachedBodyHttpServletRequest](file:////Base-Codebase/Common/src/main/java/com/common/filter/CachedBodyHttpServletRequest.java) để lưu tạm mảng byte của body vào bộ nhớ, cho phép đọc đi đọc lại nhiều lần mà không bị lỗi cạn luồng (`ServletInputStream`).
 - **Từ Chối Giao Dịch (Validation & Rejection)**: Nếu phát hiện mã độc, lập tức dừng request và trả về mã lỗi `400 Bad Request` cùng thông điệp giải phân i18n chuẩn.
 
 ---
@@ -60,7 +60,7 @@ security:
     - /api/v1/webhooks/**
 ```
 
-Hệ thống [SecurityConfiguration](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/config/security/SecurityConfiguration.java) sẽ tự động nạp danh sách này để cấp quyền truy cập tự do (`permitAll()`).
+Hệ thống [SecurityConfiguration](file:////Base-Codebase/Common/src/main/java/com/common/config/security/SecurityConfiguration.java) sẽ tự động nạp danh sách này để cấp quyền truy cập tự do (`permitAll()`).
 
 ---
 

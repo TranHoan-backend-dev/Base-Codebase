@@ -8,8 +8,8 @@ Tài liệu này hướng dẫn chi tiết cách cấu hình và sử dụng h�
 
 Để cho phép thay đổi Message Broker một cách linh hoạt mà không sửa đổi mã nguồn (Business Code), hệ thống Event Bus cung cấp:
 
-1. **Interface dùng chung:** [IEventBus](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/eventbus/IEventBus.java) định nghĩa phương thức `publish`.
-2. **Cấu hình nạp Bean động:** [EventBusConfiguration](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/eventbus/EventBusConfiguration.java) sử dụng `@ConditionalOnProperty` để quét và nạp Bean thực thi tương ứng dựa vào key `common.event-bus.type`.
+1. **Interface dùng chung:** [IEventBus](file:////Base-Codebase/Common/src/main/java/com/common/eventbus/IEventBus.java) định nghĩa phương thức `publish`.
+2. **Cấu hình nạp Bean động:** [EventBusConfiguration](file:////Base-Codebase/Common/src/main/java/com/common/eventbus/EventBusConfiguration.java) sử dụng `@ConditionalOnProperty` để quét và nạp Bean thực thi tương ứng dựa vào key `common.event-bus.type`.
 
 ---
 

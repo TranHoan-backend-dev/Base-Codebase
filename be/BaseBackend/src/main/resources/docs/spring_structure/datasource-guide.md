@@ -25,17 +25,17 @@ Thư viện `Common` tổ chức SQL thành **2 datasource tách biệt** để 
 Các entity nghiệp vụ của service con kế thừa từ:
 
 - **JPA (
-  SQL):** [BaseModel](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/sql/BaseModel.java) —
+  SQL):** [BaseModel](file:////Base-Codebase/Common/src/main/java/com/common/model/sql/BaseModel.java) —
   audit fields cơ bản
 - **MongoDB (
-  NoSQL):** [BaseModel](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/nosql/BaseModel.java)
+  NoSQL):** [BaseModel](file:////Base-Codebase/Common/src/main/java/com/common/model/nosql/BaseModel.java)
 
 #### Tùy chọn Xóa Mềm (Soft Delete)
 
 - **JPA (
-  SQL):** [BaseSoftDeleteModel](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/sql/BaseSoftDeleteModel.java)
+  SQL):** [BaseSoftDeleteModel](file:////Base-Codebase/Common/src/main/java/com/common/model/sql/BaseSoftDeleteModel.java)
 - **MongoDB (
-  NoSQL):** [BaseSoftDeleteModel](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/nosql/BaseSoftDeleteModel.java)
+  NoSQL):** [BaseSoftDeleteModel](file:////Base-Codebase/Common/src/main/java/com/common/model/nosql/BaseSoftDeleteModel.java)
 
 Cả hai lớp base tự động quản lý các trường audit:
 
@@ -55,10 +55,10 @@ Các entity kỹ thuật nằm sẵn trong `com.common.model.sql`:
 
 | Entity                                                                                                                       | Mô tả                              |
 |------------------------------------------------------------------------------------------------------------------------------|------------------------------------|
-| [OutboxEvent](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/sql/OutboxEvent.java)             | Transactional Outbox Pattern       |
-| [SystemSetting](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/sql/SystemSetting.java)         | Cấu hình hệ thống động             |
-| [DynamicGridConfig](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/sql/DynamicGridConfig.java) | Cấu hình bảng động render trên web |
-| [DynamicGridColumn](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/model/sql/DynamicGridColumn.java) | Cấu hình từng cột của bảng động    |
+| [OutboxEvent](file:////Base-Codebase/Common/src/main/java/com/common/model/sql/OutboxEvent.java)             | Transactional Outbox Pattern       |
+| [SystemSetting](file:////Base-Codebase/Common/src/main/java/com/common/model/sql/SystemSetting.java)         | Cấu hình hệ thống động             |
+| [DynamicGridConfig](file:////Base-Codebase/Common/src/main/java/com/common/model/sql/DynamicGridConfig.java) | Cấu hình bảng động render trên web |
+| [DynamicGridColumn](file:////Base-Codebase/Common/src/main/java/com/common/model/sql/DynamicGridColumn.java) | Cấu hình từng cột của bảng động    |
 
 ---
 

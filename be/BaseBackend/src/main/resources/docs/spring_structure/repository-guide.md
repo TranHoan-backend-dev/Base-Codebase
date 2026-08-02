@@ -14,7 +14,7 @@ Tài liệu này hướng dẫn chi tiết cách sử dụng các phương thứ
 | `findAllProjectedBy(pageable, projectionType)` | `Page<P>` | `Pageable, Class<P>` | Truy vấn phân trang dữ liệu thu gọn chỉ với các cột/trường được chỉ định. |
 
 > [!IMPORTANT]
-> Đối với SQL (JPA), [BaseRepository](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/repository/sql/BaseRepository.java) hiện đã kế thừa thêm interface `JpaSpecificationExecutor<T>`. Điều này cho phép bạn gọi trực tiếp tất cả các phương thức tìm kiếm nâng cao sử dụng JPA Specification, ví dụ: `repository.findAll(Specification, Pageable)`.
+> Đối với SQL (JPA), [BaseRepository](file:////Base-Codebase/Common/src/main/java/com/common/repository/sql/BaseRepository.java) hiện đã kế thừa thêm interface `JpaSpecificationExecutor<T>`. Điều này cho phép bạn gọi trực tiếp tất cả các phương thức tìm kiếm nâng cao sử dụng JPA Specification, ví dụ: `repository.findAll(Specification, Pageable)`.
 
 ---
 
@@ -27,6 +27,7 @@ T findByIdOrThrow(ID id);
 ```
 
 ### Cách sử dụng trong Service
+
 ```java
 @Service
 public class UserService {
@@ -72,6 +73,7 @@ void existsOrThrow(ID id);
 ### Quy trình sử dụng
 
 #### Bước 1: Định nghĩa Interface chứa các Getter cần lấy
+
 ```java
 package com.client.dto;
 
@@ -83,6 +85,7 @@ public interface ProductSummary {
 ```
 
 #### Bước 2: Gọi phương thức trong Service
+
 ```java
 @Service
 public class ProductService {

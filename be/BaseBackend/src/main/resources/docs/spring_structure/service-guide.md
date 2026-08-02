@@ -8,9 +8,9 @@ Tài liệu này hướng dẫn cách tạo và triển khai tầng nghiệp v�
 
 Hệ thống Base Service bao gồm:
 
-*   **Interface chung:** [IBaseService](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/service/contract/IBaseService.java) định nghĩa các thao tác CRUD cơ bản và phân trang.
-*   **Implementation cho JPA (SQL):** [BaseServiceImpl](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/service/impl/BaseServiceImpl.java).
-*   **Implementation cho MongoDB (NoSQL):** [BaseMongoServiceImpl](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/service/impl/BaseMongoServiceImpl.java).
+* **Interface chung:** [IBaseService](file:////Base-Codebase/Common/src/main/java/com/common/service/contract/IBaseService.java) định nghĩa các thao tác CRUD cơ bản và phân trang.
+* **Implementation cho JPA (SQL):** [BaseServiceImpl](file:////Base-Codebase/Common/src/main/java/com/common/service/impl/BaseServiceImpl.java).
+* **Implementation cho MongoDB (NoSQL):** [BaseMongoServiceImpl](file:////Base-Codebase/Common/src/main/java/com/common/service/impl/BaseMongoServiceImpl.java).
 
 ---
 
@@ -33,20 +33,24 @@ Mọi Service con khi kế thừa sẽ có sẵn các phương thức sau:
 ## 3. Các Tính Năng Nổi Bật Tích Hợp Sẵn
 
 ### A. Tự động Phân tích Kiểu Lớp (Class Reflection)
+
 Cả `BaseServiceImpl` và `BaseMongoServiceImpl` đều tích hợp cơ chế tự động tìm và xác định class của `TEntity` thông qua generic type (`getEntityClass()`). Nhà phát triển không cần chỉ định class thủ công.
 
 ### B. Bộ Lọc Động (Dynamic Filtering)
+
 - **JSON Filter**: Tự động parse trường `filter` của `PagingRequest` (dạng JSON String) thành các so khớp bằng (`equal`).
-- **Keyword Search**: Tự động quét qua tất cả thuộc tính có kiểu dữ liệu là `String` của Entity hiện tại và các lớp cha để thực hiện tìm kiếm mờ (SQL: `like` case-insensitive, MongoDB: `regex` case-insensitive).
+* **Keyword Search**: Tự động quét qua tất cả thuộc tính có kiểu dữ liệu là `String` của Entity hiện tại và các lớp cha để thực hiện tìm kiếm mờ (SQL: `like` case-insensitive, MongoDB: `regex` case-insensitive).
 
 ### C. Cơ Chế Xóa Mềm (Soft Delete)
+
 Nếu Entity kế thừa `BaseSoftDeleteModel` (SQL/NoSQL):
-- Khi gọi `delete(entity)`: Không xóa vật lý khỏi cơ sở dữ liệu mà cập nhật trường `deleted = true`, ghi nhận thời điểm và người xóa.
-- Khi gọi các hàm tìm kiếm (`findById`, `getPaginated`, `getPaginatedProjected`): Tự động thêm điều kiện `deleted = false` vào câu lệnh truy vấn.
+* Khi gọi `delete(entity)`: Không xóa vật lý khỏi cơ sở dữ liệu mà cập nhật trường `deleted = true`, ghi nhận thời điểm và người xóa.
+* Khi gọi các hàm tìm kiếm (`findById`, `getPaginated`, `getPaginatedProjected`): Tự động thêm điều kiện `deleted = false` vào câu lệnh truy vấn.
 
 ### D. Tối Ưu Hóa Chiếu Dữ Liệu (Projection)
+
 - Đối với **SQL**: Sử dụng Tuple multiselect dùng Criteria API giúp sinh câu lệnh SQL chuẩn chỉ SELECT các cột cần lấy, tối ưu tài nguyên database IO.
-- Đối với **MongoDB**: Sử dụng `query.fields().include()` của MongoTemplate giúp tối ưu lượng dữ liệu truyền qua mạng giữa Mongo Server và Application Server.
+* Đối với **MongoDB**: Sử dụng `query.fields().include()` của MongoTemplate giúp tối ưu lượng dữ liệu truyền qua mạng giữa Mongo Server và Application Server.
 
 ---
 
@@ -55,6 +59,7 @@ Nếu Entity kế thừa `BaseSoftDeleteModel` (SQL/NoSQL):
 ### Triển khai với JPA (SQL)
 
 #### Bước 1: Định nghĩa Interface Service con
+
 ```java
 package com.client.service.contract;
 
@@ -66,7 +71,9 @@ public interface IProductService extends IBaseService<Product, Long> {
 ```
 
 #### Bước 2: Triển khai Class Service
+
 Kế thừa từ `BaseServiceImpl`:
+
 ```java
 package com.client.service.impl;
 

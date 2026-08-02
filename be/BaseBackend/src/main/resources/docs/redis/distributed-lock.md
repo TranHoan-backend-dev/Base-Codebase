@@ -59,7 +59,7 @@ Khi một Scheduled Task được kích hoạt trên Instance A:
 
 ### 2.3. Khai báo Dependency
 
-Trong file [build.gradle.kts](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/build.gradle.kts), chúng ta nạp thêm 2 thư viện sau:
+Trong file [build.gradle.kts](file:////Base-Codebase/Common/build.gradle.kts), chúng ta nạp thêm 2 thư viện sau:
 
 ```kotlin
 implementation("net.javacrumbs.shedlock:shedlock-spring:5.13.0")
@@ -68,7 +68,7 @@ implementation("net.javacrumbs.shedlock:shedlock-provider-redis-spring:5.13.0")
 
 ### 2.4. Cấu hình ShedLock
 
-Lớp cấu hình [ShedLockConfiguration.java](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/config/redis/ShedLockConfiguration.java) kích hoạt cơ chế khóa ShedLock thông qua Redis:
+Lớp cấu hình [ShedLockConfiguration.java](file:////Base-Codebase/Common/src/main/java/com/common/config/redis/ShedLockConfiguration.java) kích hoạt cơ chế khóa ShedLock thông qua Redis:
 
 ```java
 package com.common.config.redis;
@@ -163,7 +163,7 @@ end
 
 ### 3.2. Đặc tả API của IDistributedLockService
 
-Interface [IDistributedLockService.java](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/service/contract/IDistributedLockService.java):
+Interface [IDistributedLockService.java](file:////Base-Codebase/Common/src/main/java/com/common/service/contract/IDistributedLockService.java):
 
 ```java
 package com.common.service.contract;
@@ -180,7 +180,7 @@ public interface IDistributedLockService {
 
 ### 3.3. Lớp triển khai RedisDistributedLockServiceImpl
 
-Lớp triển khai [RedisDistributedLockServiceImpl.java](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/service/impl/RedisDistributedLockServiceImpl.java) sử dụng `RedisTemplate` và Lua Script:
+Lớp triển khai [RedisDistributedLockServiceImpl.java](file:////Base-Codebase/Common/src/main/java/com/common/service/impl/RedisDistributedLockServiceImpl.java) sử dụng `RedisTemplate` và Lua Script:
 
 ```java
 package com.common.service.impl;
@@ -336,7 +336,7 @@ public class WalletService {
 
 Nhằm đảm bảo cơ chế loại trừ tương hỗ hoạt động tốt, mã nguồn test được thiết kế mô phỏng tranh chấp đa luồng bằng `ExecutorService` và `CountDownLatch`.
 
-Mã kiểm thử [RedisDistributedLockServiceTest.java](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/test/java/com/common/service/impl/RedisDistributedLockServiceTest.java):
+Mã kiểm thử [RedisDistributedLockServiceTest.java](file:////Base-Codebase/Common/src/test/java/com/common/service/impl/RedisDistributedLockServiceTest.java):
 
 - **Test đơn luồng:** Xác nhận cơ chế lock thành công lần đầu, thất bại ở lần 2 khi chưa release, và thành công lại sau khi release.
 - **Test đa luồng (Concurrency):** Bắn ra 10 luồng đồng thời (sử dụng `CountDownLatch` điều phối kích hoạt). Đảm bảo chỉ có duy nhất 1 luồng lấy được khóa thành công, 9 luồng còn lại nhận kết quả `false` (thất bại).

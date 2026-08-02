@@ -12,15 +12,15 @@ Tài liệu này hướng dẫn cách sử dụng cấu hình Playwright dùng c
 
 Hệ thống sử dụng cấu hình kế thừa (Inherited Configuration) để tối ưu hóa việc tái sử dụng code:
 
-1. **Cấu hình cơ sở (Root Config):** Định nghĩa tại [playwright.config.base.ts](file:///d:/Du_an_ca_nhan/Base-Codebase/playwright.config.base.ts) chứa các thiết lập chung như:
+1. **Cấu hình cơ sở (Root Config):** Định nghĩa tại [playwright.config.base.ts](file:////Base-Codebase/playwright.config.base.ts) chứa các thiết lập chung như:
    - Chạy parallel: `fullyParallel: true`
    - Browsers test: Chromium, Firefox, WebKit
    - Reporter mặc định: `html`
    - Số lần thử lại (retries) và workers tùy biến theo môi trường CI.
 
 2. **Cấu hình cụ thể từng dự án (Sub-repo Config):**
-   - **Next.js:** [fe/nextjs-base/playwright.config.ts](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nextjs-base/playwright.config.ts)
-   - **Nuxt.js:** [fe/nuxtjs-base/playwright.config.ts](file:///d:/Du_an_ca_nhan/Base-Codebase/fe/nuxtjs-base/playwright.config.ts)
+   - **Next.js:** [fe/nextjs-base/playwright.config.ts](file:////Base-Codebase/fe/nextjs-base/playwright.config.ts)
+   - **Nuxt.js:** [fe/nuxtjs-base/playwright.config.ts](file:////Base-Codebase/fe/nuxtjs-base/playwright.config.ts)
    - Cả 2 đều import `baseConfig` từ root và bổ sung/override `baseURL`, `testDir` (`./e2e`), và cấu hình tự động khởi chạy môi trường dev qua `webServer`.
 
 ---

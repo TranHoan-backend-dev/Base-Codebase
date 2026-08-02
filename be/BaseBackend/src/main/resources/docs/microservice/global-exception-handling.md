@@ -13,7 +13,7 @@ Trong kiến trúc Microservices, việc đảm bảo tính đồng nhất của
 
 ### Giải pháp xử lý lỗi tập trung
 
-Thư viện `Common` xây dựng bộ xử lý ngoại lệ tập trung sử dụng `@RestControllerAdvice` trong lớp [GlobalExceptionHandler](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/exception/GlobalExceptionHandler.java). Bộ xử lý này tự động đánh chặn (intercept) tất cả các ngoại lệ ném ra từ tầng Controller, Service hoặc Filter, sau đó bao bọc chúng vào một cấu trúc thống nhất là `WrapperApiResponse`.
+Thư viện `Common` xây dựng bộ xử lý ngoại lệ tập trung sử dụng `@RestControllerAdvice` trong lớp [GlobalExceptionHandler](file:////Base-Codebase/Common/src/main/java/com/common/exception/GlobalExceptionHandler.java). Bộ xử lý này tự động đánh chặn (intercept) tất cả các ngoại lệ ném ra từ tầng Controller, Service hoặc Filter, sau đó bao bọc chúng vào một cấu trúc thống nhất là `WrapperApiResponse`.
 
 ---
 
@@ -55,7 +55,7 @@ Dưới đây là sơ đồ chuỗi xử lý khi một lỗi xảy ra trong quá
 
 ## 3. Khuôn Mẫu Phản Hồi Lỗi Chuẩn (Standardized Error Response Pattern)
 
-Tất cả các API khi xảy ra lỗi đều phản hồi dữ liệu theo cấu trúc của Record [WrapperApiResponse](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/dto/response/WrapperApiResponse.java):
+Tất cả các API khi xảy ra lỗi đều phản hồi dữ liệu theo cấu trúc của Record [WrapperApiResponse](file:////Base-Codebase/Common/src/main/java/com/common/dto/response/WrapperApiResponse.java):
 
 ```json
 {
@@ -134,7 +134,7 @@ public ResponseEntity<WrapperApiResponse> handleValidationExceptions(@NonNull Me
 
 ### Bước 1: Ném lỗi nghiệp vụ trong Service
 
-Khi viết logic nghiệp vụ, nếu phát hiện dữ liệu không hợp lệ hoặc vi phạm quy tắc hệ thống, nhà phát triển chỉ cần ném ra [BaseException](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/exception/BaseException.java):
+Khi viết logic nghiệp vụ, nếu phát hiện dữ liệu không hợp lệ hoặc vi phạm quy tắc hệ thống, nhà phát triển chỉ cần ném ra [BaseException](file:////Base-Codebase/Common/src/main/java/com/common/exception/BaseException.java):
 
 ```java
 @Service

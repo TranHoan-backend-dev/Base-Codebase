@@ -6,7 +6,7 @@ Tài liệu này mô tả các tiện ích dùng chung (JSON, Lưu trữ file, X
 
 ## 1. Tiện Ích Làm Việc Với JSON `JsonUtils`
 
-Lớp [JsonUtils](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/utilities/JsonUtils.java) bọc quanh `ObjectMapper` của Jackson giúp serialization và deserialization một cách đồng nhất, an toàn.
+Lớp [JsonUtils](file:////Base-Codebase/Common/src/main/java/com/common/utilities/JsonUtils.java) bọc quanh `ObjectMapper` của Jackson giúp serialization và deserialization một cách đồng nhất, an toàn.
 
 ### Các Tính Năng Định Cấu Hình Sẵn
 
@@ -27,7 +27,7 @@ UserDto userDto = JsonUtils.fromJson(json, UserDto.class);
 
 ## 2. Tiện Ích Lưu Trữ File `IStorageService`
 
-Để độc lập dịch vụ lưu trữ file (không bị bó cứng vào đĩa cứng cục bộ Local Storage khi scale ứng dụng lên Cloud), thư viện cung cấp Interface [StorageService](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/utilities/StorageService.java) chứa hai thao tác:
+Để độc lập dịch vụ lưu trữ file (không bị bó cứng vào đĩa cứng cục bộ Local Storage khi scale ứng dụng lên Cloud), thư viện cung cấp Interface [StorageService](file:////Base-Codebase/Common/src/main/java/com/common/utilities/StorageService.java) chứa hai thao tác:
 
 ```java
 public interface StorageService {
@@ -38,7 +38,7 @@ public interface StorageService {
 
 ### Triển khai mặc định: `LocalStorageServiceImpl`
 
-Thư viện tích hợp sẵn lớp [LocalStorageServiceImpl](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/utilities/LocalStorageServiceImpl.java) để lưu trữ cục bộ.
+Thư viện tích hợp sẵn lớp [LocalStorageServiceImpl](file:////Base-Codebase/Common/src/main/java/com/common/utilities/LocalStorageServiceImpl.java) để lưu trữ cục bộ.
 
 - **Tên File Duy Nhất**: Tên tệp tải lên được ghép tự động với timestamp hiện tại (ví dụ: `1718809282_avatar.png`) giúp loại bỏ hoàn toàn nguy cơ trùng đè file.
 - **Thư Mục Cấu Hình**: Đường dẫn thư mục lưu trữ được khai báo linh hoạt trong tệp `application.yaml` qua key `storage.local.upload-dir` (mặc định là `uploads/images` dưới thư mục chạy dự án).
@@ -51,7 +51,7 @@ Khi các thực thể kế thừa `BaseModel` hoặc `BaseSoftDeleteModel` xảy
 
 ### Xử Lý Tập Trung
 
-[GlobalExceptionHandler](file:///d:/Du_an_ca_nhan/Base-Codebase/Common/src/main/java/com/common/exception/GlobalExceptionHandler.java) đã được đăng ký bắt lỗi này và tự động trả về phản hồi chuẩn:
+[GlobalExceptionHandler](file:////Base-Codebase/Common/src/main/java/com/common/exception/GlobalExceptionHandler.java) đã được đăng ký bắt lỗi này và tự động trả về phản hồi chuẩn:
 
 - **HTTP Status Code**: `409 Conflict`
 - **Thông Điệp**: `Dữ liệu đã bị sửa đổi bởi người dùng khác. Vui lòng tải lại trang và thực hiện lại.`
