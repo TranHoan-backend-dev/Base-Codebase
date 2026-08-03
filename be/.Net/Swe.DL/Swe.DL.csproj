@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>e400ce7b-d85f-40bc-8c5a-8f62d751d395</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Dapper" Version="2.1.72" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="11.0.0-preview.2.26159.112" />
+      <PackageReference Include="MySqlConnector" Version="2.5.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Swe.Common\Swe.Common.csproj" />
+    </ItemGroup>
+
+</Project>

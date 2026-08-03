@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+        <xsd:element name="root" msdata:IsDataSet="true">
+        </xsd:element>
+    </xsd:schema>
+    <resheader name="resmimetype">
+        <value>text/microsoft-resx</value>
+    </resheader>
+    <resheader name="version">
+        <value>1.3</value>
+    </resheader>
+    <resheader name="reader">
+        <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <resheader name="writer">
+        <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    </resheader>
+    <data name="DuplicatedPhone" xml:space="preserve">
+        <value>SDT bi trung</value>
+    </data>
+    <data name="DuplicatedEmail" xml:space="preserve">
+        <value>Email đã tồn tại</value>
+    </data>
+    <data name="Exception" xml:space="preserve">
+        <value>Co loi trong khi xu ly yeu cau</value>
+    </data>
+    <data name="DuplicatedUsername" xml:space="preserve">
+        <value>Tên tài khoản đã tồn tại</value>
+    </data>
+    <data name="DuplicatedTenantCode" xml:space="preserve">
+        <value>Mã tổ chức đã tồn tại</value>
+    </data>
+    <data name="TenantNameRequired" xml:space="preserve">
+        <value>Tên tổ chức không được để trống</value>
+    </data>
+    <data name="TenantCodeRequired" xml:space="preserve">
+        <value>Mã tổ chức không được để trống</value>
+    </data>
+    <data name="UsernameRequired" xml:space="preserve">
+        <value>Tên tài khoản không được để trống</value>
+    </data>
+    <data name="UsernameMinLength" xml:space="preserve">
+        <value>Tên tài khoản tối thiểu 3 ký tự</value>
+    </data>
+    <data name="UsernameMaxLength" xml:space="preserve">
+        <value>Tên tài khoản tối đa 50 ký tự</value>
+    </data>
+    <data name="EmailRequired" xml:space="preserve">
+        <value>Email không được để trống</value>
+    </data>
+    <data name="EmailInvalid" xml:space="preserve">
+        <value>Email không đúng định dạng</value>
+    </data>
+    <data name="PasswordRequired" xml:space="preserve">
+        <value>Mật khẩu không được để trống</value>
+    </data>
+    <data name="RefreshTokenRequired" xml:space="preserve">
+        <value>Refresh Token không được để trống</value>
+    </data>
+    <data name="UsernameLoginRequired" xml:space="preserve">
+        <value>Tên đăng nhập không được để trống</value>
+    </data>
+</root>
