@@ -65,4 +65,23 @@ public static class AppEnum
         ADMIN,
         USER
     }
+
+    public enum ColumnDataType
+    {
+        TEXT,
+        NUMBER,
+        DATE,
+        DATETIME,
+        BOOLEAN,
+        ENUM,
+        BADGE,
+        LINK,
+        ACTION
+    }
+
+    public enum PinnedPosition
+    {
+        LEFT,
+        RIGHT
+    }
 }

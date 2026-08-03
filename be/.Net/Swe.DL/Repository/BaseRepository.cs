@@ -2,6 +2,8 @@ using System.Data;
 using System.Reflection;
 using System.Text;
 using Dapper;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
 using Swe.Common.Attributes;
 using Swe.Common.Extension;
 using Swe.Common.Enum;
@@ -14,9 +16,17 @@ namespace Swe.DL.Repository;
 /// </summary>
 /// <created_at>2026-08-03</created_at>
 /// <author>txhoan</author>
-public abstract class BaseRepository<T>(DbContext dbContext) where T : class
+public abstract class BaseRepository<T>(DbContext dbContext, IHttpContextAccessor httpContextAccessor) where T : class
 {
     protected readonly DbContext DbContext = dbContext;
+    protected readonly IHttpContextAccessor HttpContextAccessor = httpContextAccessor;
+
+    protected string GetCurrentUserName()
+    {
+        var httpContext = HttpContextAccessor.HttpContext;
+        var username = httpContext?.User?.Identity?.Name ?? httpContext?.User?.FindFirst(ClaimTypes.Name)?.Value;
+        return string.IsNullOrEmpty(username) ? "SYSTEM" : username;
+    }
 
     /// <summary>
     /// Kiểm tra trùng lặp cho một trường (cột) cụ thể.
@@ -95,8 +105,24 @@ public abstract class BaseRepository<T>(DbContext dbContext) where T : class
         var type = typeof(T);
         var tableName = type.GetTableNameOnly();
         var primaryKey = type.GetPrimaryKey();
-        var (columnsTable, propertiesModel) = type.GetAllColumnsAndProperties();
+        
+        var now = DateTime.UtcNow;
+        var currentUser = GetCurrentUserName();
 
+        if (state == AppEnum.ModelState.Insert)
+        {
+            type.GetProperty("CreatedAt")?.SetValue(entity, now);
+            type.GetProperty("CreatedBy")?.SetValue(entity, currentUser);
+            type.GetProperty("ModifiedAt")?.SetValue(entity, now);
+            type.GetProperty("ModifiedBy")?.SetValue(entity, currentUser);
+        }
+        else if (state == AppEnum.ModelState.Update)
+        {
+            type.GetProperty("ModifiedAt")?.SetValue(entity, now);
+            type.GetProperty("ModifiedBy")?.SetValue(entity, currentUser);
+        }
+
+        var (columnsTable, propertiesModel) = type.GetAllColumnsAndProperties();
         using var conn = DbContext.GetConnection();
 
         if (state == AppEnum.ModelState.Insert)

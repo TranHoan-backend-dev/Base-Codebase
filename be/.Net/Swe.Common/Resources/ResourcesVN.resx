@@ -61,4 +61,7 @@
     <data name="UsernameLoginRequired" xml:space="preserve">
         <value>Tên đăng nhập không được để trống</value>
     </data>
+    <data name="DuplicatedSettingKey" xml:space="preserve">
+        <value>Khóa cấu hình đã tồn tại</value>
+    </data>
 </root>

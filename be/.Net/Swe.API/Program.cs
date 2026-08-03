@@ -41,15 +41,22 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddAuthorization();
 
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<DbContext>();
 
 builder.Services.AddSingleton<JwtTokenProvider>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<TenantRepository>();
 builder.Services.AddScoped<ProfileRepository>();
+builder.Services.AddScoped<SystemSettingRepository>();
+builder.Services.AddScoped<DynamicGridRepository>();
+
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<TenantService>();
+builder.Services.AddScoped<SystemSettingService>();
+builder.Services.AddScoped<ProfileService>();
+builder.Services.AddScoped<DynamicGridService>();
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();

@@ -2,6 +2,7 @@ using System.Data;
 using Dapper;
 using Swe.Common.Model;
 using Swe.Common.Enum;
+using Microsoft.AspNetCore.Http;
 using Swe.DL.Context;
 
 namespace Swe.DL.Repository;
@@ -11,7 +12,7 @@ namespace Swe.DL.Repository;
 /// </summary>
 /// <created_at>2026-08-03</created_at>
 /// <author>txhoan</author>
-public class UserRepository(DbContext dbContext) : BaseRepository<User>(dbContext)
+public class UserRepository(DbContext dbContext, IHttpContextAccessor httpContextAccessor) : BaseRepository<User>(dbContext, httpContextAccessor)
 {
     public async Task<User?> GetByUsernameAsync(string username)
     {

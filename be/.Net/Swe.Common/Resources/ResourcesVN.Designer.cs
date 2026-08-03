@@ -144,5 +144,11 @@ namespace Swe.Common.Resources {
                 return ResourceManager.GetString("UsernameLoginRequired", resourceCulture);
             }
         }
+
+        public static string DuplicatedSettingKey {
+            get {
+                return ResourceManager.GetString("DuplicatedSettingKey", resourceCulture);
+            }
+        }
     }
 }
