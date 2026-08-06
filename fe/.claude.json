@@ -1,0 +1,26 @@
+{
+  "allowedCommands": [
+    "pnpm test",
+    "pnpm lint",
+    "pnpm typecheck",
+    "pnpm build",
+    "pnpm dev",
+    "pnpm --filter nextjs-base dev",
+    "pnpm --filter nextjs-base build",
+    "pnpm --filter nextjs-base lint",
+    "pnpm --filter nextjs-base typecheck",
+    "pnpm --filter nuxtjs-base dev",
+    "pnpm --filter nuxtjs-base build",
+    "pnpm --filter nuxtjs-base lint",
+    "pnpm --filter nuxtjs-base typecheck"
+  ],
+  "ignorePaths": [
+    "node_modules/",
+    "nextjs-base/.next/",
+    "nuxtjs-base/.nuxt/",
+    "nuxtjs-base/.output/",
+    "dist/",
+    "build/",
+    "coverage/"
+  ]
+}

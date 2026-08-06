@@ -1,0 +1,12 @@
+nextjs-base/.next/
+nuxtjs-base/.nuxt/
+nuxtjs-base/.output/
+.vscode/
+.idea/
+node_modules/
+.claude/
+.claudeignore
+CLAUDE.md
+pnpm-lock.yaml
+.claude.json
+.ai/

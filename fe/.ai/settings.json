@@ -1,0 +1,11 @@
+{
+    "project_name": "Base Frontend (Next.js & Nuxt.js)",
+    "primary_context_source": ".ai",
+    "project_rules": [
+        "../CLAUDE.md",
+        "../GEMINI.md",
+        "./CLAUDE.md",
+        "./.ai/rules/*.md",
+        "./.ai/agents/*.md"
+    ]
+}

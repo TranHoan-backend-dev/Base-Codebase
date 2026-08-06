@@ -1,0 +1,11 @@
+nextjs-base/.next/
+nuxtjs-base/.nuxt/
+nuxtjs-base/.output/
+.vscode/
+.idea/
+node_modules/
+.gemini/
+.geminiignore
+GEMINI.md
+pnpm-lock.yaml
+.ai/

@@ -1,0 +1,25 @@
+{
+  "allowedCommands": [
+    "./gradlew test",
+    "./gradlew build",
+    "./gradlew clean",
+    "./gradlew bootRun",
+    ".\\gradlew.bat test",
+    ".\\gradlew.bat build",
+    ".\\gradlew.bat clean",
+    "dotnet build .Net/backend.sln",
+    "dotnet test .Net/backend.sln",
+    "dotnet clean .Net/backend.sln",
+    "dotnet run --project .Net/Swe.API/Swe.API.csproj"
+  ],
+  "ignorePaths": [
+    "build/",
+    ".gradle/",
+    "out/",
+    ".idea/",
+    "*.class",
+    "bin/",
+    "obj/",
+    ".vs/"
+  ]
+}

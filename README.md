@@ -5,6 +5,7 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
 ## 📁 Cấu trúc Dự án
 
 - **`be/SpringBoot/`**: Dự án Backend cơ sở xây dựng trên Java & Spring Boot (cung cấp core logic, authentication, cấu hình DB, security, v.v.).
+- **`be/.Net/`**: Dự án Backend cơ sở xây dựng trên C# & .NET 8+ / .NET 10 (cung cấp core logic, authentication, cấu hình DB, security, v.v.).
 - **`fe/nextjs-base/`**: Dự án Frontend cơ sở xây dựng trên React & Next.js (chứa các UI component, layout và utils dùng chung).
 - **`fe/nuxtjs-base/`**: Dự án Frontend cơ sở xây dựng trên Vue & Nuxt.js (chứa các UI component, layout và utils dùng chung).
 
@@ -13,7 +14,8 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
 ### Yêu cầu môi trường
 
 - Node.js (v18+) & pnpm
-- Java JDK 17+ (cho Backend)
+- Java JDK 17+ (cho Backend Spring Boot)
+- SDK .NET 10 (cho Backend .NET)
 
 ### Cài đặt & Chạy ứng dụng
 
@@ -42,6 +44,13 @@ Repository chứa các dự án cơ sở (Base Repositories) đóng vai trò là
    ```bash
    cd be/SpringBoot
    ./gradlew bootRun
+   ```
+
+5. **Khởi chạy Backend (.NET):**
+
+   ```bash
+   cd be/.Net
+   dotnet run --project Swe.API/Swe.API.csproj
    ```
 
 ---
